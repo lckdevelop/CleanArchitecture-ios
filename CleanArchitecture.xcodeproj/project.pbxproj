@@ -24,7 +24,7 @@
 		CC367D582D2A15CE00F86532 /* Exceptions for "CleanArchitecture" folder in "CleanArchitecture" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Global/SupportingFiles/Info.plist,
 			);
 			target = CC367D452D2A15CC00F86532 /* CleanArchitecture */;
 		};
@@ -177,7 +177,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7H4D9CD7FD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CleanArchitecture/Info.plist;
+				INFOPLIST_FILE = CleanArchitecture/Global/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = IntroViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -205,7 +205,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7H4D9CD7FD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CleanArchitecture/Info.plist;
+				INFOPLIST_FILE = CleanArchitecture/Global/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = IntroViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
