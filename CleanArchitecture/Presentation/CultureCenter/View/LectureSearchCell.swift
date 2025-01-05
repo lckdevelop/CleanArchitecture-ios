@@ -29,8 +29,14 @@ class LectureSearchCell: UITableViewCell {
 extension LectureSearchCell {
     func bindData(data: CultureLecture, row: Int) {
         self.lectureTitleLabel.text = data.crsNm
-        self.lectureSubTitleLabel.text = data.tuition
-        self.lecturePriceLabel.text = data.tuition
+        
+        if let applyCntCal = data.applyCntCal, let nickNm = data.nickNm, let timeclassinfo = data.timeclassinfo {
+            self.lectureSubTitleLabel.text = "\(applyCntCal)회 | \(nickNm) | \(timeclassinfo)"
+        }
+        if let tuition = data.tuition {
+            self.lecturePriceLabel.text = "\(tuition)원"
+        }
+        
     }
 }
 

@@ -43,13 +43,18 @@ private extension LectureResultViewController {
         
         let nib = UINib(nibName: "LectureSearchCell", bundle: nil)
         lectureListTableView.register(nib, forCellReuseIdentifier: "LectureSearchCell")
+        
     }
     
     func setupBindings() {
         viewModel.lectureList
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { bool in
+                let lectureCount = self.viewModel.lectureList.value.count
+                self.lectureCountLabel.text = "\(lectureCount)개의 강좌가 검색 되었어요."
+                
                 self.lectureListTableView.reloadData()
+                
             })
             .disposed(by: disposeBag)
     
@@ -94,5 +99,10 @@ extension LectureResultViewController: UITableViewDataSource {
         cell.bindData(data: data, row: indexPath.row)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 170
+    }
+
 }
 
