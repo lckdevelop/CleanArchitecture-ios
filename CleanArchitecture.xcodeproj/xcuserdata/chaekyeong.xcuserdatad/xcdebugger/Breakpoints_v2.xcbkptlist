@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "7287B99A-CCE5-4913-8BC2-53788D6716DF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6788FF6-2FFF-42CD-B77E-C3B167307998"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Presentation/CultureCenter/ViewController/LectureSearchResultViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3D9171C-7A8D-430F-95BA-258186906940"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Presentation/CultureCenter/ViewController/LectureSearchResultViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CA23759-9FFF-4804-999C-A869A2D1C7D6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/IntroViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "moveLectureSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3BD998A-CB0A-4C12-BD59-135DF77EB164"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "load()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B3BD998A-CB0A-4C12-BD59-135DF77EB164 - 86dfca4542d9c06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultLectureSearchResultViewModel.load() -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58">
+               </Location>
+               <Location
+                  uuid = "B3BD998A-CB0A-4C12-BD59-135DF77EB164 - 86dfca4542d9c06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultLectureSearchResultViewModel.load() -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B7498ECD-4DD1-42E8-B2A9-90798A5A2994"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "load()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B7498ECD-4DD1-42E8-B2A9-90798A5A2994 - 192fecc5672c38b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CleanArchitecture.DefaultLectureSearchResultViewModel.load() -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56">
+               </Location>
+               <Location
+                  uuid = "B7498ECD-4DD1-42E8-B2A9-90798A5A2994 - 86dfca4542d9f1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultLectureSearchResultViewModel.load() -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2520392-EBE9-470C-ADB9-2E9BD84BA65B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Presentation/CultureCenter/ViewModel/LectureSearchResultViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "load()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A7FD736-4C84-4936-A2ED-C4EA679430C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Domain/UseCase/CultureSearchListUseCase.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "execute(lectureSearchFilter:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65420586-D813-4094-81D3-A752F43F3AD2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "fetchSearchResult(request:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "65420586-D813-4094-81D3-A752F43F3AD2 - 23cde4383c4492c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CleanArchitecture.DefaultCultureSearchResultRepository.fetchSearchResult(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
+               </Location>
+               <Location
+                  uuid = "65420586-D813-4094-81D3-A752F43F3AD2 - 26486d7b14c35f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultCultureSearchResultRepository.fetchSearchResult(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "48FBE754-00C3-4D07-88A3-2F050A636105"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "fetchSearchResult(request:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "48FBE754-00C3-4D07-88A3-2F050A636105 - 26486d7b14c35f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultCultureSearchResultRepository.fetchSearchResult(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+               <Location
+                  uuid = "48FBE754-00C3-4D07-88A3-2F050A636105 - 26486d7b14c35f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultCultureSearchResultRepository.fetchSearchResult(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+               <Location
+                  uuid = "48FBE754-00C3-4D07-88A3-2F050A636105 - 26486d7b14c35f8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; () in CleanArchitecture.DefaultCultureSearchResultRepository.fetchSearchResult(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;Swift.Array&lt;CleanArchitecture.CultureLecture&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Repository/DefaultCultureSearchResultRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E7D4497-D8DB-4F4A-B723-92CAA16D58AF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "getCultureLectureSearchList(request:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8E7D4497-D8DB-4F4A-B723-92CAA16D58AF - cab0f625767e04cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CleanArchitecture.CultureSearchService.getCultureLectureSearchList(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24">
+               </Location>
+               <Location
+                  uuid = "8E7D4497-D8DB-4F4A-B723-92CAA16D58AF - 8af325045e52cc60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moya.Response, Moya.MoyaError&gt;) -&gt; () in CleanArchitecture.CultureSearchService.getCultureLectureSearchList(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "00FB924D-BBE0-4AC9-B628-EEB9AB0B29C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getCultureLectureSearchList(request:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "00FB924D-BBE0-4AC9-B628-EEB9AB0B29C1 - 8af325045e52cc60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moya.Response, Moya.MoyaError&gt;) -&gt; () in CleanArchitecture.CultureSearchService.getCultureLectureSearchList(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
+               </Location>
+               <Location
+                  uuid = "00FB924D-BBE0-4AC9-B628-EEB9AB0B29C1 - 8af325045e52cc60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Moya.Response, Moya.MoyaError&gt;) -&gt; () in CleanArchitecture.CultureSearchService.getCultureLectureSearchList(request: CleanArchitecture.CultureSearchResultRequestDTO, completion: (Swift.Result&lt;CleanArchitecture.CultureSearchResultResponseDTO, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "CleanArchitecture.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chaekyeong/dev/xcodeProjects/CleanArchitecture/CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E35DFAB-D6BF-4A63-A8FE-EEC4C29B3CDC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "getCultureLectureSearchList(request:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E4C0B01-2358-49DC-893D-066F7F246131"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CleanArchitecture/Data/Network/Service/CultureSearchService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "getCultureLectureSearchList(request:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
