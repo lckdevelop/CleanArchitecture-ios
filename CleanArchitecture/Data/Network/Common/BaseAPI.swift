@@ -14,7 +14,7 @@ enum BaseAPI {
 
 extension BaseAPI: TargetType {
     var baseURL: URL {
-        guard let baseURL = URL(string: "https://hdeapp.ehyundai.com/") else {
+        guard let baseURL = URL(string: ServerType.release.urlEHyundaiApp) else {
             fatalError("[Error] - Base URL이 없습니다!")
         }
         return baseURL
@@ -23,7 +23,7 @@ extension BaseAPI: TargetType {
     var path: String {
         switch self {
         case .getCultureLectureSearchList:
-            return "public-api/culture/v1/newFindCourseList.do"
+            return "/public-api/culture/v1/newFindCourseList.do"
         }
     }
     
