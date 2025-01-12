@@ -9,6 +9,7 @@ import UIKit
 
 protocol ViewControllerFactoryProtocol {
     func makeLectureSearchListVC() -> LectureResultViewController
+    func makeMainTabVC() -> MainTabViewController
 }
 
 final class ViewControllerFactory: ViewControllerFactoryProtocol {
@@ -21,6 +22,12 @@ final class ViewControllerFactory: ViewControllerFactoryProtocol {
         let usecase = DefaultCultureSearchListUseCase(repository: repository)
         let viewModel = DefaultLectureSearchResultViewModel(fetchCultureSearchUsecase: usecase)
         let vc = LectureResultViewController(viewModel: viewModel)
+        return vc
+    }
+    
+    // root VC 를 TabViewController 로 설정한다.
+    func makeMainTabVC() -> MainTabViewController {
+        let vc = MainTabViewController()
         return vc
     }
 }

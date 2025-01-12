@@ -244,5 +244,17 @@ enum ServerType {
             return "https://www.ehyundai.com"
         }
     }
+    
+    // hpoint hostURL
+    var urlHpoint: String {
+        switch self {
+        case .release:
+            return "https://m.h-point.co.kr:29845"
+        case .stg:
+            return "https://m-stg.h-point.co.kr"
+        case .dev:
+            return "https://mdev.h-point.co.kr:29845"
+        }
+    }
 }
 
