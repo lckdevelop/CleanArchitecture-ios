@@ -15,18 +15,21 @@ struct CouponView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(colors, id: \.self) { color in
-                    RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 150, height: 100)
-                        .foregroundColor(color)
+            List {
+                ForEach(viewModel.coupons, id: \.self) { coupon in
+                    Text("\(coupon.name)")
                 }
             }
+        }
+        .onAppear {
+            viewModel.loadCouponList()
         }
         .padding()
     }
 }
 
 #Preview {
-    
+    let couponRepository = CouponRepository(networkManager: .shared)
+    let couponService = CouponService(repository: couponRepository)
+    CouponView(viewModel: CouponViewModel(couponService: couponService))
 }

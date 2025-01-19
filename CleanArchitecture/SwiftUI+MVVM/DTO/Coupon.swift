@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coupon: Decodable {
+struct Coupon: Decodable, Hashable {
     let campId: String
     let name: String
     let titleImage: String?
@@ -57,4 +57,12 @@ struct Coupon: Decodable {
         case copnStatGbcd = "copnStatGbcd" //[01] 발급, [02] 사용, [03]: 회수
         case copnVlidTermGbcd = "copnVlidTermGbcd" //
     }
+}
+
+struct CouponRequestDTO: Encodable {
+    let copnGbcd: String?
+    let prfrYn: String?
+    let ptcoId: String?
+
+    
 }
