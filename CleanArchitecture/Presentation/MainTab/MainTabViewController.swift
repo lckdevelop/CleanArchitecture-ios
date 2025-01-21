@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabViewController: View {
     @State public var selectedTab: MainTabType = .cultureCenter
+    @StateObject var couponViewModel: CouponViewModel
     
     var body: some View {
         
@@ -21,8 +22,8 @@ struct MainTabViewController: View {
                         // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
                         LectureResultViewWrapper()
                     case .coupon:
-                        Text("쿠폰 collection view")
-                        //ChatListView(viewModel: .init(container: container, userId: authViewModel.userId ?? ""))
+                        CouponView(viewModel: couponViewModel)
+                       
                     }
                 }
                 .tabItem {
@@ -36,5 +37,9 @@ struct MainTabViewController: View {
 }
 
 #Preview {
-    MainTabViewController()
+    let couponRepository = CouponRepository(networkManager: .shared)
+    let couponService = CouponService(repository: couponRepository)
+    let couponViewModel = CouponViewModel(couponService: couponService)
+    
+    MainTabViewController(couponViewModel: couponViewModel)
 }

@@ -7,9 +7,13 @@
 
 import Foundation
 import Combine
-
+/**
+ ViewModel -> Service -> Repository 의존성을 가진다. (의존성 역전으로 구현체에 의존하지는 않고 protocol 에 의존함)
+ 
+ 
+ */
 class CouponViewModel: ObservableObject {
-    @Published var coupons: [Coupon] = []
+    @Published var couponList: CouponList?
     @Published var errorMessage: String?
     
     private let couponService: CouponServiceType
@@ -20,8 +24,11 @@ class CouponViewModel: ObservableObject {
     }
     
     func loadCouponList() {
-        couponService.getCouponList()
-            //.receive(on: DispatchQueue.main)
+        let couponRequestDto = CouponRequestDTO(mcustNo: "", copnGbcd: "01", prfrYn: "N", ptcoId: nil)
+        let response: AnyPublisher<CouponList, APIError> = couponService.getCouponList(urlString: "/mbo/copn/selectCopnList.nhd", parameters: couponRequestDto)
+        
+        response
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -30,7 +37,7 @@ class CouponViewModel: ObservableObject {
                     print("\(failure)")
                 }
             }, receiveValue: { [weak self] coupons in
-                self?.coupons = coupons
+                self?.couponList = coupons
             })
             .store(in: &cancellables)
         

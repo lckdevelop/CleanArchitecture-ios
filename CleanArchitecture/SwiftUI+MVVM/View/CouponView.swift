@@ -6,21 +6,34 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CouponView: View {
     @StateObject var viewModel: CouponViewModel
     
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
-    let colors: [Color] = [.black, .blue, .brown, .cyan, .gray, .indigo, .mint, .yellow, .orange, .purple]
-    
     var body: some View {
-        ScrollView {
-            List {
-                ForEach(viewModel.coupons, id: \.self) { coupon in
-                    Text("\(coupon.name)")
+        
+        List {
+            ForEach(viewModel.couponList?.coupons ?? [], id: \.name) { coupon in
+                HStack {
+                    if let url = URL(string: coupon.titleImage ?? "") {
+                        KFImage(url)
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .scaledToFill() // 이미지가 원 안에 꽉 차도록 설정
+                            .clipShape(Circle()) // 원형으로 클립
+                            
+                        Spacer()
+                        
+                        Text("\(String(describing: coupon.name ?? ""))")
+                    }
+
                 }
+                
             }
+            
         }
+        .listStyle(.plain)
         .onAppear {
             viewModel.loadCouponList()
         }

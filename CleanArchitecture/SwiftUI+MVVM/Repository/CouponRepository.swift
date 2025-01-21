@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 protocol CouponRepositoryType {
-    func fetchCoupons() -> AnyPublisher<[Coupon], APIError>
+    func fetchCoupons(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError>
 }
 
 
 final class CouponRepository: CouponRepositoryType {
     
-    private let networkManager: NetworkManager
+    private let networkManager: APIManager
     
-    init(networkManager: NetworkManager = .shared) {
+    init(networkManager: APIManager = .shared) {
         self.networkManager = networkManager
     }
     
-    func fetchCoupons() -> AnyPublisher<[Coupon], APIError> {
-        return networkManager.request(url: "", parameters: CouponRequestDTO.self as? Encodable)
+    func fetchCoupons(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError> {
+        return networkManager.request(url: urlString, parameters: parameters)
     }
 }
 

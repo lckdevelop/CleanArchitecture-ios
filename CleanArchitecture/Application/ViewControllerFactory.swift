@@ -27,7 +27,11 @@ final class ViewControllerFactory: ViewControllerFactoryProtocol {
     
     // root VC 를 TabViewController 로 설정한다.
     func makeMainTabVC() -> MainTabViewController {
-        let vc = MainTabViewController()
+        let couponRepository = CouponRepository(networkManager: .shared)
+        let couponService = CouponService(repository: couponRepository)
+        let couponViewModel = CouponViewModel(couponService: couponService)
+        let vc = MainTabViewController(couponViewModel: couponViewModel)
+        
         return vc
     }
 }

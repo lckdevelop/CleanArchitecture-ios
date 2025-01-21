@@ -14,18 +14,19 @@ import Combine
  
  */
 protocol CouponServiceType {
-    func getCouponList() -> AnyPublisher<[Coupon], APIError>
+    func getCouponList(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError>
 }
 
 final class CouponService: CouponServiceType {
+
     private let repository: CouponRepositoryType
 
     init(repository: CouponRepositoryType) {
         self.repository = repository
     }
     
-    func getCouponList() -> AnyPublisher<[Coupon], APIError> {
-        return repository.fetchCoupons()
+    func getCouponList(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError> {
+        return repository.fetchCoupons(urlString: urlString, parameters: parameters)
     }
 }
 
