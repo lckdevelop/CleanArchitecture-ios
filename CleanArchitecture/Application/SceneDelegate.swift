@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -31,10 +32,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            self.window?.makeKeyAndVisible()
             self.window = UIWindow(windowScene: windowScene)
 
-            let rootViewController = ViewControllerFactory.shared.makeLectureSearchListVC()
-            let navigationController = UINavigationController(rootViewController: rootViewController)
-            
-            self.window?.rootViewController = navigationController
+            let rootViewController = ViewControllerFactory.shared.makeMainTabVC()
+            //let navigationController = UINavigationController(rootViewController: rootViewController)
+            //self.window?.rootViewController = navigationController
+            self.window?.rootViewController = UIHostingController(rootView: rootViewController)
             self.window?.makeKeyAndVisible()
         }
     }

@@ -244,5 +244,6 @@ enum ServerType {
             return "https://www.ehyundai.com"
         }
     }
+    
 }
 
