@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .module(name: "Core"),
     product: .framework,
-    dependencies: [
+    interfaceDependencies: [
         .Core.designKit
     ]
 )

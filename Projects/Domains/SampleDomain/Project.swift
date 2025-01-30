@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .domain(name: "Sample"),
     product: .framework,
-    dependencies: [
+    interfaceDependencies: [
         .Modules.shared
     ]
 )

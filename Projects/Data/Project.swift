@@ -11,7 +11,8 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .module(name: "Data"),
     product: .framework,
-    dependencies: [
+    interfaceDependencies: [
+        .domain,
         .Modules.networkModule
     ]
 )
