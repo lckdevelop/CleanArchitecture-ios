@@ -11,7 +11,13 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .module(name: "ThirdPartyLibrary"),
     product: .framework,
-    externalDependencies: [
-        //.Library.then
+    interfaceDependencies: [
+        .data,
+        .domain,
+        .Library.moya,
+        //.Library.alamofire,
+        //.Library.rxSwift,
+        //.Library.rxDataSources,
+        //.Library.kingfisher
     ]
 )

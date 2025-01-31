@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CultureSearchListUseCase {
-    func execute(lectureSearchFilter: CultureSearchResultRequestDTO,
+    func execute(lectureSearchFilter: CultureLecture,
                  completion: @escaping (Result<[CultureLecture], Error>) -> Void)
 }
 
@@ -19,7 +19,7 @@ final class DefaultCultureSearchListUseCase: CultureSearchListUseCase {
         self.repository = repository
     }
     
-    func execute(lectureSearchFilter: CultureSearchResultRequestDTO, completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
+    func execute(lectureSearchFilter: CultureLecture, completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
         repository.fetchSearchResult(request: lectureSearchFilter, completion: completion)
     }
 }

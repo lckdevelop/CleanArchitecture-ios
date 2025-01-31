@@ -11,11 +11,13 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .module(name: "NetworkModule"),
     product: .framework,
-    externalDependencies: [
+    interfaceDependencies: [
+        .data,
         .domain,
-        .Library.alamofire,
         .Library.moya,
-        .Library.rxSwift,
-        .Library.rxDataSources,
+        //.Library.alamofire,
+        //.Library.rxSwift,
+        //.Library.rxDataSources,
+        //.Library.kingfisher
     ]
 )

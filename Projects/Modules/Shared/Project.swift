@@ -11,7 +11,7 @@ import ProjectDescriptionHelpers
 let project = Project.configure(
     moduleType: .module(name: "Shared"),
     product: .framework,
-    externalDependencies: [
+    interfaceDependencies: [
         .Modules.thirdPartyLibrary
     ]
 )

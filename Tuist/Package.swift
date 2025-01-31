@@ -10,17 +10,18 @@
 
 #if TUIST
 import ProjectDescription
+import ProjectDescriptionHelpers
 
 
 let packageSettings = PackageSettings(
     productTypes: [
+        //"Alamofire": .framework,
+        //"Kingfisher": .framework,
         "Moya": .framework,
-        "Alamofire": .framework,
-        "RxSwift": .framework,
-        "RxDataSources": .framework,
-        "Kingfisher": .framework,
-        "SnapKit": .framework
-    ]
+        //"RxSwift": .framework,
+        //"RxDataSources": .framework
+    ],
+    baseSettings: Settings.settings(configurations: XCConfig.framework)
 )
 #endif
 
@@ -28,11 +29,10 @@ let packageSettings = PackageSettings(
 let package = Package(
     name: "PackageName",
     dependencies: [
-        .package(url: "https://github.com/Moya/Moya.git", from: "15.0.0"),
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.7.1"),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.0.0"),
-        .package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", from: "5.0.0"),
-        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "8.1.3"),
-        .package(url: "https://github.com/SnapKit/SnapKit.git", from: "5.0.0")
+        //.package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.10.2"),
+        //.package(url: "https://github.com/onevcat/Kingfisher.git", from: "8.1.3"),
+        //.package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.0.0"),
+        .package(url: "https://github.com/Moya/Moya.git", from: "15.0.3"),
+        //.package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", from: "5.0.2"),
     ]
 )

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Moya
+//import Moya
 
 protocol CultureSearchServiceProtocol {
     func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,

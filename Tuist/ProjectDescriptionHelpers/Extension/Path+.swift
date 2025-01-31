@@ -25,7 +25,7 @@ public extension ProjectDescription.Path {
     }
     
     static var data: Self {
-        return .relativeToRoot("Projects/Data/Data")
+        return .relativeToRoot("Projects/Data")
     }
     
     static var domain: Self {

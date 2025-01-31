@@ -10,9 +10,9 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "RootFeature", type: .standard),
+    moduleType: .feature(name: "Root", type: .standard),
     product: .framework,
-    internalDependencies: [
+    interfaceDependencies: [
         .Features.Main.Feature,
         .Features.CultureCenter.Feature,
         .Features.Coupon.Feature

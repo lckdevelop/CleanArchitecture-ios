@@ -33,7 +33,7 @@ extension Project {
                 sources: ["Sources/**"],
                 resources: [.glob(pattern: "Resources/**", excluding: [])],
                 entitlements: configuration.entitlements,
-                dependencies: internalDependencies,
+                dependencies: interfaceDependencies,
                 settings: configuration.setting
             )
             targets.append(appTarget)
@@ -97,7 +97,7 @@ extension Project {
                     organizationName: "",
                     //organizationName: configuration.organizationName,
                     targets: targets,
-                    dependencies: internalDependencies,
+                    dependencies: interfaceDependencies,
                     schemes: schemes,
                     settings: configuration.setting
                 )
@@ -112,7 +112,7 @@ extension Project {
                 deploymentTargets: configuration.deploymentTarget,
                 sources: ["Sources/**"],
                 resources: hasResources ? ["Resources/**"] : [],
-                dependencies: internalDependencies
+                dependencies: interfaceDependencies
             )
             targets.append(moduleTarget)
             
@@ -151,7 +151,7 @@ extension Project {
                 deploymentTargets: configuration.deploymentTarget,
                 sources: ["Sources/**"],
                 resources: hasResources ? ["Resources/**"] : [],
-                dependencies: internalDependencies
+                dependencies: interfaceDependencies
             )
             targets.append(moduleTarget)
             
