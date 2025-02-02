@@ -13,6 +13,6 @@ let project = Project.configure(
     product: .framework,
     interfaceDependencies: [
         //.Modules.shared,
-        .data,
+        .Core.core
     ]
 )

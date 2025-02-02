@@ -9,14 +9,14 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-class LectureResultViewController: UIViewController {
+public class LectureResultViewController: UIViewController {
     @IBOutlet weak var lectureCountLabel: UILabel!
     @IBOutlet weak var lectureListTableView: UITableView!
     
     private var viewModel: LectureSearchResultViewModel
     private let disposeBag = DisposeBag()
     
-    init(viewModel: LectureSearchResultViewModel) {
+    public init(viewModel: LectureSearchResultViewModel) {
         self.viewModel = viewModel
         super.init(nibName: "LectureResultViewController", bundle: nil)
     }
@@ -25,7 +25,7 @@ class LectureResultViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupDelegate()
@@ -79,18 +79,18 @@ private extension LectureResultViewController {
 }
 
 // MARK: - TableView Delegate
-
-extension LectureResultViewController: UITableViewDelegate {}
-
+extension LectureResultViewController: UITableViewDelegate {
+    
+}
 // MARK: - TableView DataSource
 
 extension LectureResultViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.lectureList.value.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "LectureSearchCell",
             for: indexPath) as? LectureSearchCell else { return UITableViewCell() }
@@ -100,7 +100,7 @@ extension LectureResultViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
 

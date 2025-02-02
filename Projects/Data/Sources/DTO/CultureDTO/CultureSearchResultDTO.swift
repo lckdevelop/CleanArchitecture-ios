@@ -7,28 +7,62 @@
 
 import Foundation
 
-struct CultureSearchResultRequestDTO: Codable {
-    var stCd: String?
-    var sqCd: String?
-    var crsTy1: String?
-    var crsTy2: String?
-    var crsCategory: String?
-    var dayOfWeek: String?
-    var crsStartTime: String?
-    var crsEndTime: String?
-    var crsNm: String?
-    var applyStatus: String?
-    var currentPage: String?
-    var countPerPage: String?
-    var monthStart: String?
-    var monthEnd: String?
-    var giftFlag: String?
+public struct CultureSearchResultRequestDTO: Codable {
+    public var stCd: String?
+    public var sqCd: String?
+    public var crsTy1: String?
+    public var crsTy2: String?
+    public var crsCategory: String?
+    public var dayOfWeek: String?
+    public var crsStartTime: String?
+    public var crsEndTime: String?
+    public var crsNm: String?
+    public var applyStatus: String?
+    public var currentPage: String?
+    public var countPerPage: String?
+    public var monthStart: String?
+    public var monthEnd: String?
+    public var giftFlag: String?
+    
+    public init(stCd: String? = nil,
+                sqCd: String? = nil,
+                crsTy1: String? = nil,
+                crsTy2: String? = nil,
+                crsCategory: String? = nil,
+                dayOfWeek: String? = nil,
+                crsStartTime: String? = nil,
+                crsEndTime: String? = nil,
+                crsNm: String? = nil,
+                applyStatus: String? = nil,
+                currentPage: String? = nil,
+                countPerPage: String? = nil,
+                monthStart: String? = nil,
+                monthEnd: String? = nil,
+                giftFlag: String? = nil)
+    {
+           self.stCd = stCd
+           self.sqCd = sqCd
+           self.crsTy1 = crsTy1
+           self.crsTy2 = crsTy2
+           self.crsCategory = crsCategory
+           self.dayOfWeek = dayOfWeek
+           self.crsStartTime = crsStartTime
+           self.crsEndTime = crsEndTime
+           self.crsNm = crsNm
+           self.applyStatus = applyStatus
+           self.currentPage = currentPage
+           self.countPerPage = countPerPage
+           self.monthStart = monthStart
+           self.monthEnd = monthEnd
+           self.giftFlag = giftFlag
+       }
+    
 }
 
-struct CultureSearchResultResponseDTO: Codable {
-    let result: String?
-    let code: String?
-    let data: Data?
+public struct CultureSearchResultResponseDTO: Codable {
+    public let result: String?
+    public let code: String?
+    public let data: Data?
     
     enum CodingKeys: String, CodingKey {
         case result = "result"
@@ -36,19 +70,19 @@ struct CultureSearchResultResponseDTO: Codable {
         case data = "data"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         result = try values.decodeIfPresent(String.self, forKey: .result)
         code = try values.decodeIfPresent(String.self, forKey: .code)
         data = try values.decodeIfPresent(Data.self, forKey: .data)
     }
     
-    struct Data: Codable {
-        let pagePerContents: Int?
-        let applyCrsCnt: String?
-        let applyCrsList: [ApplyCrsList]?
-        let currentPage: Int?
-        let searchData: SearchData?
+    public struct Data: Codable {
+        public let pagePerContents: Int?
+        public let applyCrsCnt: String?
+        public let applyCrsList: [ApplyCrsList]?
+        public let currentPage: Int?
+        public let searchData: SearchData?
 
         enum CodingKeys: String, CodingKey {
 
@@ -59,7 +93,7 @@ struct CultureSearchResultResponseDTO: Codable {
             case searchData = "searchData"
         }
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             pagePerContents = try values.decodeIfPresent(Int.self, forKey: .pagePerContents)
             if let intValue = try? values.decodeIfPresent(Int.self, forKey: .applyCrsCnt) {
@@ -74,28 +108,28 @@ struct CultureSearchResultResponseDTO: Codable {
 
     }
     
-    struct SearchData: Codable {
-        let monthEnd: String?
-        let giftFlagNm: String?
-        let crsCategory: String?
-        let crsTy2: String?
-        let crsTy1: String?
-        let giftFlag: String?
-        let monthStart: String?
-        let crsTy2Nm: String?
-        let crsTy1Nm: String?
-        let dayOfWeekNm: String?
-        let monthNm: String?
-        let crsTimeNm: String?
-        let applyStatusNm: String?
-        let crsNm: String?
-        let dayOfWeek: String?
-        let stCd: String?
-        let stNm: String?
-        let crsEndTime: String?
-        let crsStartTime: String?
-        let crsCategoryNm: String?
-        let applyStatus: String?
+    public struct SearchData: Codable {
+        public let monthEnd: String?
+        public let giftFlagNm: String?
+        public let crsCategory: String?
+        public let crsTy2: String?
+        public let crsTy1: String?
+        public let giftFlag: String?
+        public let monthStart: String?
+        public let crsTy2Nm: String?
+        public let crsTy1Nm: String?
+        public let dayOfWeekNm: String?
+        public let monthNm: String?
+        public let crsTimeNm: String?
+        public let applyStatusNm: String?
+        public let crsNm: String?
+        public let dayOfWeek: String?
+        public let stCd: String?
+        public let stNm: String?
+        public let crsEndTime: String?
+        public let crsStartTime: String?
+        public let crsCategoryNm: String?
+        public let applyStatus: String?
 
         enum CodingKeys: String, CodingKey {
 
@@ -122,7 +156,7 @@ struct CultureSearchResultResponseDTO: Codable {
             case applyStatus = "applyStatus"
         }
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             monthEnd = try values.decodeIfPresent(String.self, forKey: .monthEnd)
             giftFlagNm = try values.decodeIfPresent(String.self, forKey: .giftFlagNm)
@@ -149,59 +183,59 @@ struct CultureSearchResultResponseDTO: Codable {
 
     }
     
-    struct ApplyCrsList: Codable {
-        let lessonNum: String?
-        let proCustNo: String?
-        let searchCrsStDt: String?
-        let stTime: String?
-        let calDt3: String?
-        let crsCnt: String?
-        let applyCntCal: String?
-        let isnow: String?
-        let stCd: String?
-        let quota: String?
-        let daytimeTycd: String?
-        let crsTy2: String?
-        let crsTy1: String?
-        let tmCnt: String?
-        let imageMobileDesc: String?
-        let nickNm: String?
-        let closeyn: String?
-        let lessonNumChk: String?
-        let stNm: String?
-        let crsMinDt: String?
-        let applyStatus: String?
-        let ro: String?
-        let waitApplyYn: String?
-        let imageMobile: String?
-        let crsTy2Nm: String?
-        let openChk: String?
-        let materialCost: String?
-        let crsTy2Ref: String?
-        let crsCd: String?
-        let crsSqNo: String?
-        let isstart: String?
-        let crsClass: String?
-        let applyCnt: String?
-        let imageThumbDesc: String?
-        let total: String?
-        let partnerQuotaYn: String?
-        let crsStDt: String?
-        let giftSum: String?
-        let crsClDt: String?
-        let imageThumb: String?
-        let isclose: String?
-        let lessonChk: String?
-        let waitApplyChk: String?
-        let kwdCode: String?
-        let sqCd: String?
-        let crsTy1Ref: String?
-        let crsNm: String?
-        let tuition: String?
-        let applyStatusNm: String?
-        let partnerQuota: String?
-        let timeclassinfo: String?
-        let strApply: String?
+    public struct ApplyCrsList: Codable {
+        public let lessonNum: String?
+        public let proCustNo: String?
+        public let searchCrsStDt: String?
+        public let stTime: String?
+        public let calDt3: String?
+        public let crsCnt: String?
+        public let applyCntCal: String?
+        public let isnow: String?
+        public let stCd: String?
+        public let quota: String?
+        public let daytimeTycd: String?
+        public let crsTy2: String?
+        public let crsTy1: String?
+        public let tmCnt: String?
+        public let imageMobileDesc: String?
+        public let nickNm: String?
+        public let closeyn: String?
+        public let lessonNumChk: String?
+        public let stNm: String?
+        public let crsMinDt: String?
+        public let applyStatus: String?
+        public let ro: String?
+        public let waitApplyYn: String?
+        public let imageMobile: String?
+        public let crsTy2Nm: String?
+        public let openChk: String?
+        public let materialCost: String?
+        public let crsTy2Ref: String?
+        public let crsCd: String?
+        public let crsSqNo: String?
+        public let isstart: String?
+        public let crsClass: String?
+        public let applyCnt: String?
+        public let imageThumbDesc: String?
+        public let total: String?
+        public let partnerQuotaYn: String?
+        public let crsStDt: String?
+        public let giftSum: String?
+        public let crsClDt: String?
+        public let imageThumb: String?
+        public let isclose: String?
+        public let lessonChk: String?
+        public let waitApplyChk: String?
+        public let kwdCode: String?
+        public let sqCd: String?
+        public let crsTy1Ref: String?
+        public let crsNm: String?
+        public let tuition: String?
+        public let applyStatusNm: String?
+        public let partnerQuota: String?
+        public let timeclassinfo: String?
+        public let strApply: String?
 
         enum CodingKeys: String, CodingKey {
 
@@ -259,7 +293,7 @@ struct CultureSearchResultResponseDTO: Codable {
             case strApply = "strApply"
         }
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             lessonNum = try values.decodeIfPresent(String.self, forKey: .lessonNum)
             proCustNo = try values.decodeIfPresent(String.self, forKey: .proCustNo)

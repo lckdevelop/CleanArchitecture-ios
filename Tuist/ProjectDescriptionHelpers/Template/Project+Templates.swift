@@ -7,7 +7,10 @@
 
 import ProjectDescription
 
+private let basePath: String = "Targets/CleanArchitecture"
+
 extension Project {
+    
     public static func configure(
         moduleType: ModuleType,
         product: Product,
@@ -31,7 +34,7 @@ extension Project {
                 deploymentTargets: configuration.deploymentTarget,
                 infoPlist: .extendingDefault(with: configuration.infoPlist),
                 sources: ["Sources/**"],
-                resources: [.glob(pattern: "Resources/**", excluding: [])],
+                resources: ["Resources/**", "Sources/**/*.xib"],
                 entitlements: configuration.entitlements,
                 dependencies: interfaceDependencies,
                 settings: configuration.setting
@@ -61,6 +64,7 @@ extension Project {
                     bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased())",
                     deploymentTargets: configuration.deploymentTarget,
                     sources: ["Sources/**"],
+                    resources: ["Resources/**", "Sources/**/*.xib"],
                     dependencies: interfaceDependencies
                 )
                 targets.append(featureTarget)

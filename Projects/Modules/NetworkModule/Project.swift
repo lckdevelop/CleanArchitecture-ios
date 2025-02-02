@@ -12,12 +12,6 @@ let project = Project.configure(
     moduleType: .module(name: "NetworkModule"),
     product: .framework,
     interfaceDependencies: [
-        .data,
-        .domain,
-        .Library.moya,
-        //.Library.alamofire,
-        //.Library.rxSwift,
-        //.Library.rxDataSources,
-        //.Library.kingfisher
+        .domain
     ]
 )

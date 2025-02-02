@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol CultureSearchResultRepository {
-    func fetchSearchResult(request: CultureLecture,
+public protocol CultureSearchResultRepository {
+    func fetchSearchResult(request: CultureSearchRequest,
                       completion: @escaping (Result<[CultureLecture], Error>) -> Void)
 }
 

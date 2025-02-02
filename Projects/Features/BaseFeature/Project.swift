@@ -14,6 +14,7 @@ let project = Project.configure(
     product: .framework,
     interfaceDependencies: [
         .domain,
+        .data,
         .Core.designKit
     ]
 )

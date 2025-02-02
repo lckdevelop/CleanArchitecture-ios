@@ -8,30 +8,32 @@
 import Foundation
 import RxSwift
 import RxRelay
+import Domain
+import Data
 
-protocol LectureSearchViewModelInput {
+public protocol LectureSearchViewModelInput {
     func didSearch()
 }
 
-protocol LectureSearchViewModelOutput {
+public protocol LectureSearchViewModelOutput {
     var lectureList: BehaviorRelay<[CultureLecture]> { get }
     var errors: BehaviorRelay<String> { get }
 }
 
-protocol LectureSearchResultViewModel: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
+public protocol LectureSearchResultViewModel: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
 
-final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
+public final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
     private let useCase: CultureSearchListUseCase
     
-    var lectureList = BehaviorRelay<[CultureLecture]>(value: [])
-    var errors = BehaviorRelay<String>(value: "")
+    public var lectureList = BehaviorRelay<[CultureLecture]>(value: [])
+    public var errors = BehaviorRelay<String>(value: "")
         
-    init(fetchCultureSearchUsecase: CultureSearchListUseCase) {
+    public init(fetchCultureSearchUsecase: CultureSearchListUseCase) {
         self.useCase = fetchCultureSearchUsecase
     }
     
     private func load() {
-        let cultureSearchResultRequestDTO = CultureSearchResultRequestDTO(stCd: "ALL",
+        let cultureSearchRequest = CultureSearchRequest(stCd: "ALL",
                                                  sqCd: "",
                                                  crsTy1: "ALL",
                                                  crsTy2: "ALL",
@@ -53,7 +55,7 @@ final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
         
         
         group.enter()
-        useCase.execute(lectureSearchFilter: cultureSearchResultRequestDTO) { result in
+        useCase.execute(lectureSearchFilter: cultureSearchRequest) { result in
             switch result {
             case .success(let model):
                 searchLectureList.append(contentsOf: model)
@@ -76,7 +78,7 @@ final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
 
 
 extension DefaultLectureSearchResultViewModel {
-    func didSearch() {
+    public func didSearch() {
         load()
     }
 }

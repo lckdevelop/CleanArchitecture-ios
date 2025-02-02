@@ -19,9 +19,9 @@ protocol APIManagerType {
  싱글톤으로 사용합니다.
  
  */
-final class APIManager {
+public final class APIManager {
     
-    static let shared = APIManager()
+    public static let shared = APIManager()
     
     private let baseURL: String
     

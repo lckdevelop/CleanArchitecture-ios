@@ -12,6 +12,6 @@ let project = Project.configure(
     moduleType: .module(name: "Core"),
     product: .framework,
     interfaceDependencies: [
-        .Core.designKit
+        .Modules.thirdPartyLibrary
     ]
 )

@@ -6,20 +6,20 @@
 //
 
 import Foundation
-//import Moya
+import Moya
 
-protocol CultureSearchServiceProtocol {
+public protocol CultureSearchServiceProtocol {
     func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,
                                 completion: @escaping (Result<CultureSearchResultResponseDTO, Error>) -> Void)
 }
 
-class CultureSearchService: CultureSearchServiceProtocol {
-    static let shared = CultureSearchService()
+public class CultureSearchService: CultureSearchServiceProtocol {
+    public static let shared = CultureSearchService()
     private let provider = MoyaProvider<BaseAPI>()
     
     private init() {}
     
-    func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,
+    public func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,
                                 completion: @escaping (Result<CultureSearchResultResponseDTO, Error>) -> Void) {
             provider.request(.getCultureLectureSearchList(request: request)) { result in
                 switch result {

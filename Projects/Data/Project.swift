@@ -12,6 +12,7 @@ let project = Project.configure(
     moduleType: .module(name: "Data"),
     product: .framework,
     interfaceDependencies: [
-        //.Modules.networkModule
+        .domain,
+        .Modules.networkModule
     ]
 )

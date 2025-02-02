@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Core
+import Domain
+import Data
 
 protocol ViewControllerFactoryProtocol {
     func makeLectureSearchListVC() -> LectureResultViewController

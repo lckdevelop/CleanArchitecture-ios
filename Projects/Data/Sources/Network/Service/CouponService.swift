@@ -13,19 +13,19 @@ import Combine
  UserCase 에 해당하는 비지니스 로직을 아래에 정의하면 됩니다
  
  */
-protocol CouponServiceType {
+public protocol CouponServiceType {
     func getCouponList(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError>
 }
 
-final class CouponService: CouponServiceType {
+public final class CouponService: CouponServiceType {
 
     private let repository: CouponRepositoryType
 
-    init(repository: CouponRepositoryType) {
+    public init(repository: CouponRepositoryType) {
         self.repository = repository
     }
     
-    func getCouponList(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError> {
+    public func getCouponList(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError> {
         return repository.fetchCoupons(urlString: urlString, parameters: parameters)
     }
 }

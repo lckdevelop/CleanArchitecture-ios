@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct CouponList: Decodable {
-    let code: String?
-    let message: String?
-    let coupons: [Coupon]?
+public struct CouponList: Decodable {
+    public let code: String?
+    public let message: String?
+    public let coupons: [Coupon]?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case code
         case message
         case coupons = "copnList"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         code = try values.decodeIfPresent(String.self, forKey: .code)
         message = try values.decodeIfPresent(String.self, forKey: .message)
@@ -26,14 +26,14 @@ struct CouponList: Decodable {
     }
 }
 
-struct Coupon: Decodable {
-    let campId: String?
-    let ofrId: String?
-    let name: String?
-    let titleImage: String?
-    let copnTypeGbcd: String?
+public struct Coupon: Decodable {
+    public let campId: String?
+    public let ofrId: String?
+    public let name: String?
+    public let titleImage: String?
+    public let copnTypeGbcd: String?
 
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case campId = "campId"
         case ofrId = "ofrId"
         case name = "copnNm"
@@ -43,11 +43,17 @@ struct Coupon: Decodable {
     }
 }
 
-struct CouponRequestDTO: Encodable {
-    let mcustNo: String?
-    let copnGbcd: String?
-    let prfrYn: String?
-    let ptcoId: String?
+public struct CouponRequestDTO: Encodable {
+    public let mcustNo: String?
+    public let copnGbcd: String?
+    public let prfrYn: String?
+    public let ptcoId: String?
     
+    public init(mcustNo: String?, copnGbcd: String?, prfrYn: String?, ptcoId: String?) {
+        self.mcustNo = mcustNo
+        self.copnGbcd = copnGbcd
+        self.prfrYn = prfrYn
+        self.ptcoId = ptcoId
+    }
     
 }

@@ -10,7 +10,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "CultureCenter", type: .micro),
+    moduleType: .feature(name: "CultureCenter", type: .standard),
     product: .framework,
     interfaceDependencies: [
         .Features.BaseFeatureDependency

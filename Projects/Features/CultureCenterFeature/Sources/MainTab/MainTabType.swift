@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum MainTabType: String, CaseIterable {
+public enum MainTabType: String, CaseIterable {
     case cultureCenter
     case coupon
     
-    var title: String {
+    public var title: String {
         switch self {
         case .cultureCenter:
             return "문화센터"
@@ -20,7 +20,7 @@ enum MainTabType: String, CaseIterable {
         }
     }
     
-    func imageName(selected: Bool) -> String {
+    public func imageName(selected: Bool) -> String {
         switch self {
         case .cultureCenter:
             "house"

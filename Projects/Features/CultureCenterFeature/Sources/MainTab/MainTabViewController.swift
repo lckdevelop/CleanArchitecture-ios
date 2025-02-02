@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Data
 
 struct MainTabViewController: View {
-    @State public var selectedTab: MainTabType = .cultureCenter
+    @State var selectedTab: MainTabType = .cultureCenter
     @StateObject var couponViewModel: CouponViewModel
     
     var body: some View {

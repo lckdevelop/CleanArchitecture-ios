@@ -12,12 +12,10 @@ let project = Project.configure(
     moduleType: .module(name: "ThirdPartyLibrary"),
     product: .framework,
     interfaceDependencies: [
-        .data,
-        .domain,
         .Library.moya,
-        //.Library.alamofire,
-        //.Library.rxSwift,
-        //.Library.rxDataSources,
-        //.Library.kingfisher
+        .Library.alamofire,
+        .Library.rxSwift,
+        .Library.rxDataSources,
+        .Library.kingfisher
     ]
 )

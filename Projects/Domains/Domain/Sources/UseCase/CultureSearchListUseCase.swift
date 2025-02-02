@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol CultureSearchListUseCase {
-    func execute(lectureSearchFilter: CultureLecture,
+public protocol CultureSearchListUseCase {
+    func execute(lectureSearchFilter: CultureSearchRequest,
                  completion: @escaping (Result<[CultureLecture], Error>) -> Void)
 }
 
-final class DefaultCultureSearchListUseCase: CultureSearchListUseCase {
+public final class DefaultCultureSearchListUseCase: CultureSearchListUseCase {
     private let repository: CultureSearchResultRepository
     
-    init(repository: CultureSearchResultRepository) {
+    public init(repository: CultureSearchResultRepository) {
         self.repository = repository
     }
     
-    func execute(lectureSearchFilter: CultureLecture, completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
+    public func execute(lectureSearchFilter: CultureSearchRequest, completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
         repository.fetchSearchResult(request: lectureSearchFilter, completion: completion)
     }
 }

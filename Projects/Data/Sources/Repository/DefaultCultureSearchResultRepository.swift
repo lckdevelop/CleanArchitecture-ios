@@ -7,23 +7,41 @@
 
 import Foundation
 import RxSwift
+import Domain
+
 //import RxRelay
 //import RxDataSources
 
-final class DefaultCultureSearchResultRepository {
+public final class DefaultCultureSearchResultRepository {
     
     private let cultureSearchService: CultureSearchServiceProtocol
     
-    init(cultureSearchService: CultureSearchServiceProtocol) {
+    public init(cultureSearchService: CultureSearchServiceProtocol) {
         self.cultureSearchService = cultureSearchService
     }
 }
 
 extension DefaultCultureSearchResultRepository: CultureSearchResultRepository {
-    
-    func fetchSearchResult(request: CultureSearchResultRequestDTO,
-                          completion: @escaping (Result<[CultureLecture], Error>) -> Void) {        
-        cultureSearchService.getCultureLectureSearchList(request: request) { result in
+    public func fetchSearchResult(request: CultureSearchRequest,
+                          completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
+        
+        let cultureSearchResultRequestDTO = CultureSearchResultRequestDTO(stCd: request.stCd,
+                                         sqCd: request.sqCd,
+                                         crsTy1: request.crsTy1,
+                                         crsTy2: request.crsTy2,
+                                         crsCategory: request.crsCategory,
+                                         dayOfWeek: request.dayOfWeek,
+                                         crsStartTime: request.crsStartTime,
+                                         crsEndTime: request.crsEndTime,
+                                         crsNm: request.crsNm,
+                                         applyStatus: request.applyStatus,
+                                         currentPage: request.currentPage,
+                                         countPerPage: request.countPerPage,
+                                         monthStart: request.monthStart,
+                                         monthEnd: request.monthEnd,
+                                         giftFlag: request.giftFlag)
+        
+        cultureSearchService.getCultureLectureSearchList(request: cultureSearchResultRequestDTO) { result in
             switch result {
             case .success(let entity):
                 var searchLectureList:[CultureLecture] = []
