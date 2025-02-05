@@ -12,7 +12,7 @@ let project = Project.configure(
     moduleType: .app,
     product: .app,
     interfaceDependencies: [
-        .Features.Root.Feature,
+        .Features.RootFeature,
         .data
     ]
 )

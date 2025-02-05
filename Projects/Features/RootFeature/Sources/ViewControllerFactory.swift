@@ -9,18 +9,20 @@ import UIKit
 import Core
 import Domain
 import Data
+import CultureCenterFeature
+import CouponFeature
 
 protocol ViewControllerFactoryProtocol {
     func makeLectureSearchListVC() -> LectureResultViewController
     func makeMainTabVC() -> MainTabViewController
 }
 
-final class ViewControllerFactory: ViewControllerFactoryProtocol {
+public final class ViewControllerFactory: ViewControllerFactoryProtocol {
     
-    static let shared = ViewControllerFactory()
+    public static let shared = ViewControllerFactory()
     private init() { }
     
-    func makeLectureSearchListVC() -> LectureResultViewController {
+    public func makeLectureSearchListVC() -> LectureResultViewController {
         let repository = DefaultCultureSearchResultRepository(cultureSearchService: CultureSearchService.shared)
         let usecase = DefaultCultureSearchListUseCase(repository: repository)
         let viewModel = DefaultLectureSearchResultViewModel(fetchCultureSearchUsecase: usecase)
@@ -29,7 +31,7 @@ final class ViewControllerFactory: ViewControllerFactoryProtocol {
     }
     
     // root VC 를 TabViewController 로 설정한다.
-    func makeMainTabVC() -> MainTabViewController {
+    public func makeMainTabVC() -> MainTabViewController {
         let couponRepository = CouponRepository(networkManager: .shared)
         let couponService = CouponService(repository: couponRepository)
         let couponViewModel = CouponViewModel(couponService: couponService)

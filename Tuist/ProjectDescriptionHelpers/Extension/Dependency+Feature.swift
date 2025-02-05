@@ -25,14 +25,7 @@ public extension TargetDependency.Features {
     
     static let BaseFeatureDependency = TargetDependency.project(target: "BaseFeature", path: .relativeToFeature("BaseFeature"))
     
-//    static let RootFeature = TargetDependency.project(target: "RootFeature", path: .relativeToFeature("RootFeature"))
-}
-
-public extension TargetDependency.Features.Root {
-    static let name = "Root"
-    
-    static let Feature = TargetDependency.Features.project(name: "\(name)Feature")
-    static let Interface = TargetDependency.project(target: "\(name)FeatureInterface", path: .relativeToFeature("\(name)Feature"))
+    static let RootFeature = TargetDependency.project(target: "RootFeature", path: .relativeToFeature("RootFeature"))
 }
 
 public extension TargetDependency.Features.Main {

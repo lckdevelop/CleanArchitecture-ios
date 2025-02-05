@@ -84,11 +84,6 @@
                 <constraint firstItem="l3K-KW-nXc" firstAttribute="centerX" secondItem="njF-e1-oar" secondAttribute="centerX" id="jvC-eb-BMv"/>
                 <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="l3K-KW-nXc" secondAttribute="bottom" constant="10" id="zex-8g-EAJ"/>
             </constraints>
-            <connections>
-                <outlet property="lecturePriceLabel" destination="frs-Gd-hqO" id="wgT-Qf-iwV"/>
-                <outlet property="lectureSubTitleLabel" destination="6bh-jH-RIk" id="kOl-KW-OnT"/>
-                <outlet property="lectureTitleLabel" destination="Hkv-1f-Ycm" id="8sw-sQ-TY3"/>
-            </connections>
             <point key="canvasLocation" x="94.656488549618317" y="45.774647887323944"/>
         </tableViewCell>
     </objects>

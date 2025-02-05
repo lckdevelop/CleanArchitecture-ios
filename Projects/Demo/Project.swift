@@ -13,6 +13,6 @@ let project = Project.configure(
     product: .framework,
     interfaceDependencies: [
         .data,
-        .Features.Root.Feature
+        .Features.RootFeature,
     ]
 )

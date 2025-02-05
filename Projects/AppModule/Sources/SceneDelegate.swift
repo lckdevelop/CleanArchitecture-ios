@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import Domain
 import Data
-import CultureCenterFeature
+import RootFeature
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,19 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let scene = (scene as? UIWindowScene) else { return }
-
         self.window = UIWindow(windowScene: scene)
         
-        let repository = DefaultCultureSearchResultRepository(cultureSearchService: CultureSearchService.shared)
-        let usecase = DefaultCultureSearchListUseCase(repository: repository)
-        let viewModel = DefaultLectureSearchResultViewModel(fetchCultureSearchUsecase: usecase)
-        let rootViewController = LectureResultViewController(viewModel: viewModel)
-        
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        
-        self.window?.rootViewController = navigationController
+        let rootViewController = ViewControllerFactory.shared.makeMainTabVC()
+        self.window?.rootViewController = UIHostingController(rootView: rootViewController)
         self.window?.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

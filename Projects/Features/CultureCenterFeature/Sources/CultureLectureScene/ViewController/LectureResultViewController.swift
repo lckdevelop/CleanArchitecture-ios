@@ -40,7 +40,7 @@ private extension LectureResultViewController {
     func setupDelegate() {
         lectureListTableView.delegate = self
         lectureListTableView.dataSource = self
-        
+
         let nib = UINib(nibName: "LectureSearchCell", bundle: nil)
         lectureListTableView.register(nib, forCellReuseIdentifier: "LectureSearchCell")
         

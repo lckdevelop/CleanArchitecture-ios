@@ -15,14 +15,14 @@ import Data
  
  
  */
-class CouponViewModel: ObservableObject {
+public class CouponViewModel: ObservableObject {
     @Published var couponList: CouponList?
     @Published var errorMessage: String?
     
     private let couponService: CouponServiceType
     private var cancellables = Set<AnyCancellable>()
     
-    init(couponService: CouponServiceType) {
+    public init(couponService: CouponServiceType) {
         self.couponService = couponService
     }
     

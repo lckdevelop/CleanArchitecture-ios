@@ -9,10 +9,14 @@ import SwiftUI
 import Kingfisher
 import Data
 
-struct CouponView: View {
-    @StateObject var viewModel: CouponViewModel
+public struct CouponView: View {
+    @ObservedObject var viewModel: CouponViewModel
     
-    var body: some View {
+    public init(viewModel: CouponViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    public var body: some View {
         
         List {
             ForEach(viewModel.couponList?.coupons ?? [], id: \.name) { coupon in

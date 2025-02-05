@@ -7,12 +7,17 @@
 
 import SwiftUI
 import Data
+import CultureCenterFeature
+import CouponFeature
 
-struct MainTabViewController: View {
+public struct MainTabViewController: View {
     @State var selectedTab: MainTabType = .cultureCenter
-    @StateObject var couponViewModel: CouponViewModel
+    @ObservedObject var couponViewModel: CouponViewModel
     
-    var body: some View {
+    public init(couponViewModel: CouponViewModel) {
+        self.couponViewModel = couponViewModel
+    }
+    public var body: some View {
         
         TabView(selection: $selectedTab) {
             
