@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -23,6 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         if let windowScene = scene as? UIWindowScene {
+            // Assembly 등록
+            let assemblies: [Assembly] = [
+                NetworkAssembly(),
+                CouponAssembly()
+            ]
+            // Assembly 실행
+            assemblies.forEach { $0.assemble(container: DIContainer.shared.container) }
+
 //            self.window = UIWindow.init(windowScene: windowScene)
 //            
 //            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
@@ -32,10 +41,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            self.window?.makeKeyAndVisible()
             self.window = UIWindow(windowScene: windowScene)
 
-            let rootViewController = ViewControllerFactory.shared.makeMainTabVC()
-            //let navigationController = UINavigationController(rootViewController: rootViewController)
-            //self.window?.rootViewController = navigationController
-            self.window?.rootViewController = UIHostingController(rootView: rootViewController)
+            let navigationController = UINavigationController()
+            
+            let appCoordinator = AppCoordinator(navigationController: navigationController)
+            appCoordinator.start()
+
+            self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }
     }
