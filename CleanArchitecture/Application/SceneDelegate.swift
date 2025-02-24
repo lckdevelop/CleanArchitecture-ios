@@ -24,21 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         if let windowScene = scene as? UIWindowScene {
-            // Assembly 등록
-            let assemblies: [Assembly] = [
-                NetworkAssembly(),
-                CouponAssembly()
-            ]
-            // Assembly 실행
-            assemblies.forEach { $0.assemble(container: DIContainer.shared.container) }
+            DIContainer.shared.registerDependencies()
 
-//            self.window = UIWindow.init(windowScene: windowScene)
-//            
-//            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "Intro") as! IntroViewController
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            self.window?.rootViewController = navigationController
-//            self.window?.makeKeyAndVisible()
             self.window = UIWindow(windowScene: windowScene)
 
             let navigationController = UINavigationController()

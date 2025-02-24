@@ -52,7 +52,9 @@ class DIContainer: ObservableObject {
     
     private init() {
         container = Container()
-        
+    }
+    
+    func registerDependencies() {
         // 모든 Assembly 등록
         let assemblies: [Assembly] = [
             NetworkAssembly(),
