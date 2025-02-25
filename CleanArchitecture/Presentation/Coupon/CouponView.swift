@@ -10,7 +10,7 @@ import Kingfisher
 
 struct CouponView: View {
     @StateObject var viewModel: CouponViewModel
-    
+
     var body: some View {
         
         List {
