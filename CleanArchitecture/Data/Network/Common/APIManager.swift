@@ -11,7 +11,7 @@ import Combine
 
 protocol APIManagerType {
     
-    func fetch<T: Decodable>(url: String, parameters: Encodable?) -> AnyPublisher<T, APIError>
+    func request<T: Decodable>(url: String, headers: [String: String]?, parameters: Encodable?) -> AnyPublisher<T, APIError>
 }
 
 /**
@@ -19,7 +19,7 @@ protocol APIManagerType {
  싱글톤으로 사용합니다.
  
  */
-final class APIManager {
+final class APIManager: APIManagerType {
     
     static let shared = APIManager()
     

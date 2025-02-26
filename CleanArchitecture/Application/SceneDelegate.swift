@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -23,19 +24,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         if let windowScene = scene as? UIWindowScene {
-//            self.window = UIWindow.init(windowScene: windowScene)
-//            
-//            let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "Intro") as! IntroViewController
-//            let navigationController = UINavigationController(rootViewController: vc)
-//            self.window?.rootViewController = navigationController
-//            self.window?.makeKeyAndVisible()
+            DIContainer.shared.registerDependencies()
+
             self.window = UIWindow(windowScene: windowScene)
 
-            let rootViewController = ViewControllerFactory.shared.makeMainTabVC()
-            //let navigationController = UINavigationController(rootViewController: rootViewController)
-            //self.window?.rootViewController = navigationController
-            self.window?.rootViewController = UIHostingController(rootView: rootViewController)
+            let navigationController = UINavigationController()
+            
+            let appCoordinator = AppCoordinator(navigationController: navigationController)
+            appCoordinator.start()
+
+            self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }
     }

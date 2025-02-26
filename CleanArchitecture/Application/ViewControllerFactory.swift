@@ -27,11 +27,10 @@ final class ViewControllerFactory: ViewControllerFactoryProtocol {
     
     // root VC 를 TabViewController 로 설정한다.
     func makeMainTabVC() -> MainTabViewController {
-        let couponRepository = CouponRepository(networkManager: .shared)
-        let couponService = CouponService(repository: couponRepository)
-        let couponViewModel = CouponViewModel(couponService: couponService)
-        let vc = MainTabViewController(couponViewModel: couponViewModel)
+        guard let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self) else {
+            fatalError("Failed to resolve CouponViewModel")
+        }
         
-        return vc
+        return MainTabViewController(couponViewModel: couponViewModel)
     }
 }

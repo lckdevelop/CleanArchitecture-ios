@@ -10,7 +10,7 @@ import Kingfisher
 
 struct CouponView: View {
     @StateObject var viewModel: CouponViewModel
-    
+
     var body: some View {
         
         List {
@@ -42,7 +42,13 @@ struct CouponView: View {
 }
 
 #Preview {
-    let couponRepository = CouponRepository(networkManager: .shared)
-    let couponService = CouponService(repository: couponRepository)
-    CouponView(viewModel: CouponViewModel(couponService: couponService))
+    // DIContainer 사용 이전
+//    let couponRepository = CouponRepository(networkManager: .shared)
+//    let couponService = CouponService(repository: couponRepository)
+//    CouponView(viewModel: CouponViewModel(couponService: couponService))
+    
+    // DIContainer(Swinject) 사용시 이렇게
+    let viewModel = DIContainer.shared.resolve(CouponViewModel.self)
+    CouponView(viewModel: viewModel!)
+    
 }

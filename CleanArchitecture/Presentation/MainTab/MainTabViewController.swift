@@ -37,9 +37,12 @@ struct MainTabViewController: View {
 }
 
 #Preview {
-    let couponRepository = CouponRepository(networkManager: .shared)
-    let couponService = CouponService(repository: couponRepository)
-    let couponViewModel = CouponViewModel(couponService: couponService)
+    // DIContainer 사용 이전
+    //    let couponRepository = CouponRepository(networkManager: .shared)
+    //    let couponService = CouponService(repository: couponRepository)
+    //    let couponViewModel = CouponViewModel(couponService: couponService)
     
-    MainTabViewController(couponViewModel: couponViewModel)
+    // DIContainer(Swinject) 사용시 이렇게
+    let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)
+    MainTabViewController(couponViewModel: couponViewModel!)
 }
