@@ -1,5 +1,5 @@
 //
-//  BaseAPI.swift
+//  CultureAPI.swift
 //  CleanArchitecture
 //
 //  Created by Chaekyeong Lee on 1/5/25.
@@ -8,14 +8,14 @@
 import Foundation
 import Moya
 
-enum BaseAPI {
-    case getCultureLectureSearchList(request: CultureSearchResultRequestDTO)
+enum CultureAPI {
+    case getCultureLectureSearchList(request: CultureSearchRequest)
 }
 
-extension BaseAPI: TargetType {
+extension CultureAPI: TargetType {
     var baseURL: URL {
-        guard let baseURL = URL(string: ServerType.release.urlEHyundaiApp) else {
-            fatalError("[Error] - Base URL이 없습니다!")
+        guard let baseURL = URL(string: ServerEnvironment.production.ehyundaiAppURL) else {
+            fatalError("[Error] - No Base URL!")
         }
         return baseURL
     }
@@ -38,18 +38,10 @@ extension BaseAPI: TargetType {
         switch self {
         case .getCultureLectureSearchList(let request):
             return .requestJSONEncodable(request)
-//            return .requestParameters(parameters: [
-//                "units": "metric",
-//                "lang": "kr",
-//                "q": request
-//            ], encoding: URLEncoding.httpBody)
         }
     }
     
     var headers: [String : String]? {
-        switch self {
-        case .getCultureLectureSearchList:
-            return ["Content-type": "application/json"]
-        }
+        return ["Content-type": "application/json"]
     }
 }

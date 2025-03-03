@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MainTabViewController: View {
-    @State public var selectedTab: MainTabType = .cultureCenter
+    static var shared: MainTabViewController?
+    
+    @State public var selectedTab: MainTabType = .home
+    @StateObject var homeViewModel = ViewControllerFactory.shared.makeHomeViewModel()
     @StateObject var couponViewModel: CouponViewModel
     
     var body: some View {
@@ -18,6 +21,8 @@ struct MainTabViewController: View {
             ForEach(MainTabType.allCases, id: \.self) { tab in
                 Group {
                     switch tab {
+                    case .home:
+                        HomeView(homeViewModel: homeViewModel)
                     case .cultureCenter:
                         // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
                         LectureResultViewWrapper()

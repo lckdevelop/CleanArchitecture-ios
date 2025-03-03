@@ -12,12 +12,12 @@ protocol MainTabCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
 }
 
-final class DefaultTabCoordinator: MainTabCoordinator {
+class DefaultTabCoordinator: MainTabCoordinator {
 
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
@@ -30,6 +30,14 @@ final class DefaultTabCoordinator: MainTabCoordinator {
 
         navigationController.pushViewController(hostingController, animated: false)
 
+    }
+    
+    func trendDetail(page: Page) {
+        //super.push(page: page)
+        
+        let hostingController = UIHostingController(rootView: TestView())
+        navigationController.pushViewController(hostingController, animated: false)
+        
     }
     
     // MARK: TODO 코디네이터가 종료되었을때 처리
