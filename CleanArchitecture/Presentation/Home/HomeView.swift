@@ -14,10 +14,9 @@ struct HomeView: View {
     //@State private var test = "test send"
     //@EnvironmentObject private var coordinator: AppCoordinator
     //private var coordinator = WebViewCoordinator(parentCoordinator: DefaultTabCoordinator())
-    weak var coordinator: WebViewCoordinator?
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
                     SearchBar()
@@ -30,6 +29,11 @@ struct HomeView: View {
                                 .font(.headline)
                                 .bold()
                             Spacer()
+                            NavigationLink(destination: BaseWebView(url: URL(string: "https://naver.com")!)) {
+                                Text("더보기 >")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
 //                            NavigationLink(destination: coordinator.present(sheet: .stcd)) {
 //                                Text("더보기 >")
 //                                    .font(.caption)
@@ -40,18 +44,21 @@ struct HomeView: View {
 //                                    .font(.caption)
 //                                    .foregroundColor(.gray)
 //                            }
-                            Button(action: {
-                                if let mainCoordinator = self.coordinator?.parentCoordinator {
-                                    WebViewCoordinator(parentCoordinator: mainCoordinator).trendDetail(page: .food)
-                                } else {
-                                    WebViewCoordinator(parentCoordinator: DefaultTabCoordinator(navigationController: UINavigationController())).trendDetail(page: .food)
-                                }
-                                //homeViewModel.moreTrendBtnTapped(page: .food)
-                            }) {
-                                Text("더보기 >")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            }
+//                            Button("더보기") {
+//                                WebViewCoordinator(parentCoordinator: DefaultTabCoordinator(navigationController: UINavigationController())).trendDetail(page: .food)
+//                            }
+//                            Button(action: {
+////                                if let mainCoordinator = self.coordinator?.parentCoordinator {
+////                                    WebViewCoordinator(parentCoordinator: mainCoordinator).trendDetail(page: .food)
+////                                } else {
+////                                    WebViewCoordinator(parentCoordinator: DefaultTabCoordinator(navigationController: UINavigationController())).trendDetail(page: .food)
+////                                }
+//                                homeViewModel.moreTrendBtnTapped()
+//                            }) {
+//                                Text("더보기 >")
+//                                    .font(.caption)
+//                                    .foregroundColor(.gray)
+//                            }
                         }
                         .padding(.horizontal)
                         
@@ -130,7 +137,7 @@ struct HomeView: View {
                 }
             }
             .navigationBarHidden(true) // 네비게이션 바 숨김 처리
-        }
+        //}
     }
 }
 

@@ -15,26 +15,27 @@ struct MainTabViewController: View {
     @StateObject var couponViewModel: CouponViewModel
     
     var body: some View {
-        
-        TabView(selection: $selectedTab) {
-            
-            ForEach(MainTabType.allCases, id: \.self) { tab in
-                Group {
-                    switch tab {
-                    case .home:
-                        HomeView(homeViewModel: homeViewModel)
-                    case .cultureCenter:
-                        // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
-                        LectureResultViewWrapper()
-                    case .coupon:
-                        CouponView(viewModel: couponViewModel)
-                       
+        NavigationView{
+            TabView(selection: $selectedTab) {
+                
+                ForEach(MainTabType.allCases, id: \.self) { tab in
+                    Group {
+                        switch tab {
+                        case .home:
+                            HomeView(homeViewModel: homeViewModel)
+                        case .cultureCenter:
+                            // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
+                            LectureResultViewWrapper()
+                        case .coupon:
+                            CouponView(viewModel: couponViewModel)
+                            
+                        }
                     }
+                    .tabItem {
+                        Label(tab.title, systemImage: tab.imageName(selected: selectedTab == tab))
+                    }
+                    .tag(tab)
                 }
-                .tabItem {
-                    Label(tab.title, systemImage: tab.imageName(selected: selectedTab == tab))
-                }
-                .tag(tab)
             }
         }
 
