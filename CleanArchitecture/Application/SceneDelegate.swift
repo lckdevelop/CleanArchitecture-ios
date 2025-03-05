@@ -30,10 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let navigationController = UINavigationController()
             
-            let appCoordinator = AppCoordinator(navigationController: navigationController)
-            appCoordinator.start()
+            let couponStore = DIContainer.shared.resolve(CouponStore.self)!
 
-            self.window?.rootViewController = navigationController
+            let mainTabView = MainTabViewController().environmentObject(couponStore)
+            let hostingController = UIHostingController(rootView: mainTabView)
+
+            self.window?.rootViewController = hostingController
             self.window?.makeKeyAndVisible()
         }
     }

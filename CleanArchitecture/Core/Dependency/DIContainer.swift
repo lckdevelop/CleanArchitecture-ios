@@ -40,9 +40,14 @@ class CouponAssembly: Assembly {
         }.inObjectScope(.transient)
         
         // ViewModel
-        container.register(CouponViewModel.self) { r in
-            CouponViewModel(couponService: r.resolve(CouponServiceType.self)!)
-        }.inObjectScope(.transient)
+        // container.register(CouponViewModel.self) { r in
+        //     CouponViewModel(couponService: r.resolve(CouponServiceType.self)!)
+        // }.inObjectScope(.transient)
+
+        // Store 사용 (기존 ViewModel 대체)
+        container.register(CouponStore.self) {   r in
+            CouponStore(couponService: r.resolve(CouponServiceType.self)!)
+        }.inObjectScope(.container)
     }
 }
 
