@@ -10,9 +10,9 @@ import Kingfisher
 
 struct CouponScreen: View {
     //@StateObject var viewModel: CouponViewModel
+    @EnvironmentObject private var router: AppRouter
+
     @ObservedObject var store: CouponStore
-    @State var selectedCoupon: Coupon?
-    @State var isPresented: Bool = false
     
     var body: some View {
         ZStack {
@@ -21,18 +21,18 @@ struct CouponScreen: View {
                 onAction: { action in
                     switch action {
                     case .select(let coupon):
-                        selectedCoupon = coupon
-                        isPresented = true
+                        router.navigate(.push, route: CouponRoute.couponDetail(coupon))
+                        
                     default:
                         store.handleAction(action)
                     }
                 }
             )
-            .navigationDestination(isPresented: $isPresented) {
-                if let coupon = selectedCoupon {
-                    CouponDetailView(coupon: coupon)
-                }
-            }
+            // .navigationDestination(isPresented: $isPresented) {
+            //     if let coupon = selectedCoupon {
+            //         CouponDetailView(coupon: coupon)
+            //     }
+            // }
             .onAppear {
                 store.loadCouponList()
             }

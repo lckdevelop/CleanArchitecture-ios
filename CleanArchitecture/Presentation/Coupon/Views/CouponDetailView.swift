@@ -11,7 +11,7 @@ import Kingfisher
 struct CouponDetailView: View {
     let coupon: Coupon
     
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var router: AppRouter
     var body: some View {
         ScrollView {
             VStack {
@@ -19,7 +19,7 @@ struct CouponDetailView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        dismiss()
+                        router.navigate(.pop)
                     }) {
                         Image(systemName: "xmark")
                             .foregroundColor(.black)

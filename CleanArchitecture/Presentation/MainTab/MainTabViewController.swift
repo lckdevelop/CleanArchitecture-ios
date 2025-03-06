@@ -8,36 +8,63 @@
 import SwiftUI
 
 struct MainTabViewController: View {
-    @State public var selectedTab: MainTabType = .cultureCenter
-    //@StateObject var couponViewModel: CouponViewModel
+
+    @EnvironmentObject private var router: AppRouter
     @EnvironmentObject private var couponStore: CouponStore
     
     var body: some View {
-
-        NavigationStack {
-
-            TabView(selection: $selectedTab) {
-                
-                ForEach(MainTabType.allCases, id: \.self) { tab in
-                    Group {
-                        switch tab {
-                        case .cultureCenter:
-                            // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
-                            LectureResultViewWrapper()
-                        case .coupon:
-                            //CouponView(viewModel: couponViewModel)
-                            CouponScreen(store: couponStore)
-                        }
+        
+        TabView(selection: $router.selectedTab) {
+            
+            ForEach(MainTabType.allCases, id: \.self) { tab in
+                Group {
+                    switch tab {
+                    case .cultureCenter:
+                        CultureLectureNavigationStack()
+                    case .coupon:
+                        CouponNavigationStack()
+                        
                     }
-                    .tabItem {
-                        Label(tab.title, systemImage: tab.imageName(selected: selectedTab == tab))
-                    }
-                    .tag(tab)
                 }
+                .tabItem {
+                    Label(tab.title, systemImage: tab.imageName(selected: router.selectedTab == tab))
+                }
+                .tag(tab)
             }
         }
         
         
+        
+    }
+}
+
+struct CouponNavigationStack: View {
+    @EnvironmentObject private var router: AppRouter
+    @EnvironmentObject private var couponStore: CouponStore
+    
+    var body: some View {
+        NavigationStack(path: $router.couponNavigator.routes) {
+            CouponScreen(store: couponStore)
+            .onAppear {
+                    print("CouponScreen appeared")
+                    print("Current routes: \(router.couponNavigator.routes)")
+                    print("CouponStore state: \(couponStore)")
+                }
+                .navigationDestination(for: CouponRoute.self) { route in
+                    switch route {
+                    case .couponDetail(let coupon):
+                        CouponDetailView(coupon: coupon)
+                    }
+                }
+        }
+    }
+}
+
+struct CultureLectureNavigationStack: View {
+    @EnvironmentObject private var router: AppRouter
+    var body: some View {
+        // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
+        LectureResultViewWrapper()
     }
 }
 
@@ -50,8 +77,11 @@ struct MainTabViewController: View {
     // DIContainer(Swinject) 사용시 이렇게
     // let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)
     // MainTabViewController(couponViewModel: couponViewModel!)
-
+    
     let couponStore = DIContainer.shared.resolve(CouponStore.self)
+    let router = AppRouter()
+
     MainTabViewController()
-    .environmentObject(couponStore!)
+        .environmentObject(couponStore!)
+        .environmentObject(router)
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum MainTabType: String, CaseIterable {
     case cultureCenter
@@ -28,5 +29,17 @@ enum MainTabType: String, CaseIterable {
             "ticket.fill"
         }
         
+    }
+}
+
+extension MainTabType {
+    @ViewBuilder
+    var destination: some View {
+        switch self {
+        case .coupon:
+            CouponNavigationStack()
+        case .cultureCenter:
+            CultureLectureNavigationStack()
+        }
     }
 }
