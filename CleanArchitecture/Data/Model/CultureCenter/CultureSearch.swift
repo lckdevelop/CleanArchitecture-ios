@@ -1,5 +1,5 @@
 //
-//  CultureSearchResultDTO.swift
+//  CultureSearch.swift
 //  CleanArchitecture
 //
 //  Created by Chaekyeong Lee on 1/5/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CultureSearchResultRequestDTO: Codable {
+struct CultureSearchRequest: Encodable {
     var stCd: String?
     var sqCd: String?
     var crsTy1: String?
@@ -25,7 +25,7 @@ struct CultureSearchResultRequestDTO: Codable {
     var giftFlag: String?
 }
 
-struct CultureSearchResultResponseDTO: Codable {
+struct CultureSearchResponse: Decodable {
     let result: String?
     let code: String?
     let data: Data?
@@ -43,7 +43,7 @@ struct CultureSearchResultResponseDTO: Codable {
         data = try values.decodeIfPresent(Data.self, forKey: .data)
     }
     
-    struct Data: Codable {
+    struct Data: Decodable {
         let pagePerContents: Int?
         let applyCrsCnt: String?
         let applyCrsList: [ApplyCrsList]?
@@ -74,7 +74,7 @@ struct CultureSearchResultResponseDTO: Codable {
 
     }
     
-    struct SearchData: Codable {
+    struct SearchData: Decodable {
         let monthEnd: String?
         let giftFlagNm: String?
         let crsCategory: String?
@@ -98,7 +98,6 @@ struct CultureSearchResultResponseDTO: Codable {
         let applyStatus: String?
 
         enum CodingKeys: String, CodingKey {
-
             case monthEnd = "monthEnd"
             case giftFlagNm = "giftFlagNm"
             case crsCategory = "crsCategory"
@@ -149,7 +148,7 @@ struct CultureSearchResultResponseDTO: Codable {
 
     }
     
-    struct ApplyCrsList: Codable {
+    struct ApplyCrsList: Decodable {
         let lessonNum: String?
         let proCustNo: String?
         let searchCrsStDt: String?
@@ -204,7 +203,6 @@ struct CultureSearchResultResponseDTO: Codable {
         let strApply: String?
 
         enum CodingKeys: String, CodingKey {
-
             case lessonNum = "lessonNum"
             case proCustNo = "proCustNo"
             case searchCrsStDt = "searchCrsStDt"

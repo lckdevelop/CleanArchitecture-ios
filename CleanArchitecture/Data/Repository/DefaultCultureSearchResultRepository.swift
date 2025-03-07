@@ -21,8 +21,8 @@ final class DefaultCultureSearchResultRepository {
 
 extension DefaultCultureSearchResultRepository: CultureSearchResultRepository {
     
-    func fetchSearchResult(request: CultureSearchResultRequestDTO,
-                          completion: @escaping (Result<[CultureLecture], Error>) -> Void) {        
+    func fetchSearchResult(request: CultureSearchRequest,
+                          completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
         cultureSearchService.getCultureLectureSearchList(request: request) { result in
             switch result {
             case .success(let entity):

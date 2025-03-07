@@ -31,7 +31,7 @@ final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
     }
     
     private func load() {
-        let cultureSearchResultRequestDTO = CultureSearchResultRequestDTO(stCd: "ALL",
+        let cultureSearchResultRequestDTO = CultureSearchRequest(stCd: "ALL",
                                                  sqCd: "",
                                                  crsTy1: "ALL",
                                                  crsTy2: "ALL",
