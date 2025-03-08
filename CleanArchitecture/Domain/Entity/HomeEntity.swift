@@ -17,6 +17,21 @@ struct HomeEntity {
     let noticeBannerList: [homeBanner]
 }
 
+protocol HomeBannerListProtocol {
+    var image: String? { get }
+    var dcRate: String? { get }
+    var price: String? { get }
+    var link: String? { get }
+    var badgeNm: String? { get }
+    var place: String? { get }
+    var originPrice: String? { get }
+    var title: String? { get }
+    var descript: String? { get }
+}
+
+extension HomeBannerResponse.Data.MenuList.List: HomeBannerListProtocol {}
+extension HomeBannerResponse.Data.MenuList.List2: HomeBannerListProtocol {}
+
 struct homeBanner {
     let image: String
     let dcRate: String

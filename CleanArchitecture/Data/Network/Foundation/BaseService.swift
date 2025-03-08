@@ -15,26 +15,6 @@ class BaseService<Target: TargetType> {
     
     private lazy var provider = MoyaProvider<API>(plugins: [MoyaLoggingPlugin()])
     
-//    func requestObjectInCombine<T: Decodable>(_ target: API) -> AnyPublisher<T, Error> {
-//        return Future { promise in
-//            self.provider.request(target) { response in
-//                switch response {
-//                case .success(let value):
-//                    do {
-//                        let decoder = JSONDecoder()
-//                        let body = try decoder.decode(T.self, from: value.data)
-//                        promise(.success(body))
-//                    } catch let error {
-//                        promise(.failure(error))
-//                    }
-//                case .failure(let error):
-//                        promise(.failure(error))
-//                    
-//                }
-//            }
-//        }.eraseToAnyPublisher()
-//    }
-    
     func requestObjectInCombine<T: Decodable>(_ target: API) -> AnyPublisher<T, Error> {
         return Future { promise in
             self.provider.request(target) { response in
