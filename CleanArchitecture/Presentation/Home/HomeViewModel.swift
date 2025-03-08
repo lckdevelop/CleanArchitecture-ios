@@ -15,9 +15,11 @@ class HomeViewModel: ObservableObject {
     
     private let useCase: HomeInfoUseCase
     private var cancellables = Set<AnyCancellable>()
-
-    init(homeInfoUseCase: HomeInfoUseCase) {
+    private var coordinator: DefaultTabCoordinator
+    
+    init(homeInfoUseCase: HomeInfoUseCase, coordinator: DefaultTabCoordinator) {
         self.useCase = homeInfoUseCase
+        self.coordinator = coordinator
     }
     
     func fetchTohomeBanner() {
@@ -38,7 +40,8 @@ class HomeViewModel: ObservableObject {
     }
     
     func moreTrendBtnTapped() {
-        // viewmodel에서 화면 전환을 하나?
+        let navigationController = coordinator.navigationController
+        coordinator.trendDetail()
         //coordinator.trendDetail(page: .food)
     }
     

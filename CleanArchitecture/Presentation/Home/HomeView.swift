@@ -11,29 +11,35 @@ import Kingfisher
 
 struct HomeView: View {
     @ObservedObject var homeViewModel: HomeViewModel
-    //@State private var test = "test send"
     //@EnvironmentObject private var coordinator: AppCoordinator
     //private var coordinator = WebViewCoordinator(parentCoordinator: DefaultTabCoordinator())
+    @State private var hideTabBar:Bool = false // 돌아왔을떄 먼저 그려져 있기 바라는데..
     
     var body: some View {
-//        NavigationView {
+        NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
                     SearchBar()
                     //CategoryButtonsView()
                     //CircularCategoryView()
                     
+                    // Shopping Info
                     VStack(alignment: .leading) {
                         HStack {
                             Text("Shopping Info")
                                 .font(.headline)
                                 .bold()
                             Spacer()
-                            NavigationLink(destination: BaseWebView(url: URL(string: "https://naver.com")!)) {
-                                Text("더보기 >")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                            if let url = URL(string: "https://naver.com") {
+                                NavigationLink(destination: {
+                                     BaseWebView(hideTabBar: $hideTabBar, url: url, navTitle: NavigationTitle.WEB_SHOPPING_TITLE)
+                                }) {
+                                    Text("더보기 >")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
                             }
+
 //                            NavigationLink(destination: coordinator.present(sheet: .stcd)) {
 //                                Text("더보기 >")
 //                                    .font(.caption)
@@ -66,37 +72,45 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 16) {
                                 ForEach(homeViewModel.trendBannerList?.prefix(4) ?? [], id: \.title) { banner in
-                                    VStack(alignment: .leading, spacing: 16) {
-                                        KFImage(URL(string: banner.image))
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(height: 220)
-                                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                                        Text("Online")
-                                            .font(.caption)
-                                            .foregroundColor(.gray)
-                                        Text(banner.title)
-                                            .font(.headline)
+                                    if let url = URL(string: banner.link) {
+                                        NavigationLink(destination: BaseWebView(hideTabBar: $hideTabBar, url: url, navTitle: NavigationTitle.WEB_SHOPPING_TITLE)) {
+                                        
+                                            VStack(alignment: .leading, spacing: 16) {
+                                                KFImage(URL(string: banner.image))
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(height: 220)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                                Text(banner.badgeNm)
+                                                    .font(.caption)
+                                                    .foregroundColor(.gray)
+                                                    .foregroundColor(.black)
+                                                Text(banner.title)
+                                                    .font(.headline)
+                                                    .foregroundColor(.black)
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                     
-                    
-                    
-                    
+                    // 현대식품관 투홈
                     VStack(alignment: .leading) {
                         HStack {
                             Text("현대식품관 투홈")
                                 .font(.headline)
                                 .bold()
                             Spacer()
-                            NavigationLink(destination: BaseWebView(url: URL(string: "https://hdeapp.ehyundai.com/shopping/view/ASI/D01/001T/onlineShopping")!)) {
-                                Text("더보기 >")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                            if let url = URL(string: LinkUrl.WEB_TO_HOME) {
+                                NavigationLink(destination: BaseWebView(hideTabBar: $hideTabBar, url: url, navTitle: NavigationTitle.WEB_TO_HOME_TITLE)) {
+                                    Text("더보기 >")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
                             }
+
 //                            Button(action: {
 //                                print("현대식품관 투홈 더보기 버튼 클릭")
 //                            }) {
@@ -109,20 +123,26 @@ struct HomeView: View {
                         
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                             ForEach(homeViewModel.foodBannerList?.prefix(6) ?? [], id: \.title) { banner in
-                                VStack(alignment: .leading) {
-                                    KFImage(URL(string: banner.image))
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(height: 220)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    Text("Tohome")
-                                        .font(.caption)
-                                        .foregroundColor(.gray)
-                                    Text(banner.title)
-                                        .font(.headline)
-                                    Text(banner.price.numberWithCommaFormat)
-                                        .font(.subheadline)
-                                        .bold()
+                                if let url = URL(string: banner.link) {
+                                    NavigationLink(destination: BaseWebView(hideTabBar: $hideTabBar, url: url, navTitle: NavigationTitle.WEB_SHOPPING_TITLE)) {
+                                        VStack(alignment: .leading) {
+                                            KFImage(URL(string: banner.image))
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 220)
+                                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            Text("Tohome")
+                                                .font(.caption)
+                                                .foregroundColor(.gray)
+                                            Text(banner.title)
+                                                .font(.headline)
+                                                .foregroundColor(.black)
+                                            Text(banner.price.numberWithCommaFormat)
+                                                .font(.subheadline)
+                                                .bold()
+                                                .foregroundColor(.black)
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -137,7 +157,7 @@ struct HomeView: View {
                 }
             }
             .navigationBarHidden(true) // 네비게이션 바 숨김 처리
-        //}
+        }
     }
 }
 

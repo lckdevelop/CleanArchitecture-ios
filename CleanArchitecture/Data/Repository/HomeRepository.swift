@@ -24,143 +24,52 @@ enum JSONError: Error {
 }
 
 extension HomeRepository: HomeRepositoryInterface {
+    // 팝업&뉴오픈, 트렌드&취향, 현대식품관 투홈 리스트를 합쳐서 하나의 배열로 반환
     func fetchHomeInfo(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
         homeService.getHomeInfoList(request: request)
-                .compactMap { response -> HomeEntity? in
-                    guard let menuList = response.data?.menuList, menuList.count > 3 else { return nil }
+            .flatMap { response -> AnyPublisher<HomeEntity, Error> in
+                    guard let menuList = response.data?.menuList, menuList.count > 3 else {
+                        return Fail(error: NSError(domain: "MenuList Index Error", code: 0, userInfo: nil))
+                            .eraseToAnyPublisher()
+                    }
                     
+                    // 팝업&뉴오픈, 트렌드&취향, 현대식품관 투홈 리스트를 합쳐서 하나의 배열로 반환
                     let selectedMenu1 = menuList[1]
-                    let selectedMenu2 = menuList[3]
+                    let selectedMenu2 = menuList[2]
                     let selectedMenu3 = menuList[3]
                     
-                    // 세 개의 리스트를 합쳐서 하나의 배열로 반환
-                    return HomeEntity(
-                        foodBannerList: mapToHomeBannerList3(selectedMenu3.list2),
-                        trendBannerList: mapToHomeBannerList2(selectedMenu2.list1),
-                        noticeBannerList: mapToHomeBannerList(selectedMenu1.list)
+                    let foodBannerList = self.mapToHomeBannerList(selectedMenu3.list2)
+                    let trendBannerList = self.mapToHomeBannerList(selectedMenu2.list)
+                    let noticeBannerList = self.mapToHomeBannerList(selectedMenu1.list)
+                        
+                    let homeEntity = HomeEntity(
+                        foodBannerList: foodBannerList,
+                        trendBannerList: trendBannerList,
+                        noticeBannerList: noticeBannerList
                     )
-                }
-                .eraseToAnyPublisher()
+                    
+                    return Just(homeEntity)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    private func mapToHomeBannerList<T>(_ list: [T]?) -> [homeBanner] where T: HomeBannerListProtocol {
+        return list?.compactMap { banner in
+            homeBanner(
+                image: banner.image ?? "",
+                dcRate: banner.dcRate ?? "",
+                price: banner.price ?? "",
+                link: banner.link ?? "",
+                badgeNm: banner.badgeNm ?? "",
+                place: banner.place ?? "",
+                originPrice: banner.originPrice ?? "",
+                title: banner.title ?? "",
+                descript: banner.descript ?? ""
+            )
+        } ?? []
     }
 }
 
-// 중복 변환 로직을 별도 함수로 분리
-private func mapToHomeBannerList(_ list: [HomeBannerResponse.Data.MenuList.List]?) -> [homeBanner] {
-    return list?.compactMap { banner in
-        homeBanner(
-            image: banner.image ?? "",
-            dcRate: banner.dcRate ?? "",
-            price: banner.price ?? "",
-            link: banner.link ?? "",
-            badgeNm: banner.badgeNm ?? "",
-            place: banner.place ?? "",
-            originPrice: banner.originPrice ?? "",
-            title: banner.title ?? "",
-            descript: banner.descript ?? ""
-        )
-    } ?? []
-}
 
-// 중복 변환 로직을 별도 함수로 분리
-private func mapToHomeBannerList2(_ list: [HomeBannerResponse.Data.MenuList.List1]?) -> [homeBanner] {
-    return list?.compactMap { banner in
-        homeBanner(
-            image: banner.image ?? "",
-            dcRate: banner.dcRate ?? "",
-            price: banner.price ?? "",
-            link: banner.link ?? "",
-            badgeNm: banner.badgeNm ?? "",
-            place: banner.place ?? "",
-            originPrice: banner.originPrice ?? "",
-            title: banner.title ?? "",
-            descript: banner.descript ?? ""
-        )
-    } ?? []
-}
-
-// 중복 변환 로직을 별도 함수로 분리
-private func mapToHomeBannerList3(_ list: [HomeBannerResponse.Data.MenuList.List2]?) -> [homeBanner] {
-    return list?.compactMap { banner in
-        homeBanner(
-            image: banner.image ?? "",
-            dcRate: banner.dcRate ?? "",
-            price: banner.price ?? "",
-            link: banner.link ?? "",
-            badgeNm: banner.badgeNm ?? "",
-            place: banner.place ?? "",
-            originPrice: banner.originPrice ?? "",
-            title: banner.title ?? "",
-            descript: banner.descript ?? ""
-        )
-    } ?? []
-}
-//            .map { $0.data?.menuList?[3].list2 ?? [] }
-//            .map { list in
-//                list.map {
-//                    FoodBanner(
-//                        image: $0.image ?? "",
-//                        dcRate: $0.dcRate ?? "",
-//                        price: $0.price ?? "",
-//                        link: $0.link ?? "",
-//                        badgeNm: $0.badgeNm ?? "",
-//                        place: $0.place ?? "",
-//                        originPrice: $0.originPrice ?? "",
-//                        title: $0.title ?? "",
-//                        descript: $0.descript ?? ""
-//                    )
-//                }
-//            }
-
-//            .map { $0.data?.menuList?[3] }
-//            .map { menuList in
-//                guard let foodBannerList = menuList.list2, // list2를 foodBannerList로 매핑
-//                      let trendBannerList = menuList.list,       // list를 trendList로 매핑
-//                      let noticeBannerList = menuList.list1 else { // list1을 noticeList로 매핑
-//                    return nil
-//                }
-//
-//                    // HomeEntity를 생성하여 반환
-//                    return HomeEntity(
-//                        foodBannerList: foodBannerList.compactMap { banner in
-//                            homeBanner(
-//                                image: banner.image ?? "",
-//                                dcRate: banner.dcRate ?? "",
-//                                price: banner.price ?? "",
-//                                link: banner.link ?? "",
-//                                badgeNm: banner.badgeNm ?? "",
-//                                place: banner.place ?? "",
-//                                originPrice: banner.originPrice ?? "",
-//                                title: banner.title ?? "",
-//                                descript: banner.descript ?? ""
-//                            )
-//                        },
-//                        trendBannerList: trendBannerList.compactMap { banner in
-//                            homeBanner(
-//                                image: banner.image ?? "",
-//                                dcRate: banner.dcRate ?? "",
-//                                price: banner.price ?? "",
-//                                link: banner.link ?? "",
-//                                badgeNm: banner.badgeNm ?? "",
-//                                place: banner.place ?? "",
-//                                originPrice: banner.originPrice ?? "",
-//                                title: banner.title ?? "",
-//                                descript: banner.descript ?? ""
-//                            )
-//                        },
-//                        noticeBannerList: noticeBannerList.compactMap { banner in
-//                            homeBanner(
-//                                image: banner.image ?? "",
-//                                dcRate: banner.dcRate ?? "",
-//                                price: banner.price ?? "",
-//                                link: banner.link ?? "",
-//                                badgeNm: banner.badgeNm ?? "",
-//                                place: banner.place ?? "",
-//                                originPrice: banner.originPrice ?? "",
-//                                title: banner.title ?? "",
-//                                descript: banner.descript ?? ""
-//                            )
-//                        }
-//                    )
-//                }
-//
-//            .eraseToAnyPublisher()
