@@ -55,23 +55,18 @@ class AppRouter: ObservableObject {
         switch action {
         case .push:
             if let route = route {
-                DispatchQueue.main.async {
-                    navigator.push(route)
-                }
+                navigator.push(route)
             }
         case .pop:
-            DispatchQueue.main.async {
-                navigator.pop()
-            }
+            navigator.pop()
+            
         case .popToRoot:
-            DispatchQueue.main.async {
-                navigator.popToRoot()
-            }
+            navigator.popToRoot()
+            
         case .navigateToTab(let tab, let route):
-            DispatchQueue.main.async {
-                self.selectedTab = tab
-                self.navigateToTab(tab, route: route)
-            }
+            self.selectedTab = tab
+            self.navigateToTab(tab, route: route)
+            
         }
     }
     

@@ -8,12 +8,22 @@
 import Foundation
 import Combine
 
-protocol CouponRepositoryType {
+
+/**
+ Repository 레이어에 해당합니다.
+ Domain 영역과 과 Repository 의 인터페이스 역할을 담당합니다.
+ 
+ 명명 규칙 : Repository / RepositoryInterface
+ 
+ DB 및 외부 API등을 통해 내부/외부 데이터를 사용하는곳입니다.
+ 
+ */
+protocol CouponRepositoryInterface {
     func fetchCoupons(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError>
 }
 
 
-final class CouponRepository: CouponRepositoryType {
+final class CouponRepository: CouponRepositoryInterface {
     
     private let networkManager: APIManager
     

@@ -8,48 +8,32 @@
 import SwiftUI
 
 struct MainTabViewController: View {
-
+    
     @EnvironmentObject private var router: AppRouter
-    @EnvironmentObject private var couponStore: CouponStore
     
     var body: some View {
         
         TabView(selection: $router.selectedTab) {
             
             ForEach(MainTabType.allCases, id: \.self) { tab in
-                Group {
-                    switch tab {
-                    case .cultureCenter:
-                        CultureLectureNavigationStack()
-                    case .coupon:
-                        CouponNavigationStack()
-                        
+                tab.destination
+                    .tabItem {
+                        Label(tab.title, systemImage: tab.imageName(selected: router.selectedTab == tab))
                     }
-                }
-                .tabItem {
-                    Label(tab.title, systemImage: tab.imageName(selected: router.selectedTab == tab))
-                }
-                .tag(tab)
+                    .tag(tab)
             }
         }
-        
-        
         
     }
 }
 
 struct CouponNavigationStack: View {
     @EnvironmentObject private var router: AppRouter
-    @EnvironmentObject private var couponStore: CouponStore
+    @EnvironmentObject private var couponViewModel: CouponViewModel
     
     var body: some View {
         NavigationStack(path: $router.couponNavigator.routes) {
-            CouponScreen(store: couponStore)
-            .onAppear {
-                    print("CouponScreen appeared")
-                    print("Current routes: \(router.couponNavigator.routes)")
-                    print("CouponStore state: \(couponStore)")
-                }
+            CouponScreen(couponViewModel: couponViewModel)
                 .navigationDestination(for: CouponRoute.self) { route in
                     switch route {
                     case .couponDetail(let coupon):
@@ -75,13 +59,9 @@ struct CultureLectureNavigationStack: View {
     //    let couponViewModel = CouponViewModel(couponService: couponService)
     
     // DIContainer(Swinject) 사용시 이렇게
-    // let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)
-    // MainTabViewController(couponViewModel: couponViewModel!)
-    
-    let couponStore = DIContainer.shared.resolve(CouponStore.self)
-    let router = AppRouter()
-
+     let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)!
     MainTabViewController()
-        .environmentObject(couponStore!)
-        .environmentObject(router)
+        .environmentObject(couponViewModel)
+    
+    
 }

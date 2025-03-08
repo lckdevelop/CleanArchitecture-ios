@@ -9,54 +9,67 @@ import SwiftUI
 import Kingfisher
 
 struct CouponScreen: View {
-    //@StateObject var viewModel: CouponViewModel
     @EnvironmentObject private var router: AppRouter
-
-    @ObservedObject var store: CouponStore
+    @ObservedObject var couponViewModel: CouponViewModel
     
     var body: some View {
         ZStack {
             CouponListView(
-                coupons: store.couponList?.coupons ?? [], 
+                coupons: couponViewModel.couponList?.coupons ?? [],
                 onAction: { action in
                     switch action {
                     case .select(let coupon):
                         router.navigate(.push, route: CouponRoute.couponDetail(coupon))
-                        
                     default:
-                        store.handleAction(action)
+                        couponViewModel.handleAction(action)
                     }
                 }
             )
-            // .navigationDestination(isPresented: $isPresented) {
-            //     if let coupon = selectedCoupon {
-            //         CouponDetailView(coupon: coupon)
-            //     }
-            // }
             .onAppear {
-                store.loadCouponList()
+                couponViewModel.loadCouponList()
             }
-            .toast(message: store.toastMessage, isPresented: $store.showToast)
+            .toast(message: couponViewModel.toastMessage ?? "", isPresented: $couponViewModel.showToast)
         }
-        
-        
-        
-        
     }
 }
 
 #Preview {
-    // DIContainer 사용 이전
-    //    let couponRepository = CouponRepository(networkManager: .shared)
-    //    let couponService = CouponService(repository: couponRepository)
-    //    CouponView(viewModel: CouponViewModel(couponService: couponService))
     
-    // DIContainer(Swinject) 사용시 이렇게
-    let store = DIContainer.shared.resolve(CouponStore.self)
+    let couponRepository = CouponRepository(networkManager: .shared)
+    let couponService = CouponUsecase(repository: couponRepository)
+    let couponViewModel = CouponViewModel(couponService: couponService)
     
-    NavigationStack {
-        CouponScreen(store: store!)
+    let router = AppRouter()
+    
+    // PreviewWrapper 사용
+    return PreviewNavigationWrapper(router: router) {
+        CouponScreen(couponViewModel: couponViewModel)
+            .environmentObject(router)
+        
+    }
+
+}
+
+
+// Preview용 래퍼 구조체
+struct PreviewNavigationWrapper<Content: View>: View {
+    @ObservedObject var router: AppRouter
+    let content: Content
+    
+    init(router: AppRouter, @ViewBuilder content: () -> Content) {
+        self.router = router
+        self.content = content()
     }
     
-    
+    var body: some View {
+        NavigationStack(path: $router.couponNavigator.routes) {
+            content
+                .navigationDestination(for: CouponRoute.self) { route in
+                    switch route {
+                    case .couponDetail(let coupon):
+                        Text("쿠폰 상세: \(coupon.name ?? "")")
+                    }
+                }
+        }
+    }
 }
