@@ -10,16 +10,11 @@ import UIKit
 
 
 class WebViewCoordinator: Coordinator {
-
-    
-    var parentCoordinator: DefaultTabCoordinator
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
-    init(parentCoordinator: DefaultTabCoordinator) {
-        self.parentCoordinator = parentCoordinator
-        self.navigationController = parentCoordinator.navigationController
-        parentCoordinator.childCoordinators.append(self)
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func start() {
@@ -30,15 +25,5 @@ class WebViewCoordinator: Coordinator {
         
     }
     
-    func trendDetail(page: Page) {
-        //super.push(page: page)
-//        if self.navigationController == nil {
-//            print("navigationController is nil")
-//            return
-//        }
 
-        let hostingController = UIHostingController(rootView: TestView())
-        self.navigationController.pushViewController(hostingController, animated: false)
-        //push(
-    }
 }

@@ -29,15 +29,7 @@ class DefaultTabCoordinator: MainTabCoordinator {
         let hostingController = UIHostingController(rootView: mainTabViewController)
 
         navigationController.pushViewController(hostingController, animated: false)
-
-    }
-    
-    func trendDetail(page: Page) {
-        //super.push(page: page)
-        
-        let hostingController = UIHostingController(rootView: TestView())
-        navigationController.pushViewController(hostingController, animated: false)
-        
+        tabBarController.viewControllers = [navigationController] // tabBar에 네비게이션 컨트롤러 추가
     }
     
     // MARK: TODO 코디네이터가 종료되었을때 처리

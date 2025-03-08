@@ -15,11 +15,9 @@ class HomeViewModel: ObservableObject {
     
     private let useCase: HomeInfoUseCase
     private var cancellables = Set<AnyCancellable>()
-    private var coordinator: DefaultTabCoordinator
     
-    init(homeInfoUseCase: HomeInfoUseCase, coordinator: DefaultTabCoordinator) {
+    init(homeInfoUseCase: HomeInfoUseCase) {
         self.useCase = homeInfoUseCase
-        self.coordinator = coordinator
     }
     
     func fetchTohomeBanner() {
@@ -37,12 +35,6 @@ class HomeViewModel: ObservableObject {
                     self?.noticeBannerList = homeEntity.noticeBannerList
             }
             .store(in: &cancellables)
-    }
-    
-    func moreTrendBtnTapped() {
-        let navigationController = coordinator.navigationController
-        coordinator.trendDetail()
-        //coordinator.trendDetail(page: .food)
     }
     
     func cancelSubscriptions() {
