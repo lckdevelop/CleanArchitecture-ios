@@ -12,12 +12,12 @@ protocol MainTabCoordinator: Coordinator {
     var tabBarController: UITabBarController { get }
 }
 
-final class DefaultTabCoordinator: MainTabCoordinator {
+class DefaultTabCoordinator: MainTabCoordinator {
 
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
-
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.tabBarController = UITabBarController()
@@ -29,7 +29,7 @@ final class DefaultTabCoordinator: MainTabCoordinator {
         let hostingController = UIHostingController(rootView: mainTabViewController)
 
         navigationController.pushViewController(hostingController, animated: false)
-
+        tabBarController.viewControllers = [navigationController] // tabBar에 네비게이션 컨트롤러 추가
     }
     
     // MARK: TODO 코디네이터가 종료되었을때 처리

@@ -9,11 +9,14 @@ import Foundation
 import SwiftUI
 
 enum MainTabType: String, CaseIterable {
+    case home
     case cultureCenter
     case coupon
     
     var title: String {
         switch self {
+        case .home:
+            return "홈"
         case .cultureCenter:
             return "문화센터"
         case .coupon:
@@ -23,8 +26,10 @@ enum MainTabType: String, CaseIterable {
     
     func imageName(selected: Bool) -> String {
         switch self {
+        case .home:
+            "house.fill"
         case .cultureCenter:
-            "house"
+            "bag.fill"
         case .coupon:
             "ticket.fill"
         }
@@ -32,14 +37,17 @@ enum MainTabType: String, CaseIterable {
     }
 }
 
-extension MainTabType {
-    @ViewBuilder
-    var destination: some View {
-        switch self {
-        case .coupon:
-            CouponNavigationStack()
-        case .cultureCenter:
-            CultureLectureNavigationStack()
-        }
-    }
-}
+//extension MainTabType {
+//    @ViewBuilder
+//    var destination: some View {
+//        switch self {
+//        case .coupon:
+//            CouponNavigationStack()
+//        case .cultureCenter:
+//            CultureLectureNavigationStack()
+//        case .home:
+//            // HomeView(homeViewModel: homeViewModel)
+//
+//        }
+//    }
+//}

@@ -33,6 +33,7 @@ class AppRouter: ObservableObject {
     // 각 탭별 내비게이션 관리자
     @Published var cultureCenterNavigator = TabNavigationManager<CultureCenterRoute>()
     @Published var couponNavigator = TabNavigationManager<CouponRoute>()
+    @Published var homeNavigator = TabNavigationManager<HomeRoute>()
     
     // 현재 선택된 탭
     @Published var selectedTab: MainTabType = .cultureCenter
@@ -48,6 +49,8 @@ class AppRouter: ObservableObject {
             performNavigation(action, route: route as? CultureCenterRoute, navigator: cultureCenterNavigator)
         case .coupon:
             performNavigation(action, route: route as? CouponRoute, navigator: couponNavigator)
+        case .home:
+            performNavigation(action, route: route as? HomeRoute, navigator: homeNavigator)
         }
     }
     
@@ -65,7 +68,7 @@ class AppRouter: ObservableObject {
             
         case .navigateToTab(let tab, let route):
             self.selectedTab = tab
-            self.navigateToTab(tab, route: route)
+            //self.navigateToTab(tab, route: route)
             
         }
     }

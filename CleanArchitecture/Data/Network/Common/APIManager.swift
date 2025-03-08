@@ -25,11 +25,11 @@ final class APIManager: APIManagerType {
     
     private let baseURL: String
     
-    private init(environment: APIEnvironment = APIManager.defaultEnvironment()) {
-        self.baseURL = environment.baseURL
+    private init(serverEnvironment: ServerEnvironment = APIManager.defaultEnvironment()) {
+        self.baseURL = serverEnvironment.hpointURL
     }
     
-    static func defaultEnvironment() -> APIEnvironment {
+    static func defaultEnvironment() -> ServerEnvironment {
         return .production
         
 //        #if DEBUG

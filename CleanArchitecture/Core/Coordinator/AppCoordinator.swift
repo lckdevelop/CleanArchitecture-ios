@@ -24,8 +24,12 @@ public protocol Coordinator: AnyObject {
     func finish() // coordinator 종료
 }
 
-class AppCoordinator: Coordinator {
+extension Coordinator {
+    
+}
 
+class AppCoordinator: Coordinator {
+    
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     

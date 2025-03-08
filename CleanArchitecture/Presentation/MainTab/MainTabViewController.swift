@@ -8,39 +8,68 @@
 import SwiftUI
 
 struct MainTabViewController: View {
+    static var shared: MainTabViewController?
     
     @EnvironmentObject private var router: AppRouter
     
+    @State public var selectedTab: MainTabType = .home
+    @StateObject var homeViewModel = ViewControllerFactory.shared.makeHomeViewModel()
+    @EnvironmentObject private var couponViewModel: CouponViewModel
+    
     var body: some View {
-        
-        TabView(selection: $router.selectedTab) {
-            
-            ForEach(MainTabType.allCases, id: \.self) { tab in
-                tab.destination
+        NavigationView{
+            TabView(selection: $selectedTab) {
+                
+                ForEach(MainTabType.allCases, id: \.self) { tab in
+                    // 각각의 Tab Destination 정의하여 추후엔 이렇게도 사용 가능하지만 merge 시 충돌 문제로 주석처리.
+                    // tab.destination
+                    
+                    Group {
+                        switch tab {
+                        case .home:
+                            HomeView(homeViewModel: homeViewModel)
+                        case .cultureCenter:
+                            // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
+                            LectureResultViewWrapper()
+                        case .coupon:
+                            CouponScreen(couponViewModel: couponViewModel)
+                            
+                        }
+                    }
                     .tabItem {
-                        Label(tab.title, systemImage: tab.imageName(selected: router.selectedTab == tab))
+                        Label(tab.title, systemImage: tab.imageName(selected: selectedTab == tab))
                     }
                     .tag(tab)
+                }
             }
         }
         
     }
 }
 
+
 struct CouponNavigationStack: View {
     @EnvironmentObject private var router: AppRouter
     @EnvironmentObject private var couponViewModel: CouponViewModel
     
     var body: some View {
-        NavigationStack(path: $router.couponNavigator.routes) {
+        NavigationView {
             CouponScreen(couponViewModel: couponViewModel)
-                .navigationDestination(for: CouponRoute.self) { route in
-                    switch route {
-                    case .couponDetail(let coupon):
-                        CouponDetailView(coupon: coupon)
-                    }
+                .onAppear {
+                    // 네비게이션 스택 초기화
+                    router.couponNavigator.routes = []
                 }
         }
+        // iOS 16 이상에서 사용 가능한 NavigationStack 사용시 이렇게 
+        // NavigationStack(path: $router.couponNavigator.routes) {
+        //     CouponScreen(couponViewModel: couponViewModel)
+        //         .navigationDestination(for: CouponRoute.self) { route in
+        //             switch route {
+        //             case .couponDetail(let coupon):
+        //                 CouponDetailView(coupon: coupon)
+        //             }
+        //         }
+        // }
     }
 }
 
@@ -52,16 +81,4 @@ struct CultureLectureNavigationStack: View {
     }
 }
 
-#Preview {
-    // DIContainer 사용 이전
-    //    let couponRepository = CouponRepository(networkManager: .shared)
-    //    let couponService = CouponService(repository: couponRepository)
-    //    let couponViewModel = CouponViewModel(couponService: couponService)
-    
-    // DIContainer(Swinject) 사용시 이렇게
-     let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)!
-    MainTabViewController()
-        .environmentObject(couponViewModel)
-    
-    
-}
+
