@@ -23,12 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             self.window = UIWindow(windowScene: windowScene)
 
-            let navigationController = UINavigationController()
+            let router = AppRouter()
             
-            let appCoordinator = AppCoordinator(navigationController: navigationController)
-            appCoordinator.start()
+            let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)!
 
-            self.window?.rootViewController = navigationController
+            let mainTabView = MainTabViewController(couponViewModel: couponViewModel)
+                .environmentObject(router)  
+
+            let hostingController = UIHostingController(rootView: mainTabView)
+
+            self.window?.rootViewController = hostingController
             self.window?.makeKeyAndVisible()
         }
     }

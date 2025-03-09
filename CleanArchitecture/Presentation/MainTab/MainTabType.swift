@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum MainTabType: String, CaseIterable {
     case home
@@ -35,3 +36,18 @@ enum MainTabType: String, CaseIterable {
         
     }
 }
+
+//extension MainTabType {
+//    @ViewBuilder
+//    var destination: some View {
+//        switch self {
+//        case .coupon:
+//            CouponNavigationStack()
+//        case .cultureCenter:
+//            CultureLectureNavigationStack()
+//        case .home:
+//            // HomeView(homeViewModel: homeViewModel)
+//
+//        }
+//    }
+//}

@@ -30,19 +30,20 @@ class NetworkAssembly: Assembly {
 class CouponAssembly: Assembly {
     func assemble(container: Container) {
         // Repository
-        container.register(CouponRepositoryType.self) { r in
+        container.register(CouponRepositoryInterface.self) { r in
             CouponRepository(networkManager: r.resolve(APIManagerType.self) as! APIManager)
         }.inObjectScope(.transient)
         
-        // Service
-        container.register(CouponServiceType.self) { r in
-            CouponService(repository: r.resolve(CouponRepositoryType.self)!)
+        // Usecase
+        container.register(CouponUsecaseInterface.self) { r in
+            CouponUsecase(repository: r.resolve(CouponRepositoryInterface.self)!)
         }.inObjectScope(.transient)
         
         // ViewModel
         container.register(CouponViewModel.self) { r in
-            CouponViewModel(couponService: r.resolve(CouponServiceType.self)!)
+            CouponViewModel(couponService: r.resolve(CouponUsecaseInterface.self)!)
         }.inObjectScope(.transient)
+        
     }
 }
 
