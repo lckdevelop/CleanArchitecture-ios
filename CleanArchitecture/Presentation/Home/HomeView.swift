@@ -30,7 +30,7 @@ struct HomeView: View {
                                 .font(.headline)
                                 .bold()
                             Spacer()
-                            if let url = URL(string: "https://naver.com") {
+                            if let url = URL(string: "http://127.0.0.1:5500/index.html") {
                                 NavigationLink(destination: {
                                      BaseWebView(hideTabBar: $hideTabBar, url: url, navTitle: NavigationTitle.WEB_SHOPPING_TITLE)
                                 }) {

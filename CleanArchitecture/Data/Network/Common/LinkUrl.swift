@@ -12,6 +12,6 @@ import Foundation
  */
 struct LinkUrl {
     static let WEB_SHOPPING_INFO = "쇼핑인포"
-    static let WEB_TO_HOME = "\(ServerEnvironment.production.ehyundaiAppURL)/shopping/view/ASI/D01/001T/onlineShopping"
-    static let WEB_TO_HOME_DETAIL = "\(ServerEnvironment.production.ehyundaiAppURL)/shopping/view/ASI/D01/001T/onlineShopping"
+    static let WEB_TO_HOME = "\(ServerEnvironment.ehyundaiAppURL.baseURL)/shopping/view/ASI/D01/001T/onlineShopping"
+    static let WEB_TO_HOME_DETAIL = "\(ServerEnvironment.ehyundaiAppURL.baseURL)/shopping/view/ASI/D01/001T/onlineShopping"
 }

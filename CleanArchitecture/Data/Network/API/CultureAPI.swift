@@ -14,10 +14,7 @@ enum CultureAPI {
 
 extension CultureAPI: TargetType {
     var baseURL: URL {
-        guard let baseURL = URL(string: ServerEnvironment.production.ehyundaiAppURL) else {
-            fatalError("[Error] - No Base URL!")
-        }
-        return baseURL
+        return ServerEnvironment.ehyundaiAppURL.baseURL
     }
     
     var path: String {

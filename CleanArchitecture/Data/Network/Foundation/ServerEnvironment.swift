@@ -8,42 +8,48 @@
 import Foundation
 
 enum ServerEnvironment {
-    case development //개발서버
-    case staging //스테이징서버
-    case production //운영서버
+    case ehyundaiURL // e현대 포털 API
+    case ehyundaiAppURL // e현대 앱 API
+    case hpointURL // hpoint API
 
-    var ehyundaiURL: String {
+    var baseURLString: String {
         switch self {
-        case .development:
-            return "http://dev.ehyundai.com:18011"
-        case .staging:
-            return "https://www.ehyundai.com"
-        case .production:
-            return "https://www.ehyundai.com"
+        case .ehyundaiURL:
+            return "EHYUNDAI_BASE_URL"
+        case .ehyundaiAppURL:
+            return "EHYUNDAI_APP_BASE_URL"
+        case .hpointURL:
+            return "HPOINT_BASE_URL"
         }
     }
     
-    var ehyundaiAppURL: String {
-        switch self {
-        case .development:
-            return "https://hdeappdev.ehyundai.com:18911"
-        case .staging:
-            return "https://hdeappstg.ehyundai.com"
-        case .production:
-            return "https://hdeapp.ehyundai.com"
+    // MARK: - Plist baseURL values
+    var baseURL: URL {
+        guard let baseURLstring = ServerEnvironment.infoDictionary[baseURLString] as? String else {
+            fatalError("baseURL not set in plist for this environment")
         }
+        guard let url = URL(string: baseURLstring) else {
+            fatalError("baseURL is invalid")
+        }
+        
+       return url
     }
     
-    var hpointURL: String {
-        switch self {
-        case .development:
-            return "https://mdev.h-point.co.kr:29845"
-        case .staging:
-            return "https://m-stg.h-point.co.kr"
-        case .production:
-            return "https://m.h-point.co.kr:29845"
+    var baseURLStr: String {
+        guard let baseURLstring = ServerEnvironment.infoDictionary[baseURLString] as? String else {
+            fatalError("baseURL not set in plist for this environment")
         }
+
+       return baseURLstring
     }
+    
+    // MARK: - Plist
+    private static let infoDictionary: [String: Any] = {
+        guard let dict = Bundle.main.infoDictionary else {
+            fatalError("Plist file not found")
+        }
+        return dict
+    }()
     
 }
 
