@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>EHYUNDAI_APP_BASE_URL</key>
+	<string>$(EHYUNDAI_APP_BASE_URL)</string>
+	<key>EHYUNDAI_BASE_URL</key>
+	<string>$(EHYUNDAI_BASE_URL)</string>
+	<key>HPOINT_BASE_URL</key>
+	<string>$(HPOINT_BASE_URL)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

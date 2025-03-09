@@ -21,4 +21,9 @@ extension String {
         return formatter.string(from: NSNumber(value: number)) ?? "0" // 변환 실패 시 "0" 반환
 
     }
+    
+    func jsonData() -> Any? {
+        let object = try? JSONSerialization.jsonObject(with: self.data(using: .utf8)!, options: [])
+        return object
+    }
 }
