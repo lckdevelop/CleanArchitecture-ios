@@ -1,5 +1,5 @@
 {
-  "originHash" : "975862577f6c9d5e5f2130eade458e6ca2a6957c0d4580255750c2c8c029d18f",
+  "originHash" : "9a9d142fb60b376d8c19baa674f65738de5719dd7be73f0cf6590caa4b973fd7",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -11,12 +11,12 @@
       }
     },
     {
-      "identity" : "lgsidemenucontroller",
+      "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Friend-LGA/LGSideMenuController",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
       "state" : {
-        "revision" : "0bc42f704fb2b60cd54b13f813a0e4e6875f569a",
-        "version" : "3.1.2"
+        "revision" : "b450a3b30e0767277a6eed7e02dbdebd7d173da0",
+        "version" : "8.3.0"
       }
     },
     {
@@ -53,6 +53,15 @@
       "state" : {
         "revision" : "c7c7d2cf50a3211fe2843f76869c698e4e417930",
         "version" : "6.8.0"
+      }
+    },
+    {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject.git",
+      "state" : {
+        "revision" : "be9dbcc7b86811bc131539a20c6f9c2d3e56919f",
+        "version" : "2.9.1"
       }
     }
   ],
