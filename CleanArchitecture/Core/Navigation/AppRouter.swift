@@ -49,7 +49,7 @@ class AppRouter: ObservableObject {
     @Published var homeNavigator = TabNavigationManager<HomeRoute>()
     
     // 현재 선택된 탭
-    @Published var selectedTab: MainTabType = .cultureCenter
+    @Published var selectedTab: MainTabType = .home
     
     // 특정 탭으로 이동
     func switchTab(to tab: MainTabType) {

@@ -9,19 +9,19 @@ import SwiftUI
 import Combine
 
 class HomeViewModel: ObservableObject {
-    @Published var foodBannerList: [homeBanner]?
-    @Published var trendBannerList: [homeBanner]?
-    @Published var noticeBannerList: [homeBanner]?
+    @Published var foodBannerList: [HomeBanner]?
+    @Published var trendBannerList: [HomeBanner]?
+    @Published var noticeBannerList: [HomeBanner]?
     
-    private let useCase: HomeInfoUseCase
+    private let homeUseCase: HomeUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(homeInfoUseCase: HomeInfoUseCase) {
-        self.useCase = homeInfoUseCase
+    init(homeUseCase: HomeUseCase) {
+        self.homeUseCase = homeUseCase
     }
     
     func fetchTohomeBanner() {
-        useCase.execute(request: HomeBannerRequest(stCd: "400"))
+        homeUseCase.fetchHomeBanners(request: HomeBannerRequest(stCd: "400"))
             .sink { completion in
                 switch completion {
                     case .finished:
@@ -30,9 +30,9 @@ class HomeViewModel: ObservableObject {
                         print("❌ 통신 실패: \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] homeEntity in
-                    self?.foodBannerList = homeEntity.foodBannerList
-                    self?.trendBannerList = homeEntity.trendBannerList
-                    self?.noticeBannerList = homeEntity.noticeBannerList
+                self?.foodBannerList = Array(homeEntity.foodBannerList.prefix(6))
+                self?.trendBannerList = Array(homeEntity.trendBannerList.prefix(4))
+                self?.noticeBannerList = homeEntity.noticeBannerList
             }
             .store(in: &cancellables)
     }

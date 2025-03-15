@@ -13,7 +13,7 @@ struct MainTabViewController: View {
     @EnvironmentObject private var router: AppRouter
     
     @State public var selectedTab: MainTabType = .home
-    @StateObject var homeViewModel = ViewControllerFactory.shared.makeHomeViewModel()
+    @StateObject var homeViewModel: HomeViewModel
     @StateObject var couponViewModel: CouponViewModel
     
     var body: some View {
@@ -25,7 +25,8 @@ struct MainTabViewController: View {
                 Group {
                     switch tab {
                     case .home:
-                        HomeView(homeViewModel: homeViewModel)
+                        HomeNavigationStack()
+                            .environmentObject(homeViewModel)
                     case .cultureCenter:
                         // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
                         LectureResultViewWrapper()
@@ -47,6 +48,29 @@ struct MainTabViewController: View {
     }
     
     
+    struct HomeNavigationStack: View {
+        @EnvironmentObject private var router: AppRouter
+        @EnvironmentObject private var homeViewModel: HomeViewModel
+        
+        var body: some View {
+            CustomNavigationContainer(
+                navigator: router.homeNavigator,
+                content: {
+                    HomeScreen(homeViewModel: homeViewModel)
+                },
+                destination: { route in
+                    switch route {
+                    case .shoppingInfoDetail(let homeBanner):
+                        BaseWebView(url: homeBanner.link, navTitle: "쇼핑인포")
+                    case .foodDetail(let homeBanner):
+                        BaseWebView(url: homeBanner.link, navTitle: "현대식품관")
+                    }
+                }
+                
+            )
+        }
+        
+    }
     
     struct CouponNavigationStack: View {
         @EnvironmentObject private var router: AppRouter

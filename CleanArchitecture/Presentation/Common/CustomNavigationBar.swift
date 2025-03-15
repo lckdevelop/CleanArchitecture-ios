@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomNavigationBar: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> // 뒤로 가기 기능
     @Environment(\.dismiss) var dismiss // dismiss를 사용해서 네비게이션 스택을 리셋
-    @StateObject var homeViewModel = ViewControllerFactory.shared.makeHomeViewModel()
+    @StateObject var homeViewModel = DIContainer.shared.resolve(HomeViewModel.self)!
 
     var title: String
 

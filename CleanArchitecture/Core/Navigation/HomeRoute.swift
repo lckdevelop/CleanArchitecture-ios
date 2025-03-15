@@ -8,5 +8,6 @@
 import Foundation
 
 enum HomeRoute: NavigationRoute {
-    
+    case shoppingInfoDetail(HomeBanner)
+    case foodDetail(HomeBanner)
 }

@@ -19,20 +19,20 @@ import Combine
  
  */
 protocol CouponRepositoryInterface {
-    func fetchCoupons(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError>
+    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponList, Error>
 }
 
 
 final class CouponRepository: CouponRepositoryInterface {
     
-    private let networkManager: APIManager
+    private let couponService: CouponServiceProtocol
     
-    init(networkManager: APIManager = .shared) {
-        self.networkManager = networkManager
+    init(couponService: CouponServiceProtocol) {
+        self.couponService = couponService
     }
     
-    func fetchCoupons(urlString: String, parameters: CouponRequestDTO) -> AnyPublisher<CouponList, APIError> {
-        return networkManager.request(url: urlString, parameters: parameters)
+    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponList, Error> {
+        return couponService.fetchCouponList(request: request)
     }
 }
 

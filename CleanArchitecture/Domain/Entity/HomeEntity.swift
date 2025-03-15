@@ -12,9 +12,9 @@ struct HomeEntityList {
 }
 
 struct HomeEntity {
-    let foodBannerList: [homeBanner]
-    let trendBannerList: [homeBanner]
-    let noticeBannerList: [homeBanner]
+    let foodBannerList: [HomeBanner]
+    let trendBannerList: [HomeBanner]
+    let noticeBannerList: [HomeBanner]
 }
 
 protocol HomeBannerListProtocol {
@@ -32,7 +32,7 @@ protocol HomeBannerListProtocol {
 extension HomeBannerResponse.Data.MenuList.List: HomeBannerListProtocol {}
 extension HomeBannerResponse.Data.MenuList.List2: HomeBannerListProtocol {}
 
-struct homeBanner {
+struct HomeBanner: Hashable, Equatable {
     let image: String
     let dcRate: String
     let price: String

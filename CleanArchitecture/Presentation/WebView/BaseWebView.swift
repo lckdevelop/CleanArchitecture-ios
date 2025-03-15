@@ -10,24 +10,27 @@ import WebKit
 
 // WebView를 감싸는 화면
 struct BaseWebView: View {
-    @Binding var hideTabBar: Bool
-
-    let url: URL
+    //@Binding var hideTabBar: Bool
+    @EnvironmentObject private var router: AppRouter
+    
+    let url: String
     let navTitle: String
     
     var body: some View {
         VStack {
             CustomNavigationBar(title: navTitle)
-            WebView(url: url)
-                .navigationBarHidden(true)  // 네비게이션 바 숨기기
-                .edgesIgnoringSafeArea(.all)
-                .toolbar(hideTabBar ? .hidden : .automatic, for: .tabBar) // 16이상 부터 지원(안그럼 커스텀 해야 됨)
+            if let url = URL(string: url) {
+                WebView(url: url)
+                    .navigationBarHidden(true)  // 네비게이션 바 숨기기
+                    .edgesIgnoringSafeArea(.all)
+                    //.toolbar(hideTabBar ? .hidden : .automatic, for: .tabBar) // 16이상 부터 지원(안그럼 커스텀 해야 됨)
+            }
         }.onAppear {
-            hideTabBar = true // 화면에 나타날 때 TabBar 숨기기
+            //hideTabBar = true // 화면에 나타날 때 TabBar 숨기기
 
         }
         .onDisappear {
-            hideTabBar = false // 화면에서 사라질 때 TabBar 보이기
+           // hideTabBar = false // 화면에서 사라질 때 TabBar 보이기
         }
     }
 
@@ -38,14 +41,10 @@ struct WebView: UIViewRepresentable {
     let url: URL
     let CONFIG_WEB_NAME = "callAppNative"
     
-
-    
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView(frame: .zero, configuration: makeConfiguration())
-        
         webView.configuration.userContentController.add(ContentController(), name: CONFIG_WEB_NAME)
 
-        
         return webView
     }
 
@@ -55,11 +54,8 @@ struct WebView: UIViewRepresentable {
     }
     
     private func makeConfiguration() -> WKWebViewConfiguration {
-
-        
         let configuration = WKWebViewConfiguration()
         configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        
         
         return configuration
     }

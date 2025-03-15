@@ -15,7 +15,7 @@ protocol CultureSearchServiceProtocol {
 
 class CultureSearchService: CultureSearchServiceProtocol {
     static let shared = CultureSearchService()
-    private lazy var provider = MoyaProvider<CultureAPI>(plugins: [MoyaLoggingPlugin()])
+    private lazy var provider = MoyaProvider<EHyundaiAppAPI>(plugins: [MoyaLoggingPlugin()])
     
     private init() {}
     

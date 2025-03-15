@@ -16,17 +16,10 @@ final class HomeRepository {
     }
 }
 
-enum JSONError: Error {
-    case badURL
-    case networkError
-    case decodingError
-    case unknown
-}
-
 extension HomeRepository: HomeRepositoryInterface {
     // 팝업&뉴오픈, 트렌드&취향, 현대식품관 투홈 리스트를 합쳐서 하나의 배열로 반환
     func fetchHomeInfo(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
-        homeService.getHomeInfoList(request: request)
+        homeService.fetchHomeInfoList(request: request)
             .flatMap { response -> AnyPublisher<HomeEntity, Error> in
                     guard let menuList = response.data?.menuList, menuList.count > 3 else {
                         return Fail(error: NSError(domain: "MenuList Index Error", code: 0, userInfo: nil))
@@ -55,9 +48,9 @@ extension HomeRepository: HomeRepositoryInterface {
             .eraseToAnyPublisher()
     }
     
-    private func mapToHomeBannerList<T>(_ list: [T]?) -> [homeBanner] where T: HomeBannerListProtocol {
+    private func mapToHomeBannerList<T>(_ list: [T]?) -> [HomeBanner] where T: HomeBannerListProtocol {
         return list?.compactMap { banner in
-            homeBanner(
+            HomeBanner(
                 image: banner.image ?? "",
                 dcRate: banner.dcRate ?? "",
                 price: banner.price ?? "",

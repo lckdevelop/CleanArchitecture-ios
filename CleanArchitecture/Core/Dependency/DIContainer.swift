@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import Moya
 /**
  의존성 주입 컨테이터.
  네비게이션 라우터, appearcne Controller, 의존성주입관련 객체들을 모두 여기서 관리할 수 있다
@@ -20,28 +21,61 @@ protocol Assembly {
 // 네트워킹 관련 Assembly
 class NetworkAssembly: Assembly {
     func assemble(container: Container) {
-        container.register(APIManagerType.self) { _ in
-            APIManager.shared
-        }.inObjectScope(.container)
+        container.register(MoyaProvider<EHyundaiAppAPI>.self) { _ in
+            MoyaProvider<EHyundaiAppAPI>()
+        }
+        container.register(MoyaProvider<HpointAPI>.self) { _ in
+            MoyaProvider<HpointAPI>()
+        }
+    }
+}
+
+// 홈 관련
+class HomeAssembly: Assembly {
+    func assemble(container: Container) {
+        // Service
+        container.register(HomeServiceProtocol.self) { r in
+            HomeService()
+        }.inObjectScope(.transient)
+        
+        // Repository
+        container.register(HomeRepositoryInterface.self) { r in
+            HomeRepository(homeService: r.resolve(HomeServiceProtocol.self)!)
+        }.inObjectScope(.transient)
+        
+        // Usecase
+        container.register(HomeUseCaseProtocol.self) { r in
+            HomeUseCase(homeRepository: r.resolve(HomeRepositoryInterface.self)!)
+        }.inObjectScope(.transient)
+        
+        // ViewModel
+        container.register(HomeViewModel.self) { r in
+            HomeViewModel(homeUseCase: r.resolve(HomeUseCaseProtocol.self)! as! HomeUseCase)
+        }.inObjectScope(.transient)
     }
 }
 
 // 쿠폰 관련 Assembly
 class CouponAssembly: Assembly {
     func assemble(container: Container) {
+        // Service
+        container.register(CouponServiceProtocol.self) { r in
+            CouponService()
+        }.inObjectScope(.transient)
+        
         // Repository
         container.register(CouponRepositoryInterface.self) { r in
-            CouponRepository(networkManager: r.resolve(APIManagerType.self) as! APIManager)
+            CouponRepository(couponService: r.resolve(CouponServiceProtocol.self)!)
         }.inObjectScope(.transient)
         
         // Usecase
-        container.register(CouponUsecaseInterface.self) { r in
-            CouponUsecase(repository: r.resolve(CouponRepositoryInterface.self)!)
+        container.register(CouponUsecaseProtocol.self) { r in
+            CouponUsecase(couponRepository: r.resolve(CouponRepositoryInterface.self)!)
         }.inObjectScope(.transient)
         
         // ViewModel
         container.register(CouponViewModel.self) { r in
-            CouponViewModel(couponService: r.resolve(CouponUsecaseInterface.self)!)
+            CouponViewModel(couponUsecase: r.resolve(CouponUsecaseProtocol.self)! as! CouponUsecase)
         }.inObjectScope(.transient)
         
     }
@@ -59,8 +93,8 @@ class DIContainer: ObservableObject {
         // 모든 Assembly 등록
         let assemblies: [Assembly] = [
             NetworkAssembly(),
-            CouponAssembly()
-            // 추후 다른 모듈의 Assembly 추가
+            CouponAssembly(),
+            HomeAssembly()
         ]
         
         // Assembly 실행

@@ -32,11 +32,11 @@ final class CouponViewModel: ObservableObject {
     @Published var toastMessage: String?
     @Published var errorMessage: String?
     
-    private let couponService: CouponUsecaseInterface
+    private let couponUsecase: CouponUsecaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(couponService: CouponUsecaseInterface) {
-        self.couponService = couponService
+    init(couponUsecase: CouponUsecaseProtocol) {
+        self.couponUsecase = couponUsecase
     }
     
     // MARK: - Action
@@ -65,7 +65,7 @@ final class CouponViewModel: ObservableObject {
     
     func loadCouponList() {
         let couponRequestDto = CouponRequestDTO(mcustNo: "", copnGbcd: "01", prfrYn: "N", ptcoId: nil)
-        let response: AnyPublisher<CouponList, APIError> = couponService.getCouponList(urlString: "/mbo/copn/selectCopnList.nhd", parameters: couponRequestDto)
+        let response: AnyPublisher<CouponList, Error> = couponUsecase.getCouponList(request: couponRequestDto)
         
         response
             .receive(on: DispatchQueue.main)

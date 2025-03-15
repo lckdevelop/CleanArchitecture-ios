@@ -9,15 +9,13 @@ import Foundation
 import Combine
 import Moya
 
-typealias HomeService = BaseService<HomeAPI>
-
 protocol HomeServiceProtocol {
-    func getHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error>
+    func fetchHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error>
                                 
 }
 
-extension HomeService: HomeServiceProtocol {
-    public func getHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error> {
+final class HomeService: BaseService<EHyundaiAppAPI>, HomeServiceProtocol {
+    public func fetchHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error> {
         requestObjectInCombine(.getHomeInfoList(request: request))
     }
 }

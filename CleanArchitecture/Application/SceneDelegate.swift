@@ -25,9 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let router = AppRouter()
             
             let couponViewModel = DIContainer.shared.resolve(CouponViewModel.self)!
-
-            let mainTabView = MainTabViewController(couponViewModel: couponViewModel)
-                .environmentObject(router)  
+            let homeViewModel = DIContainer.shared.resolve(HomeViewModel.self)!
+            
+            let mainTabView = MainTabViewController(homeViewModel: homeViewModel, couponViewModel: couponViewModel)
+                .environmentObject(router)
 
             let hostingController = UIHostingController(rootView: mainTabView)
 
