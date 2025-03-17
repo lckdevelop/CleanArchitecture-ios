@@ -1,5 +1,22 @@
 # Clean Architecture
-UIKit + SwiftUI 호환 가능한 프로젝트입니다. 클린 아키텍처 원칙을 준수하여 유지보수성과 테스트 용이성을 높였습니다.
+UIKit + SwiftUI 호환 가능한 프로젝트입니다. 
+클린 아키텍처 원칙을 준수하였으며 소프트웨어의 유지보수성, 테스트 용이성 및 모듈 간의 분리를 강조하여 구조화된 방식으로 개발하였습니다.
+
+### Used Technology 
+1. Architecture : Clean Architecture
+2. IOS Framework & Reactive Programming : UIKit + Rxswift, SwiftUI + Combine
+3. Design Pattern : MVVM
+4. Code Convention : SwiftLint
+5. Modularization : Tuist(예정)
+6. Configuration Separation: Development, Staging, Production
+7. Library & Framework : 
+- Moya - 네트워크 통신
+- Kingfisher - 비동기 이미지 로딩& 캐싱
+- Swinject - 의존성 주입
+- RxSwift - 비동기 프로그래밍
+- Combine - 비동기 프로그래밍
+
+
 <details>
   <summary>프로젝트 Tree 구조</summary>
   
@@ -188,11 +205,41 @@ var body: some View {
 }
 ```
 
+### Network Library Moya
+네트워크 통신 라이브러리로 Moya를 채택하였습니다.
+
+Moya는 네트워크 요청을 관리하고 추상화하는 데 유용한 라이브러리입니다. Moya를 사용하면 네트워크 코드의 유지 보수성과 재사용성을 높일 수 있으며, 코드의 가독성도 향상시킬 수 있습니다.
+네트워크 통신을 할때 `MoyaProvider` 객체를 사용하여 네트워크 요청을 하게 됩니다.
+`MoyaProvider`는 `TargetType`을 기반으로 HTTP 요청을 만들어서 서버와 통신하게됩니다.
+`TargetType을 채택하게 되면` baseURL, path, method, task, headers 등을 개발자가 정의 할 수 있습니다.
+
+`MoyaLoggingPlugin`은 `Moya`의 **Plugin 시스템** 중 하나로, 네트워크 요청과 응답에 대한 로그를 출력하는 부분을 커스텀하여 사용하였습니다.
+이 외에도 인증 설정, 네트워크 통신 요청 빈도 수 제한 등 다양한 플러그인이 있습니다.
+
+
 ### WebView
+SwiftUI는 주로 **UI 컴포넌트**와 **레이아웃 관리**에 집중하는 프레임워크로 WebView와 같은 외부 뷰를 직접적으로 지원하는 기능은 포함되어 있지 않습니다. WebView를 SwiftUI에서 사용하고 싶다면, UIKit의 `WKWebView`를 SwiftUI에서 사용할 수 있도록 `UIViewRepresentable`을 이용해 래핑(wrapping)하여 사용할 수 있습니다.
 
-### Deeplink
+- 파일명 : BaseWebView - UIScreen
+- 파일명 : WebViewWrapper - `UIViewRepresentable`을 이용해 설정관련되어 래핑(wrapping)
+- 파일명 : WebViewContentController - Javascript ↔ Native handler 설정
 
-## 모듈화
-프로젝트의 확장성과 유지보수성을 높이기 위해 Configuration을 분리하고 Tuist 모듈화를 준비하는 과정에 있습니다.
+### Bridge
+네이티브 코드와 웹/자바스크립트 간의 상호작용을 위한 BridgeManager 클래스를 생성하였습니다.
+자바스크립트 → 네이티브로 이동할 때는 커멘드(cmd), 데이터(param), 콜백(callback)을 전송합니다.
+데이터에는 화면띄우는 방식도 포함하여, 방식에 따라 네비게이션에 의해 이동될지, 모달로 띄울지 결정되게 됩니다.
+또한 화면전환 방식을 프로토콜로 생성해 놓고, RootRouter에서 정의하여 화면전환이 일어날때는 각각의 Router에서는 해당 방식으로 화면 전환을 할 수 있도록 구현하였습니다.
+
 ### Configuration
+다양한 환경 관리을 관리하기 위해서 서버 환경(Release, Staging, Dev)에 따라 설정을 분리하였습니다.
+코드 수정없이 조건에 따라 다른 값을 설정할 수 있는 build configuration을 분리 적용하였습니다.
+
+- CleanArchitecture : 운영 환경
+- CleanArchitecture - Staging : 스테이징 환경
+- CleanArchitecture - Dev : 개발 환경
+  
+### 모듈화
+프로젝트의 확장성과 유지보수성을 높이기 위해 Tuist 모듈화를 준비하는 과정에 있습니다.
+
+
 

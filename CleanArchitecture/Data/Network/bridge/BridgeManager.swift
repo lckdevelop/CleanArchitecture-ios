@@ -8,10 +8,12 @@
 import Foundation
 import Combine
 
-class BridgeManager: NSObject {
+class BridgeManager {
     static let shared = BridgeManager()
     var router: AppRouter?
-
+    
+    private init() {}
+    
     // 설정된 Router가 없다면 설정
     func setRouter(_ router: AppRouter) {
         if self.router !== router {
