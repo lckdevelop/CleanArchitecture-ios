@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct CouponDetailView: View {
-    let coupon: Coupon
+    let coupon: CouponEntity
     
     @EnvironmentObject private var router: AppRouter
     var body: some View {
@@ -28,7 +28,7 @@ struct CouponDetailView: View {
                 }
                 
                 //쿠폰 타이틀
-                Text(coupon.name ?? "")
+                Text(coupon.name)
 
                 //쿠폰 이미지
                 if let url = URL(string: coupon.titleImage ?? "") {
@@ -60,7 +60,15 @@ struct CouponDetailView: View {
 }
 
 #Preview {
+    let coupon = CouponEntity(
+        id: "test-id",
+        campId: "",
+        ofrId: "",
+        name: "테스트 쿠폰",
+        titleImage: "https://image.h-point.co.kr//images_share/cp/cp0001/2025/0224/1815/20250224181554944.jpg",
+        couponType: .coupon
+    )
     
-    let coupon = Coupon(campId: "", ofrId: "", name: "테스트 쿠폰", titleImage: "", copnTypeGbcd: "01")
-    CouponDetailView(coupon: coupon)
+    return CouponDetailView(coupon: coupon)
+        .environmentObject(AppRouter())
 }

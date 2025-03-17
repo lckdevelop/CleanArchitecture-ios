@@ -10,5 +10,5 @@ import Foundation
 // 쿠폰 라우트
 enum CouponRoute: NavigationRoute {
     // 필요한 경로 추가
-    case couponDetail(Coupon)
+    case couponDetail(CouponEntity)
 }
