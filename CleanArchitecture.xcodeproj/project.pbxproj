@@ -179,7 +179,7 @@
 		CC367D5A2D2A15CE00F86532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Development.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -211,7 +211,7 @@
 		CC367D5B2D2A15CE00F86532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Release.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Release.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -243,7 +243,7 @@
 		CC367D5C2D2A15CE00F86532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Development.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -308,7 +308,7 @@
 		CC367D5D2D2A15CE00F86532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Release.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Release.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -366,7 +366,7 @@
 		CCBA3F392D7DE29F0042F0B1 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Staging.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Staging.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -431,7 +431,7 @@
 		CCBA3F3A2D7DE29F0042F0B1 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
-			baseConfigurationReferenceRelativePath = Data/Network/Config/Staging.xcconfig;
+			baseConfigurationReferenceRelativePath = Core/Config/Staging.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
