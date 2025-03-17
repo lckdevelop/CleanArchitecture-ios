@@ -16,18 +16,18 @@ class HomeViewModel: ObservableObject {
     private let homeUseCase: HomeUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(homeUseCase: HomeUseCase) {
+    init(homeUseCase: HomeUseCaseProtocol) {
         self.homeUseCase = homeUseCase
     }
     
-    func fetchTohomeBanner() {
+    func fetchHomeBanner() {
         homeUseCase.fetchHomeBanners(request: HomeBannerRequest(stCd: "400"))
             .sink { completion in
                 switch completion {
                     case .finished:
-                        print("✅ 통신 성공")
+                        print("통신 성공")
                     case .failure(let error):
-                        print("❌ 통신 실패: \(error.localizedDescription)")
+                        print("통신 실패: \(error.localizedDescription)")
                 }
             } receiveValue: { [weak self] homeEntity in
                 self?.foodBannerList = Array(homeEntity.foodBannerList.prefix(6))

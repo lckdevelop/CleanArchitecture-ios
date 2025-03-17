@@ -15,6 +15,7 @@ import Combine
 
 // 탭별 내비게이션 관리자 (단일 경로 관리)
 class TabNavigationManager<R: NavigationRoute>: NavigationManaging {
+
     var objectWillChange = ObservableObjectPublisher()
     
     // 단일 경로 스택 (모든 iOS 버전용)
@@ -39,17 +40,44 @@ class TabNavigationManager<R: NavigationRoute>: NavigationManaging {
     func popToRoot() {
         routes.removeAll()
     }
+    
+    func present(_ route: R) {
+        print("Present route: \(route)")
+        routes.append(route)
+    }
+    
+    func dismiss() {
+        if !routes.isEmpty {
+            routes.removeLast()
+        }
+    }
+    
 }
 
 // 앱 전체 라우팅을 관리하는 클래스
 class AppRouter: ObservableObject {
     // 각 탭별 내비게이션 관리자
+    @Published var homeNavigator = TabNavigationManager<HomeRoute>()
     @Published var cultureCenterNavigator = TabNavigationManager<CultureCenterRoute>()
     @Published var couponNavigator = TabNavigationManager<CouponRoute>()
-    @Published var homeNavigator = TabNavigationManager<HomeRoute>()
     
     // 현재 선택된 탭
     @Published var selectedTab: MainTabType = .home
+    @Published var isTabViewVisible: Bool = true
+    // Present용 뷰 상태값
+    @Published var presentedRouteView: AnyView? = nil
+    @Published var isPresenting = false
+    @Published var shouldPresentModal = false
+    
+    func presentModal() {
+        shouldPresentModal = true
+    }
+
+    func dismissModal() {
+        self.shouldPresentModal = false
+        self.isPresenting = false
+        self.presentedRouteView = nil
+    }
     
     // 특정 탭으로 이동
     func switchTab(to tab: MainTabType) {
@@ -68,7 +96,23 @@ class AppRouter: ObservableObject {
         }
     }
     
-    private func performNavigation<R: NavigationRoute>(_ action: NavigationAction, route: R?, navigator: TabNavigationManager<R>) {
+    func navigateToOtherView(_ action: NavigationAction, nativeScreenName: NativeScreenName, route: Any? = nil) {
+        switch nativeScreenName {
+        case .cultureCenter:
+            performNavigation(action, route: route as? CultureCenterRoute, navigator: cultureCenterNavigator)
+        case .coupon:
+            performNavigation(action, route: route as? CouponRoute, navigator: couponNavigator)
+        case .home:
+            performNavigation(action, route: route as? HomeRoute, navigator: homeNavigator)
+        case .NativePushScreen:
+            performNavigation(action, route: route as? HomeRoute, navigator: homeNavigator)
+            
+        case .NativePresentScreen:
+            performNavigation(action, route: route as? HomeRoute, navigator: homeNavigator)
+        }
+    }
+    
+    func performNavigation<R: NavigationRoute>(_ action: NavigationAction, route: R?, navigator: TabNavigationManager<R>) {
         DispatchQueue.main.async {
             switch action {
             case .push:
@@ -79,11 +123,15 @@ class AppRouter: ObservableObject {
             case .pop:
                 navigator.pop()
                 self.objectWillChange.send()
-                
             case .popToRoot:
                 navigator.popToRoot()
                 self.objectWillChange.send()
-                
+            case .present:
+                if let route = route {
+                    self.presentedRouteView = self.convertToView(route: route)
+                    self.isPresenting = true
+                    self.objectWillChange.send()
+                }
             case .navigateToTab(let tab, let route):
                 self.selectedTab = tab
                 if let route = route {
@@ -102,6 +150,18 @@ class AppRouter: ObservableObject {
             if let route = route {
                 self.navigate(.push, route: route)
             }
+        }
+    }
+    
+    //
+    private func convertToView<R: NavigationRoute>(route: R) -> AnyView {
+        // 라우트 타입에 따라 화면 분기
+        if route is HomeRoute {
+            return AnyView(NativePresentScreen())
+        } else if route is CouponRoute {
+            return AnyView(CouponScreen(couponViewModel: DIContainer.shared.resolve(CouponViewModel.self)!))
+        } else {
+            return AnyView(EmptyView())
         }
     }
 }

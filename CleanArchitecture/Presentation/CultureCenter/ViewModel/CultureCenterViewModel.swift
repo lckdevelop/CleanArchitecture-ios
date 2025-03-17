@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 protocol LectureSearchViewModelInput {
-    func didSearch()
+    func searchCultureList()
 }
 
 protocol LectureSearchViewModelOutput {
@@ -18,20 +18,22 @@ protocol LectureSearchViewModelOutput {
     var errors: BehaviorRelay<String> { get }
 }
 
-protocol LectureSearchResultViewModel: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
+protocol CultureCenterViewModelProtocol: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
 
-final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
-    private let useCase: CultureSearchListUseCase
+final class CultureCenterViewModel: CultureCenterViewModelProtocol {
+    
+    private let cultureUseCase: CultureUseCaseProtocol
     
     var lectureList = BehaviorRelay<[CultureLecture]>(value: [])
     var errors = BehaviorRelay<String>(value: "")
         
-    init(fetchCultureSearchUsecase: CultureSearchListUseCase) {
-        self.useCase = fetchCultureSearchUsecase
+    init(cultureUseCase: CultureUseCaseProtocol) {
+        self.cultureUseCase = cultureUseCase
     }
     
-    private func load() {
-        let cultureSearchResultRequestDTO = CultureSearchRequest(stCd: "ALL",
+    public func searchCultureList() {
+        // 선택하는 화면이 없어 임시로 model 세팅
+        let cultureSearchResultRequest = CultureSearchRequest(stCd: "ALL",
                                                  sqCd: "",
                                                  crsTy1: "ALL",
                                                  crsTy2: "ALL",
@@ -53,7 +55,7 @@ final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
         
         
         group.enter()
-        useCase.execute(lectureSearchFilter: cultureSearchResultRequestDTO) { result in
+        cultureUseCase.fetchCultureList(cultureSearchRequest: cultureSearchResultRequest) { result in
             switch result {
             case .success(let model):
                 searchLectureList.append(contentsOf: model)
@@ -74,9 +76,3 @@ final class DefaultLectureSearchResultViewModel: LectureSearchResultViewModel {
     }
 }
 
-
-extension DefaultLectureSearchResultViewModel {
-    func didSearch() {
-        load()
-    }
-}

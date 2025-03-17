@@ -8,16 +8,13 @@
 import Foundation
 import Moya
 
-protocol CultureSearchServiceProtocol {
+protocol CultureServiceProtocol {
     func getCultureLectureSearchList(request: CultureSearchRequest,
                                 completion: @escaping (Result<CultureSearchResponse, Error>) -> Void)
 }
 
-class CultureSearchService: CultureSearchServiceProtocol {
-    static let shared = CultureSearchService()
+final class CultureService: CultureServiceProtocol {
     private lazy var provider = MoyaProvider<EHyundaiAppAPI>(plugins: [MoyaLoggingPlugin()])
-    
-    private init() {}
     
     func getCultureLectureSearchList(request: CultureSearchRequest,
                                 completion: @escaping (Result<CultureSearchResponse, Error>) -> Void) {
