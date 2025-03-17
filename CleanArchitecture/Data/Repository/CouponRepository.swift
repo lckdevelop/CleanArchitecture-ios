@@ -19,7 +19,7 @@ import Combine
  
  */
 protocol CouponRepositoryInterface {
-    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponList, Error>
+    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error>
 }
 
 
@@ -31,7 +31,7 @@ final class CouponRepository: CouponRepositoryInterface {
         self.couponService = couponService
     }
     
-    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponList, Error> {
+    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
         return couponService.fetchCouponList(request: request)
     }
 }

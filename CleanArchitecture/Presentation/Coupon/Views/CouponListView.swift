@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CouponListView: View {
-    let coupons: [Coupon]
+    let coupons: [CouponEntity]
     let onAction: (CouponAction) -> Void
 
     var body: some View {
@@ -25,10 +25,25 @@ struct CouponListView: View {
 
 #Preview {
     let coupons = [
-        Coupon(campId: "", ofrId: "", name: "타파스와 핀초스", titleImage: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788970417981.jpg", copnTypeGbcd: "01"),
-        Coupon(campId: "", ofrId: "", name: "타파스와 핀초스", titleImage: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788970417981.jpg", copnTypeGbcd: "01")
+        CouponEntity(
+            id: "test-id-1",
+            campId: "",
+            ofrId: "",
+            name: "타파스와 핀초스",
+            titleImage: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788970417981.jpg",
+            couponType: .coupon
+        ),
+        CouponEntity(
+            id: "test-id-2",
+            campId: "",
+            ofrId: "",
+            name: "타파스와 핀초스",
+            titleImage: "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788970417981.jpg",
+            couponType: .coupon
+        )
     ]
-    CouponListView(coupons: coupons, onAction: { action in
+    
+    return CouponListView(coupons: coupons, onAction: { action in
         print(action)
     })
 }

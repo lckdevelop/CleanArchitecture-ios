@@ -11,5 +11,5 @@ import Foundation
 enum CouponRoute: NavigationRoute {
     // 필요한 경로 추가
     case couponScreen
-    case couponDetail(Coupon)
+    case couponDetail(CouponEntity)
 }
