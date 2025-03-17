@@ -2,19 +2,16 @@
 UIKit + SwiftUI 호환 가능한 프로젝트입니다. 
 클린 아키텍처 원칙을 준수하였으며 소프트웨어의 유지보수성, 테스트 용이성 및 모듈 간의 분리를 강조하여 구조화된 방식으로 개발하였습니다.
 
-### Used Technology 
-1. Architecture : Clean Architecture
-2. IOS Framework & Reactive Programming : UIKit + Rxswift, SwiftUI + Combine
-3. Design Pattern : MVVM
-4. Code Convention : SwiftLint
-5. Modularization : Tuist(예정)
-6. Configuration Separation: Development, Staging, Production
-7. Library & Framework : 
-- Moya - 네트워크 통신
-- Kingfisher - 비동기 이미지 로딩& 캐싱
-- Swinject - 의존성 주입
-- RxSwift - 비동기 프로그래밍
-- Combine - 비동기 프로그래밍
+## Clean Architecture 주요 원칙
+### 1. 의존성 역전 원칙 (Dependency Inversion Principle, DIP)
+> 고수준 모듈은 저수준 모듈에 의존해서는 안되며, 양쪽 모듈 모두 추상화에 의존해야 합니다. 또한 추상화는 세부 사항에 의존하지 않아야합니다. 세부 사항이 추상화에 의존해야 한다.이를 통해 느슨한 결합을 유지할 수 있습니다. Ex) Domain Layer의 구현체는 외부 계층에 의존하지 않고, 대신 인터페이스(Repository Interface)를 통해 의존성을 역전시킵니다. 이를 통해 도메인 로직이 외부 구현 세부사항으로부터 독립적으로 유지됩니다. 
+
+### 2. 경계(Boundary)의 분리
+> 소프트웨어 시스템을 여러 개의 영역(계층)으로 나누고, 각 영역 간의 명확한 인터페이스(경계)를 정의합니다.
+각 영역은 독립적으로 개발/테스트/변경 가능해야 하며, 다른 영역과는 인터페이스를 통해서만 통신해야 합니다.
+
+### 3. 인터페이스 분리 원칙 (Interface Segregation Principle, ISP)
+> 클라이언트(사용자 클래스)는 자신이 사용하지 않는 메서드에 의존하면 안 됩니다. 즉, 하나의 커다란 인터페이스보다는, 작고 구체적인 인터페이스로 분리하는 것이 바람직합니다.
 
 
 <details>
@@ -127,10 +124,20 @@ UIKit + SwiftUI 호환 가능한 프로젝트입니다.
 - 외부 API와의 통신 담당
 - Moya를 활용한 네트워크 요청 추상화
 
-### 의존성 역전 원칙
-> Domain Layer는 외부 계층에 의존하지 않고, 대신 인터페이스(Repository Interface)를 통해 의존성을 역전시킵니다. 이를 통해 도메인 로직이 외부 구현 세부사항으로부터 독립적으로 유지됩니다.
-
-
+## Used Technology 
+1. Architecture : Clean Architecture
+2. IOS Framework & Reactive Programming : UIKit + Rxswift, SwiftUI + Combine
+3. Design Pattern : MVVM
+4. Code Convention : SwiftLint
+5. Modularization : Tuist(예정)
+6. Configuration Separation: Development, Staging, Production
+7. Library & Framework : 
+- Moya - 네트워크 통신
+- Kingfisher - 비동기 이미지 로딩& 캐싱
+- Swinject - 의존성 주입
+- RxSwift - 반응형 프로그래밍
+- Combine - 반응형 프로그래밍
+- 
 ## Key Feature
 ### Dependency Injection
 의존성 주입을 위해 Swinject 라이브러리를 사용하였습니다.
@@ -240,6 +247,7 @@ SwiftUI는 주로 **UI 컴포넌트**와 **레이아웃 관리**에 집중하는
   
 ### 모듈화
 프로젝트의 확장성과 유지보수성을 높이기 위해 Tuist 모듈화를 준비하는 과정에 있습니다.
+
 
 
 
