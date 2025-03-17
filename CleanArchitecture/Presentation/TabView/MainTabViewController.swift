@@ -13,11 +13,10 @@ struct MainTabViewController: View {
     @EnvironmentObject private var router: AppRouter
     
     @State public var selectedTab: MainTabType = .home
-    @StateObject var homeViewModel: HomeViewModel
-    @StateObject var couponViewModel: CouponViewModel
+    @ObservedObject var homeViewModel: HomeViewModel
+    @ObservedObject var couponViewModel: CouponViewModel
     
     var body: some View {
-        
         TabView(selection: $selectedTab) {
             ForEach(MainTabType.allCases, id: \.self) { tab in
                 // 각각의 Tab Destination 정의하여 추후엔 이렇게도 사용 가능하지만 merge 시 충돌 문제로 주석처리.
@@ -46,8 +45,7 @@ struct MainTabViewController: View {
         }
         
     }
-    
-    
+
     struct HomeNavigationStack: View {
         @EnvironmentObject private var router: AppRouter
         @EnvironmentObject private var homeViewModel: HomeViewModel
@@ -60,16 +58,24 @@ struct MainTabViewController: View {
                 },
                 destination: { route in
                     switch route {
+                    case .homeScreen:
+                        HomeScreen(homeViewModel: homeViewModel)
                     case .shoppingInfoDetail(let homeBanner):
-                        BaseWebView(url: homeBanner.link, navTitle: "쇼핑인포")
+                        BaseWebView(url: homeBanner.link, navTitle: NavigationTitle.WEB_SHOPPING_TITLE)
                     case .foodDetail(let homeBanner):
-                        BaseWebView(url: homeBanner.link, navTitle: "현대식품관")
+                        BaseWebView(url: homeBanner.link, navTitle: NavigationTitle.WEB_TOHOME_TITLE)
+                    case .webViewExam(let webviewModel):
+                        BaseWebView(url: webviewModel.url ?? "", navTitle: "Bridge Test")
+                    case .NativePushScreen:
+                        NativePushScreen()
+                    case .NativePresentScreen:
+                        NativePresentScreen()
                     }
+                    
                 }
                 
             )
         }
-        
     }
     
     struct CouponNavigationStack: View {
@@ -84,6 +90,8 @@ struct MainTabViewController: View {
                 },
                 destination: { route in
                     switch route {
+                    case .couponScreen:
+                        CouponScreen(couponViewModel: couponViewModel)
                     case .couponDetail(let coupon):
                         CouponDetailView(coupon: coupon)
                     }

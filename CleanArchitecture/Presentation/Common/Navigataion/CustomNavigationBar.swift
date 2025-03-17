@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct CustomNavigationBar: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> // 뒤로 가기 기능
-    @Environment(\.dismiss) var dismiss // dismiss를 사용해서 네비게이션 스택을 리셋
-    @StateObject var homeViewModel = DIContainer.shared.resolve(HomeViewModel.self)!
+    @EnvironmentObject private var router: AppRouter
 
     var title: String
 
@@ -18,7 +16,7 @@ struct CustomNavigationBar: View {
         VStack {
             HStack {
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    router.navigate(.pop)
                 }) {
                     Image(systemName: "lessthan")
                         .foregroundColor(.blue)
@@ -32,18 +30,17 @@ struct CustomNavigationBar: View {
                 Spacer()
                 Spacer()
                 Button(action: {
-                    dismiss() // 현재 스택을 리셋
+                    router.navigate(.popToRoot)
                 }) {
                     Image(systemName: "house")
                         .foregroundColor(.blue)
                         .font(.system(size: 23))
                 }
             }
-            .frame(height: 10)
+            .frame(height: 15)
             .padding(.horizontal, 15)
-            //.padding(.bottom, 40) <- 이거 하면 백버튼 왜 안되냐아
             .background(Color.white)
         }
-        .frame(height: 10)
+        .frame(height: 15)
     }
 }

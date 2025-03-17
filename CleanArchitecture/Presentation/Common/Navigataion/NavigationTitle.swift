@@ -12,6 +12,6 @@ import Foundation
  */
 struct NavigationTitle {
     static let WEB_SHOPPING_TITLE = "쇼핑인포"
-    static let WEB_TO_HOME_TITLE = "현대식품관 투홈"
+    static let WEB_TOHOME_TITLE = "현대식품관 투홈"
 }
 

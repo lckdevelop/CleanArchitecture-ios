@@ -12,6 +12,7 @@ enum NavigationAction {
     case push
     case pop
     case popToRoot
+    case present
     case navigateToTab(MainTabType, Any?)
 }
 
@@ -25,4 +26,6 @@ protocol NavigationManaging: ObservableObject {
     func push(_ route: Route)
     func pop()
     func popToRoot()
+    func present(_ route: Route)
+    func dismiss()
 }

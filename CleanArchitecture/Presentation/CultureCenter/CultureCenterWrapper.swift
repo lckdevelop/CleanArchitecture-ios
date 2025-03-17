@@ -9,9 +9,10 @@ import SwiftUI
 import UIKit
 
 struct LectureResultViewWrapper: UIViewControllerRepresentable {
-
-    func makeUIViewController(context: Context) -> LectureResultViewController {        
-        return ViewControllerFactory.shared.makeLectureSearchListVC()
+    func makeUIViewController(context: Context) -> LectureResultViewController {
+        let cultureViewModel = DIContainer.shared.resolve(CultureCenterViewModel.self)!
+        let vc = LectureResultViewController(cultureCenterViewModel: cultureViewModel)
+        return vc
     }
 
     func updateUIViewController(_ uiViewController: LectureResultViewController, context: Context) {

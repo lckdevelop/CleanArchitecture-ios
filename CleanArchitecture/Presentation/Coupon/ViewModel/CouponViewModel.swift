@@ -44,7 +44,7 @@ final class CouponViewModel: ObservableObject {
         switch action {
         case .download(let coupon):
             downloadCoupon(coupon)
-        case .select(let coupon):
+        case .select(_):
             // 선택 처리는 뷰에서 직접 처리
             break
         }

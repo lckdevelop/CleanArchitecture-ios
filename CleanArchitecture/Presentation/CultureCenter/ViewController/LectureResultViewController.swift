@@ -13,11 +13,11 @@ class LectureResultViewController: UIViewController {
     @IBOutlet weak var lectureCountLabel: UILabel!
     @IBOutlet weak var lectureListTableView: UITableView!
     
-    private var viewModel: LectureSearchResultViewModel
+    private var cultureCenterViewModel: CultureCenterViewModel
     private let disposeBag = DisposeBag()
     
-    init(viewModel: LectureSearchResultViewModel) {
-        self.viewModel = viewModel
+    init(cultureCenterViewModel: CultureCenterViewModel) {
+        self.cultureCenterViewModel = cultureCenterViewModel
         super.init(nibName: "LectureResultViewController", bundle: nil)
     }
 
@@ -31,7 +31,7 @@ class LectureResultViewController: UIViewController {
         setupDelegate()
         setupBindings()
         setupNavigationBar()
-        viewModel.didSearch()
+        cultureCenterViewModel.searchCultureList()
     }
 
 }
@@ -47,10 +47,10 @@ private extension LectureResultViewController {
     }
     
     func setupBindings() {
-        viewModel.lectureList
+        cultureCenterViewModel.lectureList
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { bool in
-                let lectureCount = self.viewModel.lectureList.value.count
+                let lectureCount = self.cultureCenterViewModel.lectureList.value.count
                 self.lectureCountLabel.text = "\(lectureCount)개의 강좌가 검색 되었어요."
                 
                 self.lectureListTableView.reloadData()
@@ -59,7 +59,7 @@ private extension LectureResultViewController {
             .disposed(by: disposeBag)
     
                        
-       viewModel.errors.subscribe(on: MainScheduler.instance)
+        cultureCenterViewModel.errors.subscribe(on: MainScheduler.instance)
             .bind { error in
                print("🚨Error Occurred: \(error)")
            }.disposed(by: disposeBag)
@@ -87,7 +87,7 @@ extension LectureResultViewController: UITableViewDelegate {}
 extension LectureResultViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.lectureList.value.count
+        return cultureCenterViewModel.lectureList.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,7 +95,7 @@ extension LectureResultViewController: UITableViewDataSource {
             withIdentifier: "LectureSearchCell",
             for: indexPath) as? LectureSearchCell else { return UITableViewCell() }
         cell.selectionStyle = .none
-        let data = viewModel.lectureList.value[indexPath.row]
+        let data = cultureCenterViewModel.lectureList.value[indexPath.row]
         cell.bindData(data: data, row: indexPath.row)
         return cell
     }
