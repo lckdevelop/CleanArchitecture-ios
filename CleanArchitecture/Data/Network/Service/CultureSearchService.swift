@@ -8,25 +8,22 @@
 import Foundation
 import Moya
 
-protocol CultureSearchServiceProtocol {
-    func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,
-                                completion: @escaping (Result<CultureSearchResultResponseDTO, Error>) -> Void)
+protocol CultureServiceProtocol {
+    func getCultureLectureSearchList(request: CultureSearchRequest,
+                                completion: @escaping (Result<CultureSearchResponse, Error>) -> Void)
 }
 
-class CultureSearchService: CultureSearchServiceProtocol {
-    static let shared = CultureSearchService()
-    private let provider = MoyaProvider<BaseAPI>()
+final class CultureService: CultureServiceProtocol {
+    private lazy var provider = MoyaProvider<EHyundaiAppAPI>(plugins: [MoyaLoggingPlugin()])
     
-    private init() {}
-    
-    func getCultureLectureSearchList(request: CultureSearchResultRequestDTO,
-                                completion: @escaping (Result<CultureSearchResultResponseDTO, Error>) -> Void) {
-            provider.request(.getCultureLectureSearchList(request: request)) { result in
+    func getCultureLectureSearchList(request: CultureSearchRequest,
+                                completion: @escaping (Result<CultureSearchResponse, Error>) -> Void) {
+        provider.request(.getCultureLectureSearchList(request: request)) { result in
                 switch result {
                 case .success(let response):
                     do {
                         let decoder = JSONDecoder()
-                        let networkResult = try decoder.decode(CultureSearchResultResponseDTO.self, from: response.data)
+                        let networkResult = try decoder.decode(CultureSearchResponse.self, from: response.data)
                         completion(.success(networkResult))
                     } catch {
                         completion(.failure(error))

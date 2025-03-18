@@ -34,7 +34,7 @@ extension LectureSearchCell {
             self.lectureSubTitleLabel.text = "\(applyCntCal)회 | \(nickNm) | \(timeclassinfo)"
         }
         if let tuition = data.tuition {
-            self.lecturePriceLabel.text = "\(tuition)원"
+            self.lecturePriceLabel.text = "\(tuition.numberWithCommaFormat)원"
         }
         
     }

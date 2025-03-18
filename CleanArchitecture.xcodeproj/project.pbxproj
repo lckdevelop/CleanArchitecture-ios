@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612F23892D3FC7CE00AD2BA2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 612F23882D3FC7CE00AD2BA2 /* Kingfisher */; };
+		615E9B472D47AF9500D98562 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 615E9B462D47AF9500D98562 /* Swinject */; };
+		61EBF8C72D61F9BD00937486 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 61EBF8C62D61F9BD00937486 /* .gitignore */; };
 		CC05FF1D2D2A46250051A528 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = CC05FF1C2D2A46250051A528 /* Differentiator */; };
 		CC05FF1F2D2A46250051A528 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CC05FF1E2D2A46250051A528 /* RxDataSources */; };
-		CC0E56D42D2AAE0D00BB36D3 /* LGSideMenuController in Frameworks */ = {isa = PBXBuildFile; productRef = CC0E56D32D2AAE0D00BB36D3 /* LGSideMenuController */; };
 		CC2ABD422D2A8586008EE52F /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CC2ABD412D2A8586008EE52F /* CombineMoya */; };
 		CC2ABD442D2A8586008EE52F /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = CC2ABD432D2A8586008EE52F /* Moya */; };
 		CC2ABD462D2A8586008EE52F /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = CC2ABD452D2A8586008EE52F /* ReactiveMoya */; };
@@ -17,11 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61EBF8C62D61F9BD00937486 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		CC367D462D2A15CC00F86532 /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CC367D582D2A15CE00F86532 /* Exceptions for "CleanArchitecture" folder in "CleanArchitecture" target */ = {
+		612F235F2D3B420D00AD2BA2 /* Exceptions for "CleanArchitecture" folder in "CleanArchitecture" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Global/SupportingFiles/Info.plist,
@@ -31,10 +34,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CC367D482D2A15CC00F86532 /* CleanArchitecture */ = {
+		612F23412D3B420D00AD2BA2 /* CleanArchitecture */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				CC367D582D2A15CE00F86532 /* Exceptions for "CleanArchitecture" folder in "CleanArchitecture" target */,
+				612F235F2D3B420D00AD2BA2 /* Exceptions for "CleanArchitecture" folder in "CleanArchitecture" target */,
 			);
 			path = CleanArchitecture;
 			sourceTree = "<group>";
@@ -47,9 +50,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC2ABD482D2A8586008EE52F /* RxMoya in Frameworks */,
-				CC0E56D42D2AAE0D00BB36D3 /* LGSideMenuController in Frameworks */,
 				CC05FF1F2D2A46250051A528 /* RxDataSources in Frameworks */,
 				CC05FF1D2D2A46250051A528 /* Differentiator in Frameworks */,
+				612F23892D3FC7CE00AD2BA2 /* Kingfisher in Frameworks */,
+				615E9B472D47AF9500D98562 /* Swinject in Frameworks */,
 				CC2ABD442D2A8586008EE52F /* Moya in Frameworks */,
 				CC2ABD462D2A8586008EE52F /* ReactiveMoya in Frameworks */,
 				CC2ABD422D2A8586008EE52F /* CombineMoya in Frameworks */,
@@ -62,7 +66,8 @@
 		CC367D3D2D2A15CC00F86532 = {
 			isa = PBXGroup;
 			children = (
-				CC367D482D2A15CC00F86532 /* CleanArchitecture */,
+				61EBF8C62D61F9BD00937486 /* .gitignore */,
+				612F23412D3B420D00AD2BA2 /* CleanArchitecture */,
 				CC367D472D2A15CC00F86532 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +96,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CC367D482D2A15CC00F86532 /* CleanArchitecture */,
+				612F23412D3B420D00AD2BA2 /* CleanArchitecture */,
 			);
 			name = CleanArchitecture;
 			packageProductDependencies = (
@@ -101,7 +106,8 @@
 				CC2ABD432D2A8586008EE52F /* Moya */,
 				CC2ABD452D2A8586008EE52F /* ReactiveMoya */,
 				CC2ABD472D2A8586008EE52F /* RxMoya */,
-				CC0E56D32D2AAE0D00BB36D3 /* LGSideMenuController */,
+				612F23882D3FC7CE00AD2BA2 /* Kingfisher */,
+				615E9B462D47AF9500D98562 /* Swinject */,
 			);
 			productName = CleanArchitecture;
 			productReference = CC367D462D2A15CC00F86532 /* CleanArchitecture.app */;
@@ -135,7 +141,8 @@
 				CC05FF1B2D2A46250051A528 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				CC05FF202D2A46410051A528 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CC2ABD402D2A8586008EE52F /* XCRemoteSwiftPackageReference "Moya" */,
-				CC0E56D22D2AAE0D00BB36D3 /* XCRemoteSwiftPackageReference "LGSideMenuController" */,
+				612F23872D3FC7CE00AD2BA2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				615E9B452D47AF9500D98562 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CC367D472D2A15CC00F86532 /* Products */;
@@ -152,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61EBF8C72D61F9BD00937486 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,19 +178,22 @@
 /* Begin XCBuildConfiguration section */
 		CC367D5A2D2A15CE00F86532 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Development.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7H4D9CD7FD;
+				DEVELOPMENT_TEAM = 8HF2898MT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArchitecture/Global/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = IntroViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -190,6 +201,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lck.CleanArchitecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -198,19 +210,22 @@
 		};
 		CC367D5B2D2A15CE00F86532 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Release.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7H4D9CD7FD;
+				DEVELOPMENT_TEAM = 8HF2898MT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArchitecture/Global/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = IntroViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -218,6 +233,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lck.CleanArchitecture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -226,6 +242,8 @@
 		};
 		CC367D5C2D2A15CE00F86532 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Development.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -289,6 +307,8 @@
 		};
 		CC367D5D2D2A15CE00F86532 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Release.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -343,6 +363,103 @@
 			};
 			name = Release;
 		};
+		CCBA3F392D7DE29F0042F0B1 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Staging.xcconfig;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Staging;
+		};
+		CCBA3F3A2D7DE29F0042F0B1 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 612F23412D3B420D00AD2BA2 /* CleanArchitecture */;
+			baseConfigurationReferenceRelativePath = Core/Config/Staging.xcconfig;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8HF2898MT3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanArchitecture/Global/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = IntroViewController;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lck.CleanArchitecture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -350,6 +467,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC367D5C2D2A15CE00F86532 /* Debug */,
+				CCBA3F392D7DE29F0042F0B1 /* Staging */,
 				CC367D5D2D2A15CE00F86532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -359,6 +477,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC367D5A2D2A15CE00F86532 /* Debug */,
+				CCBA3F3A2D7DE29F0042F0B1 /* Staging */,
 				CC367D5B2D2A15CE00F86532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -367,6 +486,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		612F23872D3FC7CE00AD2BA2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.3;
+			};
+		};
+		615E9B452D47AF9500D98562 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 		CC05FF1B2D2A46250051A528 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
@@ -383,14 +518,6 @@
 				minimumVersion = 6.8.0;
 			};
 		};
-		CC0E56D22D2AAE0D00BB36D3 /* XCRemoteSwiftPackageReference "LGSideMenuController" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Friend-LGA/LGSideMenuController";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.2;
-			};
-		};
 		CC2ABD402D2A8586008EE52F /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -402,6 +529,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		612F23882D3FC7CE00AD2BA2 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 612F23872D3FC7CE00AD2BA2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		615E9B462D47AF9500D98562 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 615E9B452D47AF9500D98562 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		CC05FF1C2D2A46250051A528 /* Differentiator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC05FF1B2D2A46250051A528 /* XCRemoteSwiftPackageReference "RxDataSources" */;
@@ -411,11 +548,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC05FF1B2D2A46250051A528 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
-		};
-		CC0E56D32D2AAE0D00BB36D3 /* LGSideMenuController */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CC0E56D22D2AAE0D00BB36D3 /* XCRemoteSwiftPackageReference "LGSideMenuController" */;
-			productName = LGSideMenuController;
 		};
 		CC2ABD412D2A8586008EE52F /* CombineMoya */ = {
 			isa = XCSwiftPackageProductDependency;
