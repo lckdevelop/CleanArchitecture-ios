@@ -2,6 +2,8 @@
 UIKit + SwiftUI 호환 가능한 프로젝트입니다. 
 클린 아키텍처 원칙을 준수하였으며 소프트웨어의 유지보수성, 테스트 용이성 및 모듈 간의 분리를 강조하여 구조화된 방식으로 개발하였습니다.
 
+https://github.com/user-attachments/assets/f15af274-6405-48ca-83a9-609ebcc13e45
+
 ## Clean Architecture 주요 원칙
 ### 1. 의존성 역전 원칙 (Dependency Inversion Principle, DIP)
 > 고수준 모듈은 저수준 모듈에 의존해서는 안되며, 양쪽 모듈 모두 추상화에 의존해야 합니다. 또한 추상화는 세부 사항에 의존하지 않아야합니다. 세부 사항이 추상화에 의존해야 한다.이를 통해 느슨한 결합을 유지할 수 있습니다. Ex) Domain Layer의 구현체는 외부 계층에 의존하지 않고, 대신 인터페이스(Repository Interface)를 통해 의존성을 역전시킵니다. 이를 통해 도메인 로직이 외부 구현 세부사항으로부터 독립적으로 유지됩니다. 
