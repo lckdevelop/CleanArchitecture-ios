@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Domain
 
 struct CouponListView: View {
     let coupons: [CouponEntity]

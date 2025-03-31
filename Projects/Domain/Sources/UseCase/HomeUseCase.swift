@@ -8,18 +8,18 @@
 import Foundation
 import Combine
 
-protocol HomeUseCaseProtocol {
+public protocol HomeUseCaseProtocol {
     func fetchHomeBanners(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error>
 }
 
-final class HomeUseCase: HomeUseCaseProtocol {
+public final class HomeUseCase: HomeUseCaseProtocol {
     private let homeRepository: HomeRepositoryInterface
     
-    init(homeRepository: HomeRepositoryInterface) {
+    public init(homeRepository: HomeRepositoryInterface) {
         self.homeRepository = homeRepository
     }
     
-    func fetchHomeBanners(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
+    public func fetchHomeBanners(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
         return homeRepository.fetchHomeInfo(request: request)
     }
 }

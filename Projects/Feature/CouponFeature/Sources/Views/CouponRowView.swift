@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Domain
 
 struct CouponRowView: View {
     let coupon: CouponEntity

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CultureSearchResponse: Decodable {
+public struct CultureSearchResponse: Decodable {
     let result: String?
     let code: String?
     let data: Data?
@@ -18,7 +18,7 @@ struct CultureSearchResponse: Decodable {
         case data = "data"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         result = try values.decodeIfPresent(String.self, forKey: .result)
         code = try values.decodeIfPresent(String.self, forKey: .code)

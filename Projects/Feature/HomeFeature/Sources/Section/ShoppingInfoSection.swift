@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Kingfisher
+import Domain
 
 struct ShoppingInfoSection: View {
     @EnvironmentObject private var router: AppRouter

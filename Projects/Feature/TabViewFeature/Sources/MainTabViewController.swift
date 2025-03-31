@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreKit
+import Domain
 
 struct MainTabViewController: View {
     static var shared: MainTabViewController?
@@ -13,8 +15,8 @@ struct MainTabViewController: View {
     @EnvironmentObject private var router: AppRouter
     
     @State public var selectedTab: MainTabType = .home
-    @ObservedObject var homeViewModel: HomeViewModel
-    @ObservedObject var couponViewModel: CouponViewModel
+    @ObservedObject var homeViewModel = HomeBuilder.buildViewModel()
+    @ObservedObject var couponViewModel = CouponBuilder.buildViewModel()
     
     var body: some View {
         TabView(selection: $selectedTab) {

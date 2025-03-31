@@ -13,8 +13,8 @@ struct MainTabViewController: View {
     @EnvironmentObject private var router: AppRouter
     
     @State public var selectedTab: MainTabType = .home
-    @ObservedObject var homeViewModel: HomeViewModel
-    @ObservedObject var couponViewModel: CouponViewModel
+    @ObservedObject var homeViewModel = HomeBuilder.buildViewModel()
+    @ObservedObject var couponViewModel = CouponBuilder.buildViewModel()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -24,14 +24,12 @@ struct MainTabViewController: View {
                 Group {
                     switch tab {
                     case .home:
-                        HomeNavigationStack()
-                            .environmentObject(homeViewModel)
+                        HomeNavigationStack().environmentObject(homeViewModel)
                     case .cultureCenter:
                         // UIKit으로 구현된 ViewController 때문에 UIViewControllerRepresentable 로 wrapping 하여 넣어줌. ViewControllerFactory 사용하여 VC 생성
                         LectureResultViewWrapper()
                     case .coupon:
-                        CouponNavigationStack()
-                            .environmentObject(couponViewModel)
+                        CouponNavigationStack().environmentObject(couponViewModel)
                     }
                 }
                 .tabItem {

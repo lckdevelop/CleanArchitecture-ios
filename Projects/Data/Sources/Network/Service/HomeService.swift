@@ -8,13 +8,18 @@
 import Foundation
 import Combine
 import Moya
+import Domain
 
-protocol HomeServiceProtocol {
+public protocol HomeServiceProtocol {
     func fetchHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error>
                                 
 }
 
-final class HomeService: BaseService<EHyundaiAppAPI>, HomeServiceProtocol {
+public final class HomeService: BaseService<EHyundaiAppAPI>, HomeServiceProtocol {
+    public override init() {
+        super.init()
+    }
+    
     public func fetchHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error> {
         requestObjectInCombine(.getHomeInfoList(request: request))
     }

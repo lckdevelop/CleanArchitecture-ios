@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import Kingfisher
+import Domain
 
 struct HomeScreen: View {
     @EnvironmentObject private var router: AppRouter
@@ -25,7 +26,7 @@ struct HomeScreen: View {
                 }
                 .padding()
                 .onAppear {
-                    self.homeViewModel.fetchHomeBanner()
+                    homeViewModel.fetchHomeBanner()
                 }
                 .onDisappear {
                     homeViewModel.cancelSubscriptions()

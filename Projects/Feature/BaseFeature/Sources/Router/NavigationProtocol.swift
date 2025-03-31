@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftUI
+import TabViewFeature
 
-enum NavigationAction {
+public enum NavigationAction {
     case push
     case pop
     case popToRoot
@@ -16,9 +17,9 @@ enum NavigationAction {
     case navigateToTab(MainTabType, Any?)
 }
 
-protocol NavigationRoute: Hashable {}
+public protocol NavigationRoute: Hashable {}
 
-protocol NavigationManaging: ObservableObject {
+public protocol NavigationManaging: ObservableObject {
     associatedtype Route: NavigationRoute
     
     var routes: [Route] { get set }

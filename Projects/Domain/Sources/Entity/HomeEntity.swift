@@ -7,21 +7,27 @@
 
 import Foundation
 
-struct HomeBannerRequest: Encodable {
+public struct HomeBannerRequest: Encodable {
     var stCd: String?
 }
 
-struct HomeEntityList {
-    let list: [HomeEntity]
+public struct HomeEntityList {
+    public let list: [HomeEntity]
 }
 
-struct HomeEntity {
-    let foodBannerList: [HomeBanner]
-    let trendBannerList: [HomeBanner]
-    let noticeBannerList: [HomeBanner]
+public struct HomeEntity {
+    public let foodBannerList: [HomeBanner]
+    public let trendBannerList: [HomeBanner]
+    public let noticeBannerList: [HomeBanner]
+    
+    public init(foodBannerList: [HomeBanner], trendBannerList: [HomeBanner], noticeBannerList: [HomeBanner]) {
+        self.foodBannerList = foodBannerList
+        self.trendBannerList = trendBannerList
+        self.noticeBannerList = noticeBannerList
+    }
 }
 
-protocol HomeBannerListProtocol {
+public protocol HomeBannerListProtocol {
     var image: String? { get }
     var dcRate: String? { get }
     var price: String? { get }
@@ -33,7 +39,7 @@ protocol HomeBannerListProtocol {
     var descript: String? { get }
 }
 
-struct HomeBanner: Hashable, Equatable {
+public struct HomeBanner: Hashable, Equatable {
     let image: String
     let dcRate: String
     let price: String

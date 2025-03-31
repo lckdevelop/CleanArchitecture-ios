@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WebViewModel: Hashable, Equatable {
+public struct WebViewModel: Hashable, Equatable {
     let url: String?
     let method: String?
 }

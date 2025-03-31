@@ -7,38 +7,39 @@
 
 import Foundation
 import Moya
+import Domain
 
-enum HpointAPI {
+public enum HpointAPI {
     case fetchCouponList(request: CouponRequestDTO)
 }
 
 extension HpointAPI: TargetType {
-    var baseURL: URL {
+    public var baseURL: URL {
         return ServerEnvironment.hpointURL.baseURL
     }
     
-    var path: String {
+    public var path: String {
         switch self {
         case .fetchCouponList:
             return "/mbo/copn/selectCopnList.nhd"
         }
     }
     
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .fetchCouponList:
             return .post
         }
     }
     
-    var task: Moya.Task {
+    public var task: Moya.Task {
         switch self {
         case .fetchCouponList(let request):
             return .requestJSONEncodable(request)
         }
     }
     
-    var headers: [String : String]? {
+    public var headers: [String : String]? {
         return [
             "Content-Type": "application/json",
             "connId": "",

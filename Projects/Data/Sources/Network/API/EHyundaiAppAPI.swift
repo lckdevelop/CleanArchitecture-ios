@@ -7,18 +7,19 @@
 
 import Foundation
 import Moya
+import Domain
 
-enum EHyundaiAppAPI {
+public enum EHyundaiAppAPI {
     case getHomeInfoList(request: HomeBannerRequest)
     case getCultureLectureSearchList(request: CultureSearchRequest)
 }
 
 extension EHyundaiAppAPI: TargetType {
-    var baseURL: URL {
+    public var baseURL: URL {
         return ServerEnvironment.ehyundaiAppURL.baseURL
     }
     
-    var path: String {
+    public var path: String {
         switch self {
         case .getHomeInfoList:
             return "/public-api/shopping/v1/subMain.do"
@@ -27,7 +28,7 @@ extension EHyundaiAppAPI: TargetType {
         }
     }
     
-    var method: Moya.Method {
+    public var method: Moya.Method {
         switch self {
         case .getHomeInfoList:
             return .post
@@ -36,7 +37,7 @@ extension EHyundaiAppAPI: TargetType {
         }
     }
     
-    var task: Moya.Task {
+    public var task: Moya.Task {
         switch self {
         case .getHomeInfoList(let request):
             return .requestJSONEncodable(request)
@@ -45,7 +46,7 @@ extension EHyundaiAppAPI: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    public var headers: [String : String]? {
         return [
             "Content-Type": "application/json",
             "connId": "",

@@ -13,6 +13,6 @@ let project = Project.configure(
     moduleType: .feature(name: "Coupon", type: .standard),
     product: .framework,
     interfaceDependencies: [
-        .Features.BaseFeatureDependency
+        .Features.BaseFeature
     ]
 )

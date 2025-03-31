@@ -13,6 +13,6 @@ let project = Project.configure(
     moduleType: .feature(name: "CultureCenter", type: .standard),
     product: .framework,
     interfaceDependencies: [
-        .Features.BaseFeatureDependency
+        .Features.BaseFeature
     ]
 )

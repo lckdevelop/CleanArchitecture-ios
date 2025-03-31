@@ -10,8 +10,8 @@ import ProjectDescription
 // MARK: - Features
 public extension TargetDependency {
     struct Features {
-        public struct Root {}
-        public struct Base {}
+        //public struct Root {}
+        //public struct Base {}
         public struct Home {}
         public struct CultureCenter {}
         public struct Coupon {}
@@ -26,17 +26,17 @@ public extension TargetDependency.Features {
         return .project(target: name, path: .relativeToFeature(name))
     }
     
-    static let BaseFeatureDependency = TargetDependency.project(target: "BaseFeature", path: .relativeToFeature("BaseFeature"))
+    static let BaseFeature = TargetDependency.project(target: "BaseFeature", path: .relativeToFeature("BaseFeature"))
     
     static let RootFeature = TargetDependency.project(target: "RootFeature", path: .relativeToFeature("RootFeature"))
 }
 
-public extension TargetDependency.Features.Base {
-    static let name = "Base"
-    
-    static let Feature = TargetDependency.Features.project(name: "\(name)Feature")
-    static let Interface = TargetDependency.project(target: "\(name)FeatureInterface", path: .relativeToFeature("\(name)Feature"))
-}
+//public extension TargetDependency.Features.Base {
+//    static let name = "Base"
+//    
+//    static let Feature = TargetDependency.Features.project(name: "\(name)Feature")
+//    static let Interface = TargetDependency.project(target: "\(name)FeatureInterface", path: .relativeToFeature("\(name)Feature"))
+//}
 
 public extension TargetDependency.Features.Home {
     static let name = "Home"

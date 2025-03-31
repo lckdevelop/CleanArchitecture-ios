@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Domain
+import WebViewFeature
 
-enum HomeRoute: NavigationRoute {
+public enum HomeRoute: NavigationRoute {
     case homeScreen
     case shoppingInfoDetail(HomeBanner)
     case foodDetail(HomeBanner)

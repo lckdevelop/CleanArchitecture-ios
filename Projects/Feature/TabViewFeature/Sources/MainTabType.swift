@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum MainTabType: String, CaseIterable {
+public enum MainTabType: String, CaseIterable {
     case home
     case cultureCenter
     case coupon

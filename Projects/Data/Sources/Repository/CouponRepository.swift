@@ -19,15 +19,15 @@ import Domain
  
  */
 
-final class CouponRepository: CouponRepositoryInterface {
+public final class CouponRepository: CouponRepositoryInterface {
     
     private let couponService: CouponServiceProtocol
     
-    init(couponService: CouponServiceProtocol) {
+    public init(couponService: CouponServiceProtocol) {
         self.couponService = couponService
     }
     
-    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
+    public func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
         return couponService.fetchCouponList(request: request)
     }
 }

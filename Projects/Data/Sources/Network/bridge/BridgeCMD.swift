@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BridgeCMD: String {
+public enum BridgeCMD: String {
     case NON_CMD = ""
     case CLOSE = "CLOSE"
     case BACK = "BACK"
@@ -17,7 +17,7 @@ enum BridgeCMD: String {
     
 }
 
-enum NativeScreenName: String {
+public enum NativeScreenName: String {
     case home = "Home"
     case cultureCenter = "CultureCenter"
     case coupon = "Coupon"

@@ -10,10 +10,12 @@ import Combine
 import Moya
 
 
-class BaseService<Target: TargetType> {
+open class BaseService<Target: TargetType> {
     typealias API = Target
     
     private lazy var provider = MoyaProvider<API>(plugins: [MoyaLoggingPlugin()])
+    
+    public init() {}
     
     func requestObjectInCombine<T: Decodable>(_ target: API) -> AnyPublisher<T, Error> {
         return Future { promise in

@@ -1,5 +1,10 @@
 import SwiftUI
 import Combine
+import CoreKit
+import Data
+import HomeFeature
+import CouponFeature
+import TabViewFeature
 
 /**
  앱 전체의 네비게이션 상태를 관리하는 라우터 시스템입니다.
@@ -55,7 +60,7 @@ class TabNavigationManager<R: NavigationRoute>: NavigationManaging {
 }
 
 // 앱 전체 라우팅을 관리하는 클래스
-class AppRouter: ObservableObject {
+public class AppRouter: ObservableObject {
     // 각 탭별 내비게이션 관리자
     @Published var homeNavigator = TabNavigationManager<HomeRoute>()
     @Published var cultureCenterNavigator = TabNavigationManager<CultureCenterRoute>()
@@ -68,6 +73,8 @@ class AppRouter: ObservableObject {
     @Published var presentedRouteView: AnyView? = nil
     @Published var isPresenting = false
     @Published var shouldPresentModal = false
+    
+    public init() {}
     
     func presentModal() {
         shouldPresentModal = true

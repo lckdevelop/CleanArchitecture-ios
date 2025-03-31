@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeBannerResponse: Decodable {
+public struct HomeBannerResponse: Decodable {
     let result: String?
     let code: String?
     let data: Data?
@@ -20,7 +20,7 @@ struct HomeBannerResponse: Decodable {
         case message = "message"
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         result = try values.decodeIfPresent(String.self, forKey: .result)
         code = try values.decodeIfPresent(String.self, forKey: .code)

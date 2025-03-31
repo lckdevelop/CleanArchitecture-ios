@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-protocol HomeRepositoryInterface {
+public protocol HomeRepositoryInterface {
     func fetchHomeInfo(request:HomeBannerRequest) -> AnyPublisher<HomeEntity, Error>
 }

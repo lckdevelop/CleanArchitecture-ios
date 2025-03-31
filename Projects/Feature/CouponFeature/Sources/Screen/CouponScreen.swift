@@ -7,12 +7,17 @@
 
 import SwiftUI
 import Kingfisher
+import BaseFeatureDependency
 
-struct CouponScreen: View {
+public struct CouponScreen: View {
     @EnvironmentObject private var router: AppRouter
     @ObservedObject var couponViewModel: CouponViewModel
     
-    var body: some View {
+    public init(router: AppRouter, couponViewModel: CouponViewModel) {
+        self.couponViewModel = couponViewModel
+    }
+    
+    public var body: some View {
         ZStack {
             CouponListView(
                 coupons: couponViewModel.couponList?.coupons ?? [],

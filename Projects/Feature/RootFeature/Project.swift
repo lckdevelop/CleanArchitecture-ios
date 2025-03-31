@@ -13,7 +13,6 @@ let project = Project.configure(
     moduleType: .feature(name: "Root", type: .standard),
     product: .framework,
     interfaceDependencies: [
-        .Features.Base.Feature,
         .Features.Home.Feature,
         .Features.CultureCenter.Feature,
         .Features.Coupon.Feature,

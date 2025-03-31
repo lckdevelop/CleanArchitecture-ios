@@ -17,19 +17,19 @@ import Combine
  쿠폰 기능의 UserCase 에 해당하는 비지니스 로직을 아래에 정의하면 됩니다
  
  */
-protocol CouponUsecaseProtocol {
+public protocol CouponUsecaseProtocol {
     func getCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error>
 }
 
-final class CouponUsecase: CouponUsecaseProtocol {
+public final class CouponUsecase: CouponUsecaseProtocol {
 
     private let couponRepository: CouponRepositoryInterface
 
-    init(couponRepository: CouponRepositoryInterface) {
+    public init(couponRepository: CouponRepositoryInterface) {
         self.couponRepository = couponRepository
     }
     
-    func getCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
+    public func getCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
         return couponRepository.fetchCoupons(request: request)
     }
 }

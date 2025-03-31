@@ -9,19 +9,20 @@ import Foundation
 import RxSwift
 import RxRelay
 import RxDataSources
+import Domain
 
-final class CultureRepository {
+public final class CultureRepository {
     
     private let cultureService: CultureServiceProtocol
     
-    init(cultureService: CultureServiceProtocol) {
+    public init(cultureService: CultureServiceProtocol) {
         self.cultureService = cultureService
     }
 }
 
 extension CultureRepository: CultureRepositoryInterface {
     
-    func fetchSearchResult(request: CultureSearchRequest,
+    public func fetchSearchResult(request: CultureSearchRequest,
                           completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
         cultureService.getCultureLectureSearchList(request: request) { result in
             switch result {

@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
-import UIKit
+import Swinject
+import CoreKit
+import Domain
 
 struct LectureResultViewWrapper: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> LectureResultViewController {
-        let cultureViewModel = DIContainer.shared.resolve(CultureCenterViewModel.self)!
-        let vc = LectureResultViewController(cultureCenterViewModel: cultureViewModel)
+        let coreDI = DIContainer.shared
+
+        // 의존성 주입
+        let repository = coreDI.resolve(CultureRepositoryInterface.self)!
+        let useCase = CultureUseCase(cultureRepository: repository)
+        let viewModel = CultureCenterViewModel(cultureUseCase: useCase)
+        let vc = LectureResultViewController(cultureCenterViewModel: viewModel)
+        
         return vc
     }
 

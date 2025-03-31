@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct NativePresentScreen: View {
-    var body: some View {
+public struct NativePresentScreen: View {
+    public init(){}
+    
+    public var body: some View {
         Text("Native Screen2")
     }
 }
 
-#Preview {
-    NativePresentScreen()
-}
+//#Preview {
+//    NativePresentScreen()
+//}

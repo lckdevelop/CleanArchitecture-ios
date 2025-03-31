@@ -9,17 +9,17 @@ import Foundation
 import Combine
 import Domain
 
-final class HomeRepository {
+public final class HomeRepository {
     private let homeService: HomeServiceProtocol
 
-    init(homeService: HomeServiceProtocol) {
+    public init(homeService: HomeServiceProtocol) {
         self.homeService = homeService
     }
 }
 
 extension HomeRepository: HomeRepositoryInterface {
     // 팝업&뉴오픈, 트렌드&취향, 현대식품관 투홈 리스트를 합쳐서 하나의 배열로 반환
-    func fetchHomeInfo(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
+    public func fetchHomeInfo(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
         homeService.fetchHomeInfoList(request: request)
             .flatMap { response -> AnyPublisher<HomeEntity, Error> in
                     return Just(response.toDomain())
