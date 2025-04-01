@@ -10,7 +10,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "WebView", type: .standard),
+    moduleType: .feature(name: "WebView", type: .micro),
     product: .framework,
     interfaceDependencies: [
         .Features.BaseFeature

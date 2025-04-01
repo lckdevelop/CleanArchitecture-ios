@@ -4,7 +4,17 @@
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      runPostActionsOnFailure = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Push build insights"
+               scriptText = "/Users/chaekyeong/.local/share/mise/installs/tuist/4.45.0/bin/tuist inspect build">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -31,6 +41,34 @@
                BlueprintIdentifier = "D3E314B387FD8B34A15E37AD"
                BuildableName = "BaseFeature.framework"
                BlueprintName = "BaseFeature"
+               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "124BBD9277632D5AB84A65C2"
+               BuildableName = "BaseFeatureDemo.app"
+               BlueprintName = "BaseFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "841627A7B155CC831FE07BB8"
+               BuildableName = "BaseFeatureInterface.framework"
+               BlueprintName = "BaseFeatureInterface"
                ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -84,6 +122,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "86E0346A87635C8DA71CF0D9"
+               BuildableName = "CouponFeatureDemo.app"
+               BlueprintName = "CouponFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7D2909EFDFBF4ADD433624CA"
+               BuildableName = "CouponFeatureInterface.framework"
+               BlueprintName = "CouponFeatureInterface"
+               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "A1DE38BC1E7C18DD5D581489"
                BuildableName = "CultureCenterFeature.framework"
                BlueprintName = "CultureCenterFeature"
@@ -98,10 +164,38 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7C4D499E676D19AE35D76C43"
+               BuildableName = "CultureCenterFeatureDemo.app"
+               BlueprintName = "CultureCenterFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CBA3CE40078B428E13B03634"
+               BuildableName = "CultureCenterFeatureInterface.framework"
+               BlueprintName = "CultureCenterFeatureInterface"
+               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "372E276F143AFFAD2448C971"
                BuildableName = "Data.framework"
                BlueprintName = "Data"
-               ReferencedContainer = "container:Projects/Data/Data.xcodeproj">
+               ReferencedContainer = "container:Projects/Module/Data/Data.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -157,6 +251,34 @@
                BlueprintIdentifier = "DA63F18E567CF83B0B9CA9F6"
                BuildableName = "HomeFeature.framework"
                BlueprintName = "HomeFeature"
+               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "549A602B2BC1A28903EEFC0D"
+               BuildableName = "HomeFeatureDemo.app"
+               BlueprintName = "HomeFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "854D3E4EFF471C42EE44119B"
+               BuildableName = "HomeFeatureInterface.framework"
+               BlueprintName = "HomeFeatureInterface"
                ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -378,6 +500,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9CFD91D36C9E7A90A9996C95"
+               BuildableName = "TabViewFeatureDemo.app"
+               BlueprintName = "TabViewFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/TabViewFeature/TabViewFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "60030C15B735D8E90695616E"
+               BuildableName = "TabViewFeatureInterface.framework"
+               BlueprintName = "TabViewFeatureInterface"
+               ReferencedContainer = "container:Projects/Feature/TabViewFeature/TabViewFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "7E24D2A7638820CA9D50E31D"
                BuildableName = "ThirdPartyLibrary.framework"
                BlueprintName = "ThirdPartyLibrary"
@@ -395,6 +545,34 @@
                BlueprintIdentifier = "56C29D78AA6EE8E9D1E03058"
                BuildableName = "WebViewFeature.framework"
                BlueprintName = "WebViewFeature"
+               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D354F1AFCF45F46FA7B8C7C9"
+               BuildableName = "WebViewFeatureDemo.app"
+               BlueprintName = "WebViewFeatureDemo"
+               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4EF948EE81FED8937D75EAB1"
+               BuildableName = "WebViewFeatureInterface.framework"
+               BlueprintName = "WebViewFeatureInterface"
                ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

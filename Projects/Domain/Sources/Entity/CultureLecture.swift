@@ -8,21 +8,21 @@
 import Foundation
 
 public struct CultureSearchRequest: Encodable {
-    var stCd: String?
-    var sqCd: String?
-    var crsTy1: String?
-    var crsTy2: String?
-    var crsCategory: String?
-    var dayOfWeek: String?
-    var crsStartTime: String?
-    var crsEndTime: String?
-    var crsNm: String?
-    var applyStatus: String?
-    var currentPage: String?
-    var countPerPage: String?
-    var monthStart: String?
-    var monthEnd: String?
-    var giftFlag: String?
+    public var stCd: String?
+    public var sqCd: String?
+    public var crsTy1: String?
+    public var crsTy2: String?
+    public var crsCategory: String?
+    public var dayOfWeek: String?
+    public var crsStartTime: String?
+    public var crsEndTime: String?
+    public var crsNm: String?
+    public var applyStatus: String?
+    public var currentPage: String?
+    public var countPerPage: String?
+    public var monthStart: String?
+    public var monthEnd: String?
+    public var giftFlag: String?
     
     public init(stCd: String? = nil, sqCd: String? = nil, crsTy1: String? = nil, crsTy2: String? = nil, crsCategory: String? = nil, dayOfWeek: String? = nil, crsStartTime: String? = nil, crsEndTime: String? = nil, crsNm: String? = nil, applyStatus: String? = nil, currentPage: String? = nil, countPerPage: String? = nil, monthStart: String? = nil, monthEnd: String? = nil, giftFlag: String? = nil) {
         self.stCd = stCd

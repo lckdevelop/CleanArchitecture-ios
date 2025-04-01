@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Kingfisher
-import BaseFeatureDependency
+import BaseFeature
 
 public struct CouponScreen: View {
     @EnvironmentObject private var router: AppRouter

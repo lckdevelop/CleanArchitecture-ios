@@ -10,7 +10,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "Coupon", type: .standard),
+    moduleType: .feature(name: "Coupon", type: .micro),
     product: .framework,
     interfaceDependencies: [
         .Features.BaseFeature

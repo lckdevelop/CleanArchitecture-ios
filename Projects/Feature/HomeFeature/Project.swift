@@ -10,7 +10,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "Home", type: .standard),
+    moduleType: .feature(name: "Home", type: .micro),
     product: .framework,
     interfaceDependencies: [
         .Features.BaseFeature

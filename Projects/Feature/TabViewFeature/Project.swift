@@ -10,7 +10,7 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.configure(
-    moduleType: .feature(name: "TabView", type: .standard),
+    moduleType: .feature(name: "TabView", type: .micro),
     product: .framework,
     interfaceDependencies: [
         .Features.BaseFeature

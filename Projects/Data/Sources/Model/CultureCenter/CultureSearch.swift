@@ -25,7 +25,7 @@ public struct CultureSearchResponse: Decodable {
         data = try values.decodeIfPresent(Data.self, forKey: .data)
     }
     
-    struct Data: Decodable {
+    public struct Data: Decodable {
         let pagePerContents: Int?
         let applyCrsCnt: String?
         let applyCrsList: [ApplyCrsList]?
@@ -41,7 +41,7 @@ public struct CultureSearchResponse: Decodable {
             case searchData = "searchData"
         }
         
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             pagePerContents = try values.decodeIfPresent(Int.self, forKey: .pagePerContents)
             if let intValue = try? values.decodeIfPresent(Int.self, forKey: .applyCrsCnt) {
@@ -60,7 +60,7 @@ public struct CultureSearchResponse: Decodable {
     
 }
 
-struct SearchData: Decodable {
+public struct SearchData: Decodable {
     let monthEnd: String?
     let giftFlagNm: String?
     let crsCategory: String?
@@ -107,7 +107,7 @@ struct SearchData: Decodable {
         case applyStatus = "applyStatus"
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         monthEnd = try values.decodeIfPresent(String.self, forKey: .monthEnd)
         giftFlagNm = try values.decodeIfPresent(String.self, forKey: .giftFlagNm)
@@ -134,7 +134,7 @@ struct SearchData: Decodable {
 
 }
 
-struct ApplyCrsList: Decodable {
+public struct ApplyCrsList: Decodable {
     let lessonNum: String?
     let proCustNo: String?
     let searchCrsStDt: String?
@@ -243,7 +243,7 @@ struct ApplyCrsList: Decodable {
         case strApply = "strApply"
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         lessonNum = try values.decodeIfPresent(String.self, forKey: .lessonNum)
         proCustNo = try values.decodeIfPresent(String.self, forKey: .proCustNo)

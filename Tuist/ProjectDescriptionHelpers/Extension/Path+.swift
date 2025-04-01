@@ -32,7 +32,7 @@ public extension ProjectDescription.Path {
         return .relativeToRoot("Projects/Domain")
     }
     
-    static var shared: Self {
-        return .relativeToRoot("Projects/Shared")
-    }
+//    static var shared: Self {
+//        return .relativeToRoot("Projects/Shared")
+//    }
 }

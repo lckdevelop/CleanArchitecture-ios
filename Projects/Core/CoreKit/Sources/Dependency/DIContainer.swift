@@ -52,7 +52,7 @@ class NetworkAssembly: Assembly {
 class CoreServiceAssembly: Assembly {
     func assemble(container: Container) {
         container.register(HomeServiceProtocol.self) { _ in HomeService() }
-        container.register(CultureServiceProtocol.self) { _ in CultureService() }
+        //container.register(CultureServiceProtocol.self) { _ in CultureService() }
         container.register(CouponServiceProtocol.self) { _ in CouponService() }
     }
 }

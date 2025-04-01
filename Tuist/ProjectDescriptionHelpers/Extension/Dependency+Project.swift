@@ -14,7 +14,8 @@ public extension TargetDependency {
 
 // MARK: - Root
 public extension TargetDependency {
-    static let data = TargetDependency.project(target: "Data", path: .data)
+    
+    //static let data = TargetDependency.project(target: "Data", path: .data)
     static let domain = TargetDependency.project(target: "Domain", path: .domain)
     //static let core = TargetDependency.project(target: "Core", path: .core) // designkit도 넣어야하나?
     static let core = TargetDependency.project(target: "Core", path: .relativeToCore("Core"))
@@ -22,6 +23,8 @@ public extension TargetDependency {
 
 // MARK: - Modules
 public extension TargetDependency.Modules {
+    //static let data = TargetDependency.project(target: "Data", path: .relativeToModule(.data))
+    static let data = TargetDependency.project(target: "Data", path: .data)
     static let shared = TargetDependency.project(target: "Shared", path: .relativeToModule("Shared"))
     static let networkModule = TargetDependency.project(target: "NetworkModule", path: .relativeToModule("NetworkModule"))
     static let thirdPartyLibrary = TargetDependency.project(target: "ThirdPartyLibrary", path: .relativeToModule("ThirdPartyLibrary"))
