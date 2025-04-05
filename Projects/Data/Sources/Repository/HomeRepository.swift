@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Domain
+import NetworkModule
 
 public final class HomeRepository {
     private let homeService: HomeServiceProtocol
@@ -19,8 +20,10 @@ public final class HomeRepository {
 
 extension HomeRepository: HomeRepositoryInterface {
     // 팝업&뉴오픈, 트렌드&취향, 현대식품관 투홈 리스트를 합쳐서 하나의 배열로 반환
-    public func fetchHomeInfo(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
-        homeService.fetchHomeInfoList(request: request)
+    public func fetchHomeInfo(homeInfo: HomeInfo) -> AnyPublisher<HomeEntity, Error> {
+        let homeInfoRequest = homeInfo.toData()
+        
+        return homeService.fetchHomeInfoList(request: homeInfoRequest)
             .flatMap { response -> AnyPublisher<HomeEntity, Error> in
                     return Just(response.toDomain())
                         .setFailureType(to: Error.self)

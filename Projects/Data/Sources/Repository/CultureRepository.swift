@@ -8,6 +8,7 @@
 import Foundation
 import Domain
 import Combine
+import NetworkModule
 
 public final class CultureRepository {
     
@@ -19,11 +20,13 @@ public final class CultureRepository {
 }
 
 extension CultureRepository: CultureRepositoryInterface {
-    public func fetchSearchResult(request: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error> {
-        return cultureService.getCultureLectureSearchList(request: request)
+    public func fetchSearchResult(cultureSearch: CultureSearch) -> AnyPublisher<[CultureLectureEntity], Error> {
+        let cultureSearchRequest = cultureSearch.toData()
+        
+        return cultureService.getCultureLectureSearchList(request: cultureSearchRequest)
             .tryMap { response in
                 guard let list = response.data?.applyCrsList else {
-                    return [CultureLecture]()
+                    return [CultureLectureEntity]()
                 }
                 return list.map { $0.toDomain() }
             }

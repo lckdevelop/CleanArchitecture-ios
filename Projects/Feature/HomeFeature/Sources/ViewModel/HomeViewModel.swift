@@ -22,7 +22,7 @@ public class HomeViewModel: ObservableObject {
     }
     
     public func fetchHomeBanner() {
-        homeUseCase.fetchHomeBanners(request: HomeBannerRequest(stCd: "400"))
+        homeUseCase.fetchHomeBanners(homeInfo: HomeInfo(stCd: "400"))
             .sink { completion in
                 switch completion {
                     case .finished:

@@ -111,8 +111,6 @@ extension Project {
             }
             
         case let .module(name):
-            let frameworkResources: ResourceFileElements?
-
             let moduleTarget = Target.target(
                 name: name,
                 destinations: configuration.destination,
@@ -222,7 +220,7 @@ extension Project {
         /**
          * UIkit 만 있는 target을 위한 설정
          */
-        let featureTargetName = "\(name)Feature"
+        //let featureTargetName = "\(name)Feature"
         let frameworkResources: ResourceFileElements?
 
         if name == "CultureCenterFeature" {

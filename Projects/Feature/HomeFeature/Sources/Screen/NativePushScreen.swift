@@ -13,7 +13,3 @@ public struct NativePushScreen: View {
         Text("Native Screen")
     }
 }
-
-#Preview {
-    NativePushScreen()
-}

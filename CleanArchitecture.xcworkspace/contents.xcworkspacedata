@@ -42,9 +42,6 @@
             location = "group:RootFeature/RootFeature.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:TabViewFeature/TabViewFeature.xcodeproj">
-         </FileRef>
-         <FileRef
             location = "group:WebViewFeature/WebViewFeature.xcodeproj">
          </FileRef>
       </Group>

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Domain
+import NetworkModule
 
 /**
  Repository 레이어에 해당합니다.

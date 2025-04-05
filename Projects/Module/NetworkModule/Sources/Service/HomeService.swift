@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 import Moya
-import Domain
 
 public protocol HomeServiceProtocol {
     func fetchHomeInfoList(request: HomeBannerRequest) -> AnyPublisher<HomeBannerResponse, Error>

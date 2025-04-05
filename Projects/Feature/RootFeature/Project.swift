@@ -16,7 +16,6 @@ let project = Project.configure(
         .Features.Home.Feature,
         .Features.CultureCenter.Feature,
         .Features.Coupon.Feature,
-        .Features.WebView.Feature,
-        .Features.TabView.Feature
+        .Features.WebView.Feature
     ]
 )

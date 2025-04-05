@@ -16,7 +16,6 @@ public extension TargetDependency {
         public struct CultureCenter {}
         public struct Coupon {}
         public struct WebView {}
-        public struct TabView {}
     }
     
 }
@@ -61,13 +60,6 @@ public extension TargetDependency.Features.Coupon {
 
 public extension TargetDependency.Features.WebView {
     static let name = "WebView"
-    
-    static let Feature = TargetDependency.Features.project(name: "\(name)Feature")
-    static let Interface = TargetDependency.project(target: "\(name)FeatureInterface", path: .relativeToFeature("\(name)Feature"))
-}
-
-public extension TargetDependency.Features.TabView {
-    static let name = "TabView"
     
     static let Feature = TargetDependency.Features.project(name: "\(name)Feature")
     static let Interface = TargetDependency.project(target: "\(name)FeatureInterface", path: .relativeToFeature("\(name)Feature"))

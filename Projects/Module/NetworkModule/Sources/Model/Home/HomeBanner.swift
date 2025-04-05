@@ -7,10 +7,30 @@
 
 import Foundation
 
+public protocol HomeBannerListProtocol {
+    var image: String? { get }
+    var dcRate: String? { get }
+    var price: String? { get }
+    var link: String? { get }
+    var badgeNm: String? { get }
+    var place: String? { get }
+    var originPrice: String? { get }
+    var title: String? { get }
+    var descript: String? { get }
+}
+
+public struct HomeBannerRequest: Encodable {
+    public var stCd: String?
+    
+    public init(stCd: String?) {
+        self.stCd = stCd
+    }
+}
+
 public struct HomeBannerResponse: Decodable {
     let result: String?
     let code: String?
-    let data: Data?
+    public let data: Data?
     let message: String?
     
     enum CodingKeys: String, CodingKey {
@@ -28,29 +48,29 @@ public struct HomeBannerResponse: Decodable {
         message = try values.decodeIfPresent(String.self, forKey: .message)
     }
     
-    struct Data: Decodable {
-        let menuList: [MenuList]?
+    public struct Data: Decodable {
+        public let menuList: [MenuList]?
 
         enum CodingKeys: String, CodingKey {
             case menuList = "menuList"
         }
 
-        init(from decoder: Decoder) throws {
+        public init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             menuList = try values.decodeIfPresent([MenuList].self, forKey: .menuList)
         }
         
-        struct MenuList: Decodable {
+        public struct MenuList: Decodable {
             let list1: [List1]?
             let menuNm2: String?
             let menuNm1: String?
             let menuLink1: String?
-            let list2: [List2]?
+            public let list2: [List2]?
             let menuLink2: String?
             let sort: Int?
             let type: String?
             let title: String?
-            let list: [List]?
+            public let list: [List]?
             let menuLink: String?
 
             enum CodingKeys: String, CodingKey {
@@ -67,7 +87,7 @@ public struct HomeBannerResponse: Decodable {
                 case menuLink = "menuLink"
             }
 
-            init(from decoder: Decoder) throws {
+            public init(from decoder: Decoder) throws {
                 let values = try decoder.container(keyedBy: CodingKeys.self)
                 list1 = try values.decodeIfPresent([List1].self, forKey: .list1)
                 menuNm2 = try values.decodeIfPresent(String.self, forKey: .menuNm2)
@@ -82,16 +102,16 @@ public struct HomeBannerResponse: Decodable {
                 menuLink = try values.decodeIfPresent(String.self, forKey: .menuLink)
             }
             
-            struct List: Decodable {
-                let image: String?
-                let dcRate: String?
-                let price: String?
-                let link: String?
-                let badgeNm: String?
-                let place: String?
-                let originPrice: String?
-                let title: String?
-                let descript: String?
+            public struct List: Decodable, HomeBannerListProtocol {
+                public let image: String?
+                public let dcRate: String?
+                public let price: String?
+                public let link: String?
+                public let badgeNm: String?
+                public let place: String?
+                public let originPrice: String?
+                public let title: String?
+                public let descript: String?
 
                 enum CodingKeys: String, CodingKey {
 
@@ -106,7 +126,7 @@ public struct HomeBannerResponse: Decodable {
                     case descript = "descript"
                 }
 
-                init(from decoder: Decoder) throws {
+                public init(from decoder: Decoder) throws {
                     let values = try decoder.container(keyedBy: CodingKeys.self)
                     image = try values.decodeIfPresent(String.self, forKey: .image)
                     dcRate = try values.decodeIfPresent(String.self, forKey: .dcRate)
@@ -158,16 +178,16 @@ public struct HomeBannerResponse: Decodable {
 
             }
 
-            struct List2: Decodable {
-                let image: String?
-                let dcRate: String?
-                let price: String?
-                let link: String?
-                let badgeNm: String?
-                let place: String?
-                let originPrice: String?
-                let title: String?
-                let descript: String?
+            public struct List2: Decodable, HomeBannerListProtocol {
+                public let image: String?
+                public let dcRate: String?
+                public let price: String?
+                public let link: String?
+                public let badgeNm: String?
+                public let place: String?
+                public let originPrice: String?
+                public let title: String?
+                public let descript: String?
 
                 enum CodingKeys: String, CodingKey {
 
@@ -182,7 +202,7 @@ public struct HomeBannerResponse: Decodable {
                     case descript = "descript"
                 }
 
-                init(from decoder: Decoder) throws {
+                public init(from decoder: Decoder) throws {
                     let values = try decoder.container(keyedBy: CodingKeys.self)
                     image = try values.decodeIfPresent(String.self, forKey: .image)
                     dcRate = try values.decodeIfPresent(String.self, forKey: .dcRate)

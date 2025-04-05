@@ -14,9 +14,9 @@ protocol LectureSearchViewModelInput {
 }
 
 protocol LectureSearchViewModelOutput {
-    var lectureListPublisher: AnyPublisher<[CultureLecture], Never> { get }
+    var lectureListPublisher: AnyPublisher<[CultureLectureEntity], Never> { get }
     var errorPublisher: AnyPublisher<String, Never> { get }
-    var lectureListValue: [CultureLecture] { get }
+    var lectureListValue: [CultureLectureEntity] { get }
 }
 
 protocol CultureCenterViewModelProtocol: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
@@ -29,11 +29,11 @@ public final class CultureCenterViewModel: CultureCenterViewModelProtocol {
     private var cancellables = Set<AnyCancellable>()
     
     // Combine Subjects
-    private let lectureListSubject = CurrentValueSubject<[CultureLecture], Never>([])
+    private let lectureListSubject = CurrentValueSubject<[CultureLectureEntity], Never>([])
     private let errorSubject = PassthroughSubject<String, Never>()
     
     // Output
-    public var lectureListPublisher: AnyPublisher<[CultureLecture], Never> {
+    public var lectureListPublisher: AnyPublisher<[CultureLectureEntity], Never> {
         lectureListSubject.eraseToAnyPublisher()
     }
 
@@ -47,14 +47,14 @@ public final class CultureCenterViewModel: CultureCenterViewModelProtocol {
     }
     
     // 추가: 읽기 전용 computed property
-    public var lectureListValue: [CultureLecture] {
+    public var lectureListValue: [CultureLectureEntity] {
         lectureListSubject.value
     }
     
     // MARK: - Search Logic
     
     public func searchCultureList() {
-        let request = CultureSearchRequest(
+        let request = CultureSearch(
             stCd: "ALL",
             sqCd: "",
             crsTy1: "ALL",
@@ -72,7 +72,7 @@ public final class CultureCenterViewModel: CultureCenterViewModelProtocol {
             giftFlag: ""
         )
         
-        cultureUseCase.fetchCultureList(cultureSearchRequest: request)
+        cultureUseCase.fetchCultureList(cultureSearch: request)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case .failure = completion {

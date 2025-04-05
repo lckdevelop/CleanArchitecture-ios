@@ -7,10 +7,46 @@
 
 import Foundation
 
+public struct CultureSearchRequest: Encodable {
+    public var stCd: String?
+    public var sqCd: String?
+    public var crsTy1: String?
+    public var crsTy2: String?
+    public var crsCategory: String?
+    public var dayOfWeek: String?
+    public var crsStartTime: String?
+    public var crsEndTime: String?
+    public var crsNm: String?
+    public var applyStatus: String?
+    public var currentPage: String?
+    public var countPerPage: String?
+    public var monthStart: String?
+    public var monthEnd: String?
+    public var giftFlag: String?
+    
+    public init(stCd: String? = nil, sqCd: String? = nil, crsTy1: String? = nil, crsTy2: String? = nil, crsCategory: String? = nil, dayOfWeek: String? = nil, crsStartTime: String? = nil, crsEndTime: String? = nil, crsNm: String? = nil, applyStatus: String? = nil, currentPage: String? = nil, countPerPage: String? = nil, monthStart: String? = nil, monthEnd: String? = nil, giftFlag: String? = nil) {
+        self.stCd = stCd
+        self.sqCd = sqCd
+        self.crsTy1 = crsTy1
+        self.crsTy2 = crsTy2
+        self.crsCategory = crsCategory
+        self.dayOfWeek = dayOfWeek
+        self.crsStartTime = crsStartTime
+        self.crsEndTime = crsEndTime
+        self.crsNm = crsNm
+        self.applyStatus = applyStatus
+        self.currentPage = currentPage
+        self.countPerPage = countPerPage
+        self.monthStart = monthStart
+        self.monthEnd = monthEnd
+        self.giftFlag = giftFlag
+    }
+}
+
 public struct CultureSearchResponse: Decodable {
     let result: String?
     let code: String?
-    let data: Data?
+    public let data: Data?
     
     enum CodingKeys: String, CodingKey {
         case result = "result"
@@ -28,7 +64,7 @@ public struct CultureSearchResponse: Decodable {
     public struct Data: Decodable {
         let pagePerContents: Int?
         let applyCrsCnt: String?
-        let applyCrsList: [ApplyCrsList]?
+        public let applyCrsList: [ApplyCrsList]?
         let currentPage: Int?
         let searchData: SearchData?
         
@@ -141,7 +177,7 @@ public struct ApplyCrsList: Decodable {
     let stTime: String?
     let calDt3: String?
     let crsCnt: String?
-    let applyCntCal: String?
+    public let applyCntCal: String?
     let isnow: String?
     let stCd: String?
     let quota: String?
@@ -150,7 +186,7 @@ public struct ApplyCrsList: Decodable {
     let crsTy1: String?
     let tmCnt: String?
     let imageMobileDesc: String?
-    let nickNm: String?
+    public let nickNm: String?
     let closeyn: String?
     let lessonNumChk: String?
     let stNm: String?
@@ -181,11 +217,11 @@ public struct ApplyCrsList: Decodable {
     let kwdCode: String?
     let sqCd: String?
     let crsTy1Ref: String?
-    let crsNm: String?
-    let tuition: String?
+    public let crsNm: String?
+    public let tuition: String?
     let applyStatusNm: String?
     let partnerQuota: String?
-    let timeclassinfo: String?
+    public let timeclassinfo: String?
     let strApply: String?
 
     enum CodingKeys: String, CodingKey {

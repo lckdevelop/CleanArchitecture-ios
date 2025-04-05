@@ -14,10 +14,7 @@ public struct LectureResultViewWrapper: UIViewControllerRepresentable {
     public init() {}
     public func makeUIViewController(context: Context) -> LectureResultViewController {
         @Injected var cultureRepository: CultureRepositoryInterface
-//        let coreDI = DIContainer.shared
-//
-//        // 의존성 주입
-//        let repository = coreDI.resolve(CultureRepositoryInterface.self)!
+
         let useCase = CultureUseCase(cultureRepository: cultureRepository)
         let viewModel = CultureCenterViewModel(cultureUseCase: useCase)
         let vc = LectureResultViewController(cultureCenterViewModel: viewModel)

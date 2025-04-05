@@ -17,19 +17,16 @@ class LectureSearchCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
 
 extension LectureSearchCell {
-    func bindData(data: CultureLecture, row: Int) {
+    func bindData(data: CultureLectureEntity, row: Int) {
         self.lectureTitleLabel.text = data.crsNm
         
         if let applyCntCal = data.applyCntCal, let nickNm = data.nickNm, let timeclassinfo = data.timeclassinfo {
@@ -38,7 +35,6 @@ extension LectureSearchCell {
         if let tuition = data.tuition {
             self.lecturePriceLabel.text = "\(tuition.numberWithCommaFormat)원"
         }
-        
     }
 }
 

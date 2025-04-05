@@ -11,21 +11,30 @@ extension Scheme {
     static func configureAppScheme(
         schemeName: String
     ) -> [Scheme] {
-        let developmentConfiguration: ConfigurationName = .configuration("Development")
-        let stagingConfiguration: ConfigurationName = .configuration("Staging")
         let releaseConfiguration: ConfigurationName = .configuration("Release")
+        let stagingConfiguration: ConfigurationName = .configuration("Staging")
+        let developmentConfiguration: ConfigurationName = .configuration("Development")
         
         let buildAction = BuildAction.buildAction(targets: [TargetReference(stringLiteral: schemeName)])
         
         return [
+//            Scheme.scheme(
+//                name: schemeName,
+//                shared: true,
+//                buildAction: buildAction,
+//                runAction: .runAction(configuration: releaseConfiguration),
+//                archiveAction: .archiveAction(configuration: releaseConfiguration),
+//                profileAction: .profileAction(configuration: releaseConfiguration),
+//                analyzeAction: .analyzeAction(configuration: releaseConfiguration)
+//            ),
             Scheme.scheme(
-                name: schemeName + "-Development",
+                name: schemeName + "-Release",
                 shared: true,
                 buildAction: buildAction,
-                runAction: .runAction(configuration: developmentConfiguration),
-                archiveAction: .archiveAction(configuration: developmentConfiguration),
-                profileAction: .profileAction(configuration: developmentConfiguration),
-                analyzeAction: .analyzeAction(configuration: developmentConfiguration)
+                runAction: .runAction(configuration: releaseConfiguration),
+                archiveAction: .archiveAction(configuration: releaseConfiguration),
+                profileAction: .profileAction(configuration: releaseConfiguration),
+                analyzeAction: .analyzeAction(configuration: releaseConfiguration)
             ),
             Scheme.scheme(
                 name: schemeName + "-Staging",
@@ -37,13 +46,13 @@ extension Scheme {
                 analyzeAction: .analyzeAction(configuration: stagingConfiguration)
             ),
             Scheme.scheme(
-                name: schemeName + "-Release",
+                name: schemeName + "-Development",
                 shared: true,
                 buildAction: buildAction,
-                runAction: .runAction(configuration: releaseConfiguration),
-                archiveAction: .archiveAction(configuration: releaseConfiguration),
-                profileAction: .profileAction(configuration: releaseConfiguration),
-                analyzeAction: .analyzeAction(configuration: releaseConfiguration)
+                runAction: .runAction(configuration: developmentConfiguration),
+                archiveAction: .archiveAction(configuration: developmentConfiguration),
+                profileAction: .profileAction(configuration: developmentConfiguration),
+                analyzeAction: .analyzeAction(configuration: developmentConfiguration)
             )
         ]
     }

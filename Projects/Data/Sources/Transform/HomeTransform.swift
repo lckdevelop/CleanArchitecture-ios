@@ -6,10 +6,17 @@
 //
 
 import Foundation
+import NetworkModule
 import Domain
 
-extension HomeBannerResponse.Data.MenuList.List: HomeBannerListProtocol {}
-extension HomeBannerResponse.Data.MenuList.List2: HomeBannerListProtocol {}
+
+extension HomeInfo {
+    public func toData() -> HomeBannerRequest {
+        return HomeBannerRequest(
+            stCd: self.stCd
+        )
+    }
+}
 
 extension HomeBannerResponse {
     public func toDomain() -> HomeEntity {
@@ -49,5 +56,7 @@ extension HomeBannerResponse {
         } ?? []
     }
 }
+
+
 
 

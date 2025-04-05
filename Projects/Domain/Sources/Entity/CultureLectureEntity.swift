@@ -1,5 +1,5 @@
 //
-//  CultureLecture.swift
+//  CultureLectureEntity.swift
 //  CleanArchitecture
 //
 //  Created by Chaekyeong Lee on 1/5/25.
@@ -7,24 +7,24 @@
 
 import Foundation
 
-public struct CultureSearchRequest: Encodable {
-    public var stCd: String?
-    public var sqCd: String?
-    public var crsTy1: String?
-    public var crsTy2: String?
-    public var crsCategory: String?
-    public var dayOfWeek: String?
-    public var crsStartTime: String?
-    public var crsEndTime: String?
-    public var crsNm: String?
-    public var applyStatus: String?
-    public var currentPage: String?
-    public var countPerPage: String?
-    public var monthStart: String?
-    public var monthEnd: String?
-    public var giftFlag: String?
+public struct CultureSearch {
+    public let stCd: String?
+    public let sqCd: String?
+    public let crsTy1: String?
+    public let crsTy2: String?
+    public let crsCategory: String?
+    public let dayOfWeek: String?
+    public let crsStartTime: String?
+    public let crsEndTime: String?
+    public let crsNm: String?
+    public let applyStatus: String?
+    public let currentPage: String?
+    public let countPerPage: String?
+    public let monthStart: String?
+    public let monthEnd: String?
+    public let giftFlag: String?
     
-    public init(stCd: String? = nil, sqCd: String? = nil, crsTy1: String? = nil, crsTy2: String? = nil, crsCategory: String? = nil, dayOfWeek: String? = nil, crsStartTime: String? = nil, crsEndTime: String? = nil, crsNm: String? = nil, applyStatus: String? = nil, currentPage: String? = nil, countPerPage: String? = nil, monthStart: String? = nil, monthEnd: String? = nil, giftFlag: String? = nil) {
+    public init(stCd: String?, sqCd: String?, crsTy1: String?, crsTy2: String?, crsCategory: String?, dayOfWeek: String?, crsStartTime: String?, crsEndTime: String?, crsNm: String?, applyStatus: String?, currentPage: String?, countPerPage: String?, monthStart: String?, monthEnd: String?, giftFlag: String?) {
         self.stCd = stCd
         self.sqCd = sqCd
         self.crsTy1 = crsTy1
@@ -43,7 +43,7 @@ public struct CultureSearchRequest: Encodable {
     }
 }
 
-public struct CultureLecture {
+public struct CultureLectureEntity {
     public let applyCntCal: String?
     public let nickNm: String?
     public let crsNm: String?

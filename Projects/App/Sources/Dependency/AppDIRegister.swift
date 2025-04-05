@@ -11,6 +11,7 @@ import CoreKit
 import Moya
 import Data
 import Domain
+import NetworkModule
 
 final class AppDIRegister {
     static func registerDependencies() {

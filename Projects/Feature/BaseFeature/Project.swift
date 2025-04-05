@@ -15,6 +15,6 @@ let project = Project.configure(
     interfaceDependencies: [
         .domain,
         .Core.coreKit,
-        //.Core.designKit
+        .Core.designKit
     ]
 )

@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 public protocol HomeRepositoryInterface {
-    func fetchHomeInfo(request:HomeBannerRequest) -> AnyPublisher<HomeEntity, Error>
+    func fetchHomeInfo(homeInfo:HomeInfo) -> AnyPublisher<HomeEntity, Error>
 }

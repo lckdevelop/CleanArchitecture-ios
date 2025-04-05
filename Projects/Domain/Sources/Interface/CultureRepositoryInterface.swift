@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public protocol CultureRepositoryInterface {
-    func fetchSearchResult(request: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error>
+    func fetchSearchResult(cultureSearch: CultureSearch) -> AnyPublisher<[CultureLectureEntity], Error>
 }
 
 

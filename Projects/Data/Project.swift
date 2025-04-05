@@ -13,6 +13,7 @@ let project = Project.configure(
     product: .framework,
     interfaceDependencies: [
         .domain,
+        .Core.coreKit,
         .Modules.networkModule
     ]
 )

@@ -15,13 +15,8 @@ public struct HomeBuilder {
     // viewmodel 생성 예시
     public static func buildViewModel() -> HomeViewModel {
         @Injected var homeRepository: HomeRepositoryInterface
-        
-//        let coreDI = DIContainer.shared
-//        
-//        // 의존성 주입
-//        let repository = coreDI.resolve(HomeRepositoryInterface.self)!
         let useCase = HomeUseCase(homeRepository: homeRepository)
-        
+
         return HomeViewModel(homeUseCase: useCase)
     }
     

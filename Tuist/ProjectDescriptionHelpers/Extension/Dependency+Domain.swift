@@ -8,21 +8,11 @@
 import ProjectDescription
 
 public extension TargetDependency {
-    struct Domains {
-        public struct Sample {}
-    }
+    struct Domains {}
 }
 
 public extension TargetDependency.Domains {
     static func project(name: String) -> TargetDependency {
         return .project(target: name, path: .relativeToDomain(name))
     }
-}
-
-
-
-public extension TargetDependency.Domains.Sample {
-    static let name = "Sample"
-    
-    static let Domain = TargetDependency.Domains.project(name: "\(name)Domain")
 }

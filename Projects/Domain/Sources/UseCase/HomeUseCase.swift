@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public protocol HomeUseCaseProtocol {
-    func fetchHomeBanners(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error>
+    func fetchHomeBanners(homeInfo: HomeInfo) -> AnyPublisher<HomeEntity, Error>
 }
 
 public final class HomeUseCase: HomeUseCaseProtocol {
@@ -19,7 +19,7 @@ public final class HomeUseCase: HomeUseCaseProtocol {
         self.homeRepository = homeRepository
     }
     
-    public func fetchHomeBanners(request: HomeBannerRequest) -> AnyPublisher<HomeEntity, Error> {
-        return homeRepository.fetchHomeInfo(request: request)
+    public func fetchHomeBanners(homeInfo: HomeInfo) -> AnyPublisher<HomeEntity, Error> {
+        return homeRepository.fetchHomeInfo(homeInfo: homeInfo)
     }
 }

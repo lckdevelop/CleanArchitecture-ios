@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public protocol CultureUseCaseProtocol {
-    func fetchCultureList(cultureSearchRequest: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error>
+    func fetchCultureList(cultureSearch: CultureSearch) -> AnyPublisher<[CultureLectureEntity], Error>
 }
 
 public final class CultureUseCase: CultureUseCaseProtocol {
@@ -19,7 +19,7 @@ public final class CultureUseCase: CultureUseCaseProtocol {
         self.cultureRepository = cultureRepository
     }
     
-    public func fetchCultureList(cultureSearchRequest: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error> {
-        return cultureRepository.fetchSearchResult(request: cultureSearchRequest)
+    public func fetchCultureList(cultureSearch: CultureSearch) -> AnyPublisher<[CultureLectureEntity], Error> {
+        return cultureRepository.fetchSearchResult(cultureSearch: cultureSearch)
     }
 }
