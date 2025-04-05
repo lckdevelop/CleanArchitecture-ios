@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 public protocol CultureUseCaseProtocol {
-    func fetchCultureList(cultureSearchRequest: CultureSearchRequest,
-                 completion: @escaping (Result<[CultureLecture], Error>) -> Void)
+    func fetchCultureList(cultureSearchRequest: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error>
 }
 
 public final class CultureUseCase: CultureUseCaseProtocol {
@@ -19,7 +19,7 @@ public final class CultureUseCase: CultureUseCaseProtocol {
         self.cultureRepository = cultureRepository
     }
     
-    public func fetchCultureList(cultureSearchRequest: CultureSearchRequest, completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
-        cultureRepository.fetchSearchResult(request: cultureSearchRequest, completion: completion)
+    public func fetchCultureList(cultureSearchRequest: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error> {
+        return cultureRepository.fetchSearchResult(request: cultureSearchRequest)
     }
 }

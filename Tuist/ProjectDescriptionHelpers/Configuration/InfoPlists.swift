@@ -32,6 +32,11 @@ public struct InfoPlist {
         infoPlist["CFBundleShortVersionString"] = .string(appConfiguration.shortVersion)
         infoPlist["CFBundleIdentifier"] = .string(appConfiguration.bundleIdentifier)
         infoPlist["CFBundleDisplayName"] = .string(appConfiguration.displayName)
+
+        infoPlist["EHYUNDAI_BASE_URL"] = .string("$(EHYUNDAI_BASE_URL)")
+        infoPlist["EHYUNDAI_APP_BASE_URL"] = .string("$(EHYUNDAI_APP_BASE_URL)")
+        infoPlist["HPOINT_BASE_URL"] = .string("$(HPOINT_BASE_URL)")
+        
         return infoPlist
     }
 }

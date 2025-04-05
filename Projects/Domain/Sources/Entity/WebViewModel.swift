@@ -8,7 +8,12 @@
 import Foundation
 
 public struct WebViewModel: Hashable, Equatable {
-    let url: String?
+    public init(url: String?, method: String?) {
+        self.url = url
+        self.method = method
+    }
+    
+    public let url: String?
     let method: String?
 }
 

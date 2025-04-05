@@ -15,15 +15,14 @@ public extension TargetDependency {
 // MARK: - Root
 public extension TargetDependency {
     
-    //static let data = TargetDependency.project(target: "Data", path: .data)
+    static let data = TargetDependency.project(target: "Data", path: .data)
     static let domain = TargetDependency.project(target: "Domain", path: .domain)
     //static let core = TargetDependency.project(target: "Core", path: .core) // designkit도 넣어야하나?
-    static let core = TargetDependency.project(target: "Core", path: .relativeToCore("Core"))
+    //static let core = TargetDependency.project(target: "Core", path: .relativeToCore("Core"))
 }
 
 // MARK: - Modules
 public extension TargetDependency.Modules {
-    //static let data = TargetDependency.project(target: "Data", path: .relativeToModule(.data))
     static let data = TargetDependency.project(target: "Data", path: .data)
     static let shared = TargetDependency.project(target: "Shared", path: .relativeToModule("Shared"))
     static let networkModule = TargetDependency.project(target: "NetworkModule", path: .relativeToModule("NetworkModule"))
@@ -36,6 +35,6 @@ public extension TargetDependency.Core {
     static let coreKit = TargetDependency.project(target: "CoreKit", path: .relativeToCore("CoreKit"))
     
 //    static let designKit = TargetDependency.project(target: "DesignKit", path: .relativeToCore("DesignKit"))
-//    static let core = TargetDependency.project(target: "Core", path: .core)
+    //static let core = TargetDependency.project(target: "Core", path: .core)
 }
 

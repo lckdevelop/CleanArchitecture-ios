@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    var numberWithCommaFormat: String {
+    public var numberWithCommaFormat: String {
         guard let number = Double(self) else { return "0" }
         
         let formatter = NumberFormatter()

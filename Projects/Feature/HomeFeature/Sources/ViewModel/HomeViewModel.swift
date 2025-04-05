@@ -7,8 +7,9 @@
 
 import SwiftUI
 import Combine
+import Domain
 
-class HomeViewModel: ObservableObject {
+public class HomeViewModel: ObservableObject {
     @Published var foodBannerList: [HomeBanner]?
     @Published var trendBannerList: [HomeBanner]?
     @Published var noticeBannerList: [HomeBanner]?
@@ -16,11 +17,11 @@ class HomeViewModel: ObservableObject {
     private let homeUseCase: HomeUseCaseProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(homeUseCase: HomeUseCaseProtocol) {
+    public init(homeUseCase: HomeUseCaseProtocol) {
         self.homeUseCase = homeUseCase
     }
     
-    func fetchHomeBanner() {
+    public func fetchHomeBanner() {
         homeUseCase.fetchHomeBanners(request: HomeBannerRequest(stCd: "400"))
             .sink { completion in
                 switch completion {

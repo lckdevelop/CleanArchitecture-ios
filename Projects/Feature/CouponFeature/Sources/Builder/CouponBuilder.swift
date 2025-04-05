@@ -11,26 +11,24 @@ import SwiftUI
 import CoreKit
 import Domain
 
-struct CouponBuilder {
-    static func buildViewModel() -> CouponViewModel {
-        let coreDI = DIContainer.shared
+public struct CouponBuilder {
+    public static func buildViewModel() -> CouponViewModel {
+        @Injected var couponRepository: CouponRepositoryInterface
 
-        // 의존성 주입
-        let repository = coreDI.resolve(CouponRepositoryInterface.self)!
-        let useCase = CouponUsecase(couponRepository: repository)
-
+        let useCase = CouponUsecase(couponRepository: couponRepository)
         return CouponViewModel(couponUsecase: useCase)
     }
     
-    static func sendView() -> CouponScreen {
-        let coreDI = DIContainer.shared
-
-        // 의존성 주입
-        let repository = coreDI.resolve(CouponRepositoryInterface.self)!
-        let useCase = CouponUsecase(couponRepository: repository)
-        let viewModel = CouponViewModel(couponUsecase: useCase)
-
-        return CouponScreen(couponViewModel: viewModel)
-    }
+//    public static func sendView() -> CouponScreen {
+//        @Injected var couponRepository: CouponRepositoryInterface
+////        let coreDI = DIContainer.shared
+////
+////        // 의존성 주입
+////        let repository = coreDI.resolve(CouponRepositoryInterface.self)!
+//        let useCase = CouponUsecase(couponRepository: couponRepository)
+//        let viewModel = CouponViewModel(couponUsecase: useCase)
+//
+//        return CouponScreen(router: AppRouter(), couponViewModel: viewModel)
+//    }
 }
 

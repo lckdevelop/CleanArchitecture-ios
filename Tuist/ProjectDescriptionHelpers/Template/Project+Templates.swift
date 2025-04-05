@@ -17,6 +17,7 @@ extension Project {
         internalDependencies: [TargetDependency] = [],  // 모듈간 의존성
         externalDependencies: [TargetDependency] = [],  // 외부 라이브러리 의존성
         interfaceDependencies: [TargetDependency] = [], // Feature Interface 의존성
+        dependencies: [TargetDependency] = [], // 의존성
         hasResources: Bool = false
     ) -> Project {
         
@@ -35,8 +36,8 @@ extension Project {
                 infoPlist: .extendingDefault(with: configuration.infoPlist),
                 sources: ["Sources/**"],
                 resources: ["Resources/**"],
-                //resources: ["Resources/**", "Sources/**/*.xib"],
                 entitlements: configuration.entitlements,
+                //dependencies: [interfaceDependencies, dependencies].flatMap({$0}),
                 dependencies: interfaceDependencies,
                 settings: configuration.setting
             )
@@ -56,6 +57,7 @@ extension Project {
             )
         case let .feature(name, type):
             let featureTargetName = "\(name)Feature"
+            
             switch type {
             case .standard:
                 let featureTarget = Target.target(
@@ -65,8 +67,7 @@ extension Project {
                     bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased())",
                     deploymentTargets: configuration.deploymentTarget,
                     sources: ["Sources/**"],
-                    //resources: ["Resources/**"],
-                    //resources: ["Resources/**", "Sources/**/*.xib"],
+                    resources: ["Resources/**"],
                     dependencies: interfaceDependencies
                 )
                 targets.append(featureTarget)
@@ -110,6 +111,8 @@ extension Project {
             }
             
         case let .module(name):
+            let frameworkResources: ResourceFileElements?
+
             let moduleTarget = Target.target(
                 name: name,
                 destinations: configuration.destination,
@@ -117,7 +120,6 @@ extension Project {
                 bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())",
                 deploymentTargets: configuration.deploymentTarget,
                 sources: ["Sources/**"],
-                resources: hasResources ? ["Resources/**"] : [],
                 dependencies: interfaceDependencies
             )
             targets.append(moduleTarget)
@@ -216,6 +218,21 @@ extension Project {
         
         // Framework 타겟
         let frameworkTargetName = name
+        
+        /**
+         * UIkit 만 있는 target을 위한 설정
+         */
+        let featureTargetName = "\(name)Feature"
+        let frameworkResources: ResourceFileElements?
+
+        if name == "CultureCenterFeature" {
+            frameworkResources = [
+                .glob(pattern: "Sources/**/*.xib"),
+            ]
+        } else {
+            frameworkResources = nil
+        }
+        
         let frameworkTarget = Target.target(
             name: frameworkTargetName,
             destinations: configuration.destination,
@@ -224,6 +241,7 @@ extension Project {
             deploymentTargets: configuration.deploymentTarget,
             infoPlist: .default,
             sources: ["Sources/**"],
+            resources: frameworkResources,
             dependencies: [
                 .target(name: interfaceTargetName)
             ]

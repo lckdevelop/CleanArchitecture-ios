@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
-import RxDataSources
 import Domain
+import Combine
 
 public final class CultureRepository {
     
@@ -21,24 +19,15 @@ public final class CultureRepository {
 }
 
 extension CultureRepository: CultureRepositoryInterface {
-    
-    public func fetchSearchResult(request: CultureSearchRequest,
-                          completion: @escaping (Result<[CultureLecture], Error>) -> Void) {
-        cultureService.getCultureLectureSearchList(request: request) { result in
-            switch result {
-            case .success(let entity):
-                var searchLectureList: [CultureLecture] = []
-                
-                if let applyCrsList = entity.data?.applyCrsList {
-                    for applyCrs in applyCrsList {
-                        searchLectureList.append(applyCrs.toDomain())
-                    }
+    public func fetchSearchResult(request: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error> {
+        return cultureService.getCultureLectureSearchList(request: request)
+            .tryMap { response in
+                guard let list = response.data?.applyCrsList else {
+                    return [CultureLecture]()
                 }
-                completion(.success(searchLectureList))
-            case .failure(let error):
-                completion(.failure(error))
+                return list.map { $0.toDomain() }
             }
-        }
+            .eraseToAnyPublisher()
     }
 
     

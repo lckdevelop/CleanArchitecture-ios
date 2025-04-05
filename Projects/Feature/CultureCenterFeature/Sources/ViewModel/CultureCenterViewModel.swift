@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
+import Combine
 import Domain
 
 protocol LectureSearchViewModelInput {
@@ -15,65 +14,73 @@ protocol LectureSearchViewModelInput {
 }
 
 protocol LectureSearchViewModelOutput {
-    var lectureList: BehaviorRelay<[CultureLecture]> { get }
-    var errors: BehaviorRelay<String> { get }
+    var lectureListPublisher: AnyPublisher<[CultureLecture], Never> { get }
+    var errorPublisher: AnyPublisher<String, Never> { get }
+    var lectureListValue: [CultureLecture] { get }
 }
 
 protocol CultureCenterViewModelProtocol: LectureSearchViewModelInput, LectureSearchViewModelOutput {}
 
-final class CultureCenterViewModel: CultureCenterViewModelProtocol {
+// MARK: - ViewModel
+
+public final class CultureCenterViewModel: CultureCenterViewModelProtocol {
     
     private let cultureUseCase: CultureUseCaseProtocol
+    private var cancellables = Set<AnyCancellable>()
     
-    var lectureList = BehaviorRelay<[CultureLecture]>(value: [])
-    var errors = BehaviorRelay<String>(value: "")
-        
-    init(cultureUseCase: CultureUseCaseProtocol) {
+    // Combine Subjects
+    private let lectureListSubject = CurrentValueSubject<[CultureLecture], Never>([])
+    private let errorSubject = PassthroughSubject<String, Never>()
+    
+    // Output
+    public var lectureListPublisher: AnyPublisher<[CultureLecture], Never> {
+        lectureListSubject.eraseToAnyPublisher()
+    }
+
+    public var errorPublisher: AnyPublisher<String, Never> {
+        errorSubject.eraseToAnyPublisher()
+    }
+    
+    // Init
+    public init(cultureUseCase: CultureUseCaseProtocol) {
         self.cultureUseCase = cultureUseCase
     }
     
+    // 추가: 읽기 전용 computed property
+    public var lectureListValue: [CultureLecture] {
+        lectureListSubject.value
+    }
+    
+    // MARK: - Search Logic
+    
     public func searchCultureList() {
-        // 선택하는 화면이 없어 임시로 model 세팅
-        let cultureSearchResultRequest = CultureSearchRequest(stCd: "ALL",
-                                                 sqCd: "",
-                                                 crsTy1: "ALL",
-                                                 crsTy2: "ALL",
-                                                 crsCategory: "ALL",
-                                                 dayOfWeek: "ALL",
-                                                 crsStartTime: "0700",
-                                                 crsEndTime: "2100",
-                                                 crsNm: "",
-                                                 applyStatus: "ALL",
-                                                 currentPage: "1",
-                                                 countPerPage: "20",
-                                                 monthStart: "20250105",
-                                                 monthEnd: "20251231",
-                                                 giftFlag: "")
+        let request = CultureSearchRequest(
+            stCd: "ALL",
+            sqCd: "",
+            crsTy1: "ALL",
+            crsTy2: "ALL",
+            crsCategory: "ALL",
+            dayOfWeek: "ALL",
+            crsStartTime: "0700",
+            crsEndTime: "2100",
+            crsNm: "",
+            applyStatus: "ALL",
+            currentPage: "1",
+            countPerPage: "20",
+            monthStart: "20250105",
+            monthEnd: "20251231",
+            giftFlag: ""
+        )
         
-        let group = DispatchGroup()
-        var searchLectureList = [CultureLecture]()
-        var errorList = [Error]()
-        
-        
-        group.enter()
-        cultureUseCase.fetchCultureList(cultureSearchRequest: cultureSearchResultRequest) { result in
-            switch result {
-            case .success(let model):
-                searchLectureList.append(contentsOf: model)
-            case .failure(let error):
-                errorList.append(error)
+        cultureUseCase.fetchCultureList(cultureSearchRequest: request)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure = completion {
+                    self?.errorSubject.send(NSLocalizedString("Failed loading data", comment: ""))
+                }
+            } receiveValue: { [weak self] lectures in
+                self?.lectureListSubject.send(lectures)
             }
-            group.leave()
-        }
-        
-        
-        group.notify(queue: .main) {
-            if !errorList.isEmpty {
-                self.errors.accept(NSLocalizedString("Failed loading data", comment: ""))
-            } else {
-                self.lectureList.accept(searchLectureList)
-            }
-        }
+            .store(in: &cancellables)
     }
 }
-

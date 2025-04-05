@@ -6,10 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 public protocol CultureRepositoryInterface {
-    func fetchSearchResult(request: CultureSearchRequest,
-                      completion: @escaping (Result<[CultureLecture], Error>) -> Void)
+    func fetchSearchResult(request: CultureSearchRequest) -> AnyPublisher<[CultureLecture], Error>
 }
 
 

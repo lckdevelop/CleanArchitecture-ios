@@ -7,6 +7,7 @@
 
 import Foundation
 import Domain
+import CoreKit
 
 // 쿠폰 라우트
 public enum CouponRoute: NavigationRoute {

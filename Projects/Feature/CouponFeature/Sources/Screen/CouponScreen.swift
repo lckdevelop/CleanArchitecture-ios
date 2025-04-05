@@ -8,12 +8,14 @@
 import SwiftUI
 import Kingfisher
 import BaseFeature
+import CoreKit
 
 public struct CouponScreen: View {
-    @EnvironmentObject private var router: AppRouter
+    private var router: RoutingProtocol
     @ObservedObject var couponViewModel: CouponViewModel
     
-    public init(router: AppRouter, couponViewModel: CouponViewModel) {
+    public init(router: RoutingProtocol, couponViewModel: CouponViewModel) {
+        self.router = router
         self.couponViewModel = couponViewModel
     }
     
@@ -33,7 +35,7 @@ public struct CouponScreen: View {
             .onAppear {
                 couponViewModel.loadCouponList()
             }
-            .toast(message: couponViewModel.toastMessage ?? "", isPresented: $couponViewModel.showToast)
+            //.toast(message: couponViewModel.toastMessage ?? "", isPresented: $couponViewModel.showToast) -- 이거 왜오류나냐
         }
         .navigationTitle("쿠폰")
     }

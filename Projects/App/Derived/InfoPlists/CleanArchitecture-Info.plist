@@ -20,6 +20,12 @@
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>EHYUNDAI_APP_BASE_URL</key>
+	<string>$(EHYUNDAI_APP_BASE_URL)</string>
+	<key>EHYUNDAI_BASE_URL</key>
+	<string>$(EHYUNDAI_BASE_URL)</string>
+	<key>HPOINT_BASE_URL</key>
+	<string>$(HPOINT_BASE_URL)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

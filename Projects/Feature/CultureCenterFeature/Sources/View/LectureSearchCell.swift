@@ -7,6 +7,7 @@
 
 import UIKit
 import Domain
+import CoreKit
 
 class LectureSearchCell: UITableViewCell {
     @IBOutlet weak var lectureTitleLabel: UILabel!

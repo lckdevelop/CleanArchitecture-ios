@@ -20,7 +20,7 @@ public struct AppConfiguration {
     let displayName: String = "CleanArchitecture"
     let destination: Set<Destination> = [.iPhone]
     var entitlements: Entitlements? = nil
-    let deploymentTarget: DeploymentTargets = .iOS("14.0")
+    let deploymentTarget: DeploymentTargets = .iOS("15.0")
     
     public var configurationName: ConfigurationName {
         return "CleanArchitecture"

@@ -8,7 +8,11 @@
 import Foundation
 
 public struct HomeBannerRequest: Encodable {
-    var stCd: String?
+    public var stCd: String?
+    
+    public init(stCd: String?) {
+        self.stCd = stCd
+    }
 }
 
 public struct HomeEntityList {
@@ -40,15 +44,15 @@ public protocol HomeBannerListProtocol {
 }
 
 public struct HomeBanner: Hashable, Equatable {
-    let image: String
-    let dcRate: String
-    let price: String
-    let link: String
-    let badgeNm: String
-    let place: String
-    let originPrice: String
-    let title: String
-    let descript: String
+    public let image: String
+    public let dcRate: String
+    public let price: String
+    public let link: String
+    public let badgeNm: String
+    public let place: String
+    public let originPrice: String
+    public let title: String
+    public let descript: String
     
     public init(image: String, dcRate: String, price: String, link: String, badgeNm: String, place: String, originPrice: String, title: String, descript: String) {
         self.image = image

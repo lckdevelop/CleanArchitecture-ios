@@ -8,14 +8,19 @@
 import SwiftUI
 import Kingfisher
 import Domain
-import Data
-import WebViewFeature
+import CoreKit
+import BaseFeature
 
-struct TohomeSection: View {
-    @EnvironmentObject private var router: AppRouter
+public struct TohomeSection: View {
+    private var router: RoutingProtocol
     let banners: [HomeBanner]
     
-    var body: some View {
+    public init(router: RoutingProtocol, banners: [HomeBanner]) {
+        self.router = router
+        self.banners = banners
+    }
+    
+    public var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("현대식품관 투홈")

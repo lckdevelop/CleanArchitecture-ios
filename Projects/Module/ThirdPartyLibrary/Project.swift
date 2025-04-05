@@ -17,5 +17,13 @@ let project = Project.configure(
         .Library.rxDataSources,
         .Library.kingfisher,
         .Library.swinject
+//        .package(product: "RxSwift"),
+//        .package(product: "RxCocoa"),
+//        .package(product: "RxRelay"),
+//        .package(product: "RxCocoaRuntime"), // 추가
+//        .package(product: "Moya"),
+//        .package(product: "RxDataSources"),
+//        .package(product: "Kingfisher"),
+//        .package(product: "Swinject")
     ]
 )

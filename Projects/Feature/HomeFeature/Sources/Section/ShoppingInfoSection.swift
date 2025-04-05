@@ -8,12 +8,19 @@
 import SwiftUI
 import Kingfisher
 import Domain
+import CoreKit
+import BaseFeature
 
-struct ShoppingInfoSection: View {
-    @EnvironmentObject private var router: AppRouter
+public struct ShoppingInfoSection: View {
+    public init(router: RoutingProtocol, banners: [HomeBanner]) {
+        self.router = router
+        self.banners = banners
+    }
+    
+    private var router: RoutingProtocol
     let banners: [HomeBanner]
 
-    var body: some View {
+    public var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Shopping Info")

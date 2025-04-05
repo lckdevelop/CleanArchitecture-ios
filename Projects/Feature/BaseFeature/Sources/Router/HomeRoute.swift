@@ -7,7 +7,7 @@
 
 import Foundation
 import Domain
-import WebViewFeature
+import CoreKit
 
 public enum HomeRoute: NavigationRoute {
     case homeScreen

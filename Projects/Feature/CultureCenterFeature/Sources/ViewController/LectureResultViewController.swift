@@ -6,26 +6,26 @@
 //
 
 import UIKit
-import RxSwift
-import RxDataSources
+import Domain
+import Combine
 
-class LectureResultViewController: UIViewController {
+public class LectureResultViewController: UIViewController {
     @IBOutlet weak var lectureCountLabel: UILabel!
     @IBOutlet weak var lectureListTableView: UITableView!
     
-    private var cultureCenterViewModel: CultureCenterViewModel
-    private let disposeBag = DisposeBag()
+    private var cultureCenterViewModel: CultureCenterViewModelProtocol
+    private var cancellables = Set<AnyCancellable>()
     
-    init(cultureCenterViewModel: CultureCenterViewModel) {
+    public init(cultureCenterViewModel: CultureCenterViewModel) {
         self.cultureCenterViewModel = cultureCenterViewModel
-        super.init(nibName: "LectureResultViewController", bundle: nil)
+        super.init(nibName: "LectureResultViewController", bundle: .module)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         setupDelegate()
@@ -41,28 +41,28 @@ private extension LectureResultViewController {
         lectureListTableView.delegate = self
         lectureListTableView.dataSource = self
         
-        let nib = UINib(nibName: "LectureSearchCell", bundle: nil)
+        let nib = UINib(nibName: "LectureSearchCell", bundle: .module)
         lectureListTableView.register(nib, forCellReuseIdentifier: "LectureSearchCell")
         
     }
     
     func setupBindings() {
-        cultureCenterViewModel.lectureList
-            .subscribe(on: MainScheduler.instance)
-            .subscribe(onNext: { bool in
-                let lectureCount = self.cultureCenterViewModel.lectureList.value.count
-                self.lectureCountLabel.text = "\(lectureCount)개의 강좌가 검색 되었어요."
-                
+        cultureCenterViewModel.lectureListPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] lectureList in
+                guard let self = self else { return }
+                self.lectureCountLabel.text = "\(lectureList.count)개의 강좌가 검색 되었어요."
                 self.lectureListTableView.reloadData()
-                
-            })
-            .disposed(by: disposeBag)
-    
-                       
-        cultureCenterViewModel.errors.subscribe(on: MainScheduler.instance)
-            .bind { error in
-               print("🚨Error Occurred: \(error)")
-           }.disposed(by: disposeBag)
+            }
+            .store(in: &cancellables)
+
+        cultureCenterViewModel.errorPublisher
+            .receive(on: RunLoop.main)
+            .sink { error in
+                print("🚨Error Occurred: \(error)")
+                // 필요시 alert 띄우기 등
+            }
+            .store(in: &cancellables)
     }
     
     func setupNavigationBar() {
@@ -85,24 +85,25 @@ extension LectureResultViewController: UITableViewDelegate {}
 // MARK: - TableView DataSource
 
 extension LectureResultViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cultureCenterViewModel.lectureList.value.count
+
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cultureCenterViewModel.lectureListValue.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: "LectureSearchCell",
-            for: indexPath) as? LectureSearchCell else { return UITableViewCell() }
+            for: indexPath) as? LectureSearchCell else {
+            return UITableViewCell()
+        }
         cell.selectionStyle = .none
-        let data = cultureCenterViewModel.lectureList.value[indexPath.row]
+        let data = cultureCenterViewModel.lectureListValue[indexPath.row]
         cell.bindData(data: data, row: indexPath.row)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
-
 }
 

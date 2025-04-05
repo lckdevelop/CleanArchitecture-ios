@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if let windowScene = scene as? UIWindowScene {
-            DIContainer.shared.registerDependencies()
+            AppDIRegister.registerDependencies()
 
             self.window = UIWindow(windowScene: windowScene)
 

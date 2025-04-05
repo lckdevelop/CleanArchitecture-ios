@@ -19,9 +19,9 @@ public struct XCConfig {
     }
 
     public static let framework: [Configuration] = [
-        .debug(name: "Development", xcconfig: Path.framework),
-        .debug(name: "Staging", xcconfig: Path.framework),
-        .release(name: "Release", xcconfig: Path.framework),
+        .release(name: "Development", xcconfig: Path.framework),
+        .release(name: "Staging", xcconfig: Path.framework),
+        .debug(name: "Release", xcconfig: Path.framework),
     ]
     
     public static let tests: [Configuration] = [
@@ -31,8 +31,9 @@ public struct XCConfig {
     ]
     
     public static let project: [Configuration] = [
-        .debug(name: "Development", xcconfig: Path.project("Development")),
-        .debug(name: "Staging", xcconfig: Path.project("Staging")),
-        .release(name: "Release", xcconfig: Path.project("Release")),
+        .release(name: "Development", xcconfig: Path.project("Development")),
+        .release(name: "Staging", xcconfig: Path.project("Staging")),
+        .debug(name: "Release", xcconfig: Path.project("Release")),
     ]
+
 }

@@ -8,19 +8,25 @@
 import SwiftUI
 import Kingfisher
 import Domain
+import CoreKit
 
-struct CouponDetailView: View {
+public struct CouponDetailView: View {
+    private var router: RoutingProtocol
     let coupon: CouponEntity
     
-    @EnvironmentObject private var router: AppRouter
-    var body: some View {
+    public init(coupon: CouponEntity, router: RoutingProtocol) {
+        self.coupon = coupon
+        self.router = router
+    }
+    
+    public var body: some View {
         ScrollView {
             VStack {
                 // 닫기 버튼
                 HStack {
                     Spacer()
                     Button(action: {
-                        router.navigate(.pop)
+                        router.navigate(.pop, route: router)
                     }) {
                         Image(systemName: "xmark")
                             .foregroundColor(.black)
@@ -60,16 +66,16 @@ struct CouponDetailView: View {
     }
 }
 
-#Preview {
-    let coupon = CouponEntity(
-        id: "test-id",
-        campId: "",
-        ofrId: "",
-        name: "테스트 쿠폰",
-        titleImage: "https://image.h-point.co.kr//images_share/cp/cp0001/2025/0224/1815/20250224181554944.jpg",
-        couponType: .coupon
-    )
-    
-    return CouponDetailView(coupon: coupon)
-        .environmentObject(AppRouter())
-}
+//#Preview {
+//    let coupon = CouponEntity(
+//        id: "test-id",
+//        campId: "",
+//        ofrId: "",
+//        name: "테스트 쿠폰",
+//        titleImage: "https://image.h-point.co.kr//images_share/cp/cp0001/2025/0224/1815/20250224181554944.jpg",
+//        couponType: .coupon
+//    )
+//    
+//    return CouponDetailView(coupon: coupon)
+//        .environmentObject(AppRouter())
+//}

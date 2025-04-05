@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct NativePushScreen: View {
-    var body: some View {
+public struct NativePushScreen: View {
+    public init() {}
+    public var body: some View {
         Text("Native Screen")
     }
 }

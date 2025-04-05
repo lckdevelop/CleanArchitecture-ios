@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Domain
+import CoreKit
 
 // 문화센터 라우트
-enum CultureCenterRoute: NavigationRoute {
+public enum CultureCenterRoute: NavigationRoute {
     // 필요한 경로 추가
 }

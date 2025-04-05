@@ -12,6 +12,7 @@ let project = Project.configure(
     moduleType: .module(name: "CoreKit"),
     product: .framework,
     interfaceDependencies: [
-        .Modules.thirdPartyLibrary
+        .Modules.thirdPartyLibrary,
+        
     ]
 )

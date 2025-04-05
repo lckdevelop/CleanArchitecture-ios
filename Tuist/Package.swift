@@ -8,7 +8,6 @@ import ProjectDescriptionHelpers
 
 let packageSettings = PackageSettings(
     productTypes: [
-        "Alamofire": .framework,
         "Kingfisher": .framework,
         "Moya": .framework,
         "RxSwift": .framework,
@@ -21,12 +20,13 @@ let packageSettings = PackageSettings(
 
 
 let package = Package(
-    name: "PackageName",
+    name: "ThirdPartyLibrary",
+    platforms: [.iOS(.v15)],
     dependencies: [
-        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "8.1.3"),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.0.0"),
-        .package(url: "https://github.com/Moya/Moya.git", from: "15.0.3"),
-        .package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", from: "5.0.2"),
-        .package(url: "https://github.com/Swinject/Swinject.git", from: "2.8.0")
+        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "8.1.3")),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.5.0")),
+        .package(url: "https://github.com/Moya/Moya.git", .upToNextMinor(from: "15.0.3")),
+        .package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", .upToNextMajor(from: "5.0.2")),
+        .package(url: "https://github.com/Swinject/Swinject.git", .upToNextMajor(from: "2.9.1"))
     ]
 )
