@@ -206,7 +206,7 @@ extension Project {
         let interfaceTarget = Target.target(
             name: interfaceTargetName,
             destinations: configuration.destination,
-            product: product,
+            product: .framework,
             bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())Interface",
             deploymentTargets: configuration.deploymentTarget,
             infoPlist: .default,
@@ -217,24 +217,17 @@ extension Project {
         // Framework 타겟
         let frameworkTargetName = name
         
-        /**
-         * UIkit 만 있는 target을 위한 설정
-         */
-        //let featureTargetName = "\(name)Feature"
-        let frameworkResources: ResourceFileElements?
-
-        if name == "CultureCenterFeature" {
-            frameworkResources = [
-                .glob(pattern: "Sources/**/*.xib"),
-            ]
-        } else {
-            frameworkResources = nil
-        }
+        // UIkit 만 있는 target을 위한 설정
+        let frameworkResources: ResourceFileElements? = (
+            name == "CultureCenterFeature"
+                ? [.glob(pattern: "Sources/**/*.xib")]
+                : nil
+        )
         
         let frameworkTarget = Target.target(
             name: frameworkTargetName,
             destinations: configuration.destination,
-            product: product,
+            product: .framework,
             bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())",
             deploymentTargets: configuration.deploymentTarget,
             infoPlist: .default,
@@ -247,6 +240,7 @@ extension Project {
         
         // Demo 타겟
         let demoTargetName = "\(name)Demo"
+        
         let demoTarget = Target.target(
             name: demoTargetName,
             destinations: configuration.destination,
@@ -293,14 +287,17 @@ extension Project {
 //        )
         
         let targets = [interfaceTarget, frameworkTarget, demoTarget]
-        //let targets = [interfaceTarget, frameworkTarget, demoTarget, testsTarget, testTarget]
-        
-        let scheme = Scheme.configureDemoAppScheme(schemeName: name)
-        
-        // 프로젝트 생성
+
+        let scheme = Scheme.configureDemoAppScheme(
+            schemeName: demoTargetName
+        )
+
         return Project(
-            name: name,
+            name: demoTargetName,
             organizationName: organizationName,
+            options: .options(
+                automaticSchemesOptions: .disabled
+            ),
             settings: settings,
             targets: targets,
             schemes: [scheme]

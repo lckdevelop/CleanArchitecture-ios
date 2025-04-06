@@ -27,22 +27,22 @@
          location = "group:Feature"
          name = "Feature">
          <FileRef
-            location = "group:BaseFeature/BaseFeature.xcodeproj">
+            location = "group:BaseFeature/BaseFeatureDemo.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:CouponFeature/CouponFeature.xcodeproj">
+            location = "group:CouponFeature/CouponFeatureDemo.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:CultureCenterFeature/CultureCenterFeature.xcodeproj">
+            location = "group:CultureCenterFeature/CultureCenterFeatureDemo.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:HomeFeature/HomeFeature.xcodeproj">
+            location = "group:HomeFeature/HomeFeatureDemo.xcodeproj">
          </FileRef>
          <FileRef
             location = "group:RootFeature/RootFeature.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:WebViewFeature/WebViewFeature.xcodeproj">
+            location = "group:WebViewFeature/WebViewFeatureDemo.xcodeproj">
          </FileRef>
       </Group>
       <Group

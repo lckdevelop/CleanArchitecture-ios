@@ -61,14 +61,19 @@ extension Scheme {
         schemeName: String
     ) -> Scheme {
         let developmentConfiguration: ConfigurationName = .configuration("Development")
-        
-        let buildAction = BuildAction.buildAction(targets: [TargetReference(stringLiteral: schemeName)])
-        
+
+        let buildAction = BuildAction.buildAction(
+            targets: [TargetReference(stringLiteral: schemeName)]
+        )
+
         return Scheme.scheme(
             name: schemeName,
             shared: true,
             buildAction: buildAction,
-            runAction: .runAction(configuration: developmentConfiguration),
+            runAction: .runAction(
+                configuration: developmentConfiguration,
+                executable: TargetReference(stringLiteral: schemeName)
+            ),
             archiveAction: .archiveAction(configuration: developmentConfiguration),
             profileAction: .profileAction(configuration: developmentConfiguration),
             analyzeAction: .analyzeAction(configuration: developmentConfiguration)
