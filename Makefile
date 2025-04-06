@@ -1,11 +1,11 @@
 .PHONY: bootstrap
 miseBootstrap:
-	sh /etc/script/tuist/miseBootstrap.sh
+	sh ./scripts/miseBootstrap.sh
   
 .PHONY: generate
 tuistGenerate:
-	sh /etc/script/tuist/tuistGenerate.sh
+	sh ./scripts/tuistGenerate.sh
   
 .PHONY: generate-no-open
 tuistGenerate-no-open:
-	sh /etc/script/tuist/tuistGenerate.sh --no-open
+	sh ./scripts/tuistGenerate.sh --no-open

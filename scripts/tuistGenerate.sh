@@ -20,20 +20,35 @@ echo "- Workspace Directory: ${WORKSPACE_DIR}"
 
 PROJECT_DIR_NAME="CleanArchitecture"
 PROJECT_NAME="CleanArchitecture-ios"
-#PROJECT_DIR="${WORKSPACE_DIR}/${PROJECT_DIR_NAME}/${PROJECT_NAME}"
 PROJECT_DIR="${EXECUTION_DIR}"
 echo "- Project Directory: ${PROJECT_DIR}"
 echo "------------------------------------------------------------------"
 
+# mise 활성화
+if [ -n "$ZSH_VERSION" ]; then
+    eval "$(~/.local/bin/mise activate zsh)"
+elif [ -n "$BASH_VERSION" ]; then
+    eval "$(~/.local/bin/mise activate bash)"
+else
+    echo "Unsupported shell. Please use bash or zsh."
+    exit 1
+fi
+
 echo "\n[1] > mise install and use tuist ...\n"
-mise install tuist
+mise install tuist@4.45.0
 mise use tuist@4.45.0
 
 # Tuist install 실행
 echo "\n[2] > Installing Tuist ...\n"
 tuist install --path "${PROJECT_DIR}"
 
+# Tuist 빌드
+# 전체 환경 빌드 필요할때 주석 푸시오.
+#echo "\n[3] > Building project with Tuist ...\n"
+#TUIST_ROOT_DIR=$PWD tuist build
+
 # Tuist generate 실행 및 프로젝트 open
+echo "\n[4] > Tuist build completed. Now generating project ...\n"
 if [ "$1" = "--no-open" ]; then
     echo "Generating Tuist without opening the project..."
     TUIST_ROOT_DIR=$PWD tuist generate --no-open
@@ -45,3 +60,4 @@ fi
 echo "----------------------------------"
 echo "::: tuistGenerate Script Finished :::"
 echo "----------------------------------\n"
+
