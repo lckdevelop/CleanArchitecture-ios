@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Projects"
+      name = "Projects">
+      <FileRef
+         location = "group:App/CleanArchitecture.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Data/Data.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Domain/Domain.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:Core"
+         name = "Core">
+         <FileRef
+            location = "group:CoreKit/CoreKit.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:DesignKit/DesignKit.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Feature"
+         name = "Feature">
+         <FileRef
+            location = "group:BaseFeature/BaseFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:CouponFeature/CouponFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:CultureCenterFeature/CultureCenterFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:HomeFeature/HomeFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:RootFeature/RootFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:WebViewFeature/WebViewFeature.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Module"
+         name = "Module">
+         <FileRef
+            location = "group:NetworkModule/NetworkModule.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Shared/Shared.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:ThirdPartyLibrary/ThirdPartyLibrary.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/Alamofire/Alamofire.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/Kingfisher/Kingfisher.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/Moya/Moya.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/RxDataSources/RxDataSources.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/RxSwift/RxSwift.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/Swinject/Swinject.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
