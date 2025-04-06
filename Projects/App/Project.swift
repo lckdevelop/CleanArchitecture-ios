@@ -13,7 +13,8 @@ let project = Project.configure(
     product: .app,
     interfaceDependencies: [
         .Features.RootFeature,
-        .data,
-        .Modules.data
+        //.data,
+        .Modules.data,
+        .Modules.shared
     ]
 )

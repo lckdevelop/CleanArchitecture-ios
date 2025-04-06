@@ -206,10 +206,10 @@ extension Project {
         let interfaceTarget = Target.target(
             name: interfaceTargetName,
             destinations: configuration.destination,
-            product: .framework,
+            product: product,
             bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())Interface",
             deploymentTargets: configuration.deploymentTarget,
-            infoPlist: .default,
+            //infoPlist: .extendingDefault(with: configuration.infoPlist),
             sources: ["Interface/Sources/**"],
             dependencies: dependencies
         )
@@ -227,10 +227,10 @@ extension Project {
         let frameworkTarget = Target.target(
             name: frameworkTargetName,
             destinations: configuration.destination,
-            product: .framework,
+            product: product,
             bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())",
             deploymentTargets: configuration.deploymentTarget,
-            infoPlist: .default,
+            //infoPlist: .extendingDefault(with: configuration.infoPlist),
             sources: ["Sources/**"],
             resources: frameworkResources,
             dependencies: [
@@ -247,7 +247,7 @@ extension Project {
             product: .app,
             bundleId: "\(configuration.bundleIdentifier).\(name.lowercased())Demo",
             deploymentTargets: configuration.deploymentTarget,
-            infoPlist: .default,
+            infoPlist: .extendingDefault(with: configuration.infoPlist),
             sources: ["Demo/Sources/**"],
             //resources: [.glob(pattern: "Demo/Resources/**", excluding: [])],
             dependencies: [
@@ -287,13 +287,15 @@ extension Project {
 //        )
         
         let targets = [interfaceTarget, frameworkTarget, demoTarget]
-
-        let scheme = Scheme.configureDemoAppScheme(
-            schemeName: demoTargetName
-        )
+        
+        // 앱 타겟으로 생성되는 애
+        //let scheme = Scheme.configureDemoAppScheme(schemeName: name)
+        
+        // 앱 스킴으로 생성되는 애
+        let scheme = Scheme.configureDemoAppScheme(schemeName: demoTargetName)
 
         return Project(
-            name: demoTargetName,
+            name: name,
             organizationName: organizationName,
             options: .options(
                 automaticSchemesOptions: .disabled

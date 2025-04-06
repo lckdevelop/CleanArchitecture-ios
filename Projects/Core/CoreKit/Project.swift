@@ -13,6 +13,6 @@ let project = Project.configure(
     product: .framework,
     interfaceDependencies: [
         .Modules.thirdPartyLibrary,
-        
+        //.Modules.shared // 이거 빌드 오류남..
     ]
 )

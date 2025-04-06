@@ -60,7 +60,7 @@ extension Scheme {
     static func configureDemoAppScheme(
         schemeName: String
     ) -> Scheme {
-        let developmentConfiguration: ConfigurationName = .configuration("Development")
+        let releaseConfiguration: ConfigurationName = .configuration("Release")
 
         let buildAction = BuildAction.buildAction(
             targets: [TargetReference(stringLiteral: schemeName)]
@@ -70,13 +70,14 @@ extension Scheme {
             name: schemeName,
             shared: true,
             buildAction: buildAction,
-            runAction: .runAction(
-                configuration: developmentConfiguration,
-                executable: TargetReference(stringLiteral: schemeName)
-            ),
-            archiveAction: .archiveAction(configuration: developmentConfiguration),
-            profileAction: .profileAction(configuration: developmentConfiguration),
-            analyzeAction: .analyzeAction(configuration: developmentConfiguration)
+            runAction: .runAction(configuration: releaseConfiguration),
+//            runAction: .runAction(
+//                configuration: developmentConfiguration,
+//                executable: TargetReference(stringLiteral: schemeName)
+//            ),
+            archiveAction: .archiveAction(configuration: releaseConfiguration),
+            profileAction: .profileAction(configuration: releaseConfiguration),
+            analyzeAction: .analyzeAction(configuration: releaseConfiguration)
         )
     }
     

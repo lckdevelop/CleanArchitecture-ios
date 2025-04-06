@@ -13,6 +13,7 @@ import CouponFeature
 import CultureCenterFeature
 import Domain
 import RootFeature
+import Shared
 
 public struct MainTabViewController: View {
     public init() {}

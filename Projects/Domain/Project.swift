@@ -12,7 +12,6 @@ let project = Project.configure(
     moduleType: .domain(name: "Domain"),
     product: .framework,
     interfaceDependencies: [
-        //.Modules.shared,
         .Core.coreKit
     ]
 )

@@ -12,6 +12,7 @@ import CoreKit
 import Data
 import Domain
 import RootFeature
+import Shared
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

@@ -52,10 +52,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9371A5B21C4A22EEA4C924AF"
+               BlueprintIdentifier = "D3E314B387FD8B34A15E37AD"
                BuildableName = "BaseFeature.framework"
                BlueprintName = "BaseFeature"
-               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -66,10 +66,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EDDDF2E100DE7B9EB8F390E9"
+               BlueprintIdentifier = "124BBD9277632D5AB84A65C2"
                BuildableName = "BaseFeatureDemo.app"
                BlueprintName = "BaseFeatureDemo"
-               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -80,10 +80,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "872CEF6A7571332AC7D6B6F8"
+               BlueprintIdentifier = "841627A7B155CC831FE07BB8"
                BuildableName = "BaseFeatureInterface.framework"
                BlueprintName = "BaseFeatureInterface"
-               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/BaseFeature/BaseFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -122,10 +122,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E1B28733165DE4A3B68FD6D"
+               BlueprintIdentifier = "7891EBC3D1A75F6F21CE05E3"
                BuildableName = "CouponFeature.framework"
                BlueprintName = "CouponFeature"
-               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -136,10 +136,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9DA18E65037E3ABE8DE6B70"
+               BlueprintIdentifier = "86E0346A87635C8DA71CF0D9"
                BuildableName = "CouponFeatureDemo.app"
                BlueprintName = "CouponFeatureDemo"
-               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -150,10 +150,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "042501EEF04CD3935ACA76DF"
+               BlueprintIdentifier = "7D2909EFDFBF4ADD433624CA"
                BuildableName = "CouponFeatureInterface.framework"
                BlueprintName = "CouponFeatureInterface"
-               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CouponFeature/CouponFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -164,10 +164,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FC81B69B804420951E7E5FE8"
+               BlueprintIdentifier = "A1DE38BC1E7C18DD5D581489"
                BuildableName = "CultureCenterFeature.framework"
                BlueprintName = "CultureCenterFeature"
-               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -178,10 +178,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EFB8486C0664F42BB2A29D22"
+               BlueprintIdentifier = "7C4D499E676D19AE35D76C43"
                BuildableName = "CultureCenterFeatureDemo.app"
                BlueprintName = "CultureCenterFeatureDemo"
-               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -192,10 +192,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "221A8BD0B08E068A3AE45F45"
+               BlueprintIdentifier = "CBA3CE40078B428E13B03634"
                BuildableName = "CultureCenterFeatureInterface.framework"
                BlueprintName = "CultureCenterFeatureInterface"
-               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/CultureCenterFeature/CultureCenterFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -262,10 +262,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8DE694609C3F0EDBE20E1F81"
+               BlueprintIdentifier = "DA63F18E567CF83B0B9CA9F6"
                BuildableName = "HomeFeature.framework"
                BlueprintName = "HomeFeature"
-               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -276,10 +276,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9844DED8C0964989390F1888"
+               BlueprintIdentifier = "549A602B2BC1A28903EEFC0D"
                BuildableName = "HomeFeatureDemo.app"
                BlueprintName = "HomeFeatureDemo"
-               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -290,10 +290,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D8797B274F67BE4396B90143"
+               BlueprintIdentifier = "854D3E4EFF471C42EE44119B"
                BuildableName = "HomeFeatureInterface.framework"
                BlueprintName = "HomeFeatureInterface"
-               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/HomeFeature/HomeFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -472,10 +472,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8728E0B3B74E79611A81D706"
+               BlueprintIdentifier = "56C29D78AA6EE8E9D1E03058"
                BuildableName = "WebViewFeature.framework"
                BlueprintName = "WebViewFeature"
-               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -486,10 +486,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0C13E03A78CD5BE8E65C53BC"
+               BlueprintIdentifier = "D354F1AFCF45F46FA7B8C7C9"
                BuildableName = "WebViewFeatureDemo.app"
                BlueprintName = "WebViewFeatureDemo"
-               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -500,10 +500,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D54E8F5E6AD41A76980119C9"
+               BlueprintIdentifier = "4EF948EE81FED8937D75EAB1"
                BuildableName = "WebViewFeatureInterface.framework"
                BlueprintName = "WebViewFeatureInterface"
-               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeatureDemo.xcodeproj">
+               ReferencedContainer = "container:Projects/Feature/WebViewFeature/WebViewFeature.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

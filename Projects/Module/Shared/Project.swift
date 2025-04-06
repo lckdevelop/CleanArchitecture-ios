@@ -12,6 +12,10 @@ let project = Project.configure(
     moduleType: .module(name: "Shared"),
     product: .framework,
     interfaceDependencies: [
-        .Modules.thirdPartyLibrary
+        .Modules.networkModule,
+        //.data,
+        .Modules.data,
+        .domain,
+        .Features.RootFeature
     ]
 )

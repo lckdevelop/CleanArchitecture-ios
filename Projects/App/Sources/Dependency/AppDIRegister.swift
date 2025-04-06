@@ -7,14 +7,15 @@
 
 import Foundation
 import Swinject
-import CoreKit
 import Moya
 import Data
 import Domain
 import NetworkModule
+import CoreKit
+import Shared
 
-final class AppDIRegister {
-    static func registerDependencies() {
+public final class AppDIRegister {
+    public static func registerDependencies() {
         let container = DIContainer.shared.container
         
         // 라우터 관련 Assembly

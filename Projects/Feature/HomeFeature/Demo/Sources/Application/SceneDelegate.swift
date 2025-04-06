@@ -11,11 +11,11 @@ import Data
 import Domain
 import NetworkModule
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+public class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+    public var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let _ = (scene as? UIWindowScene) else { return }
         
@@ -26,34 +26,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             self.window = UIWindow(windowScene: windowScene)
 
-//            let router = AppRouter()
-//            
-//            let homeScreen = HomeScreen(router: router, homeViewModel: viewModel)
-//
-//            let hostingController = UIHostingController(rootView: NavigationView { homeScreen })
-//
-//            self.window?.rootViewController = hostingController
-//            self.window?.makeKeyAndVisible()
+            let router = MockRouter()
+            
+            let homeScreen = HomeScreen(router: router, homeViewModel: viewModel)
+
+            let hostingController = UIHostingController(rootView: NavigationView { homeScreen })
+
+            self.window?.rootViewController = hostingController
+            self.window?.makeKeyAndVisible()
         }
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {
+    public func sceneDidDisconnect(_ scene: UIScene) {
 
     }
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
+    public func sceneDidBecomeActive(_ scene: UIScene) {
 
     }
 
-    func sceneWillResignActive(_ scene: UIScene) {
+    public func sceneWillResignActive(_ scene: UIScene) {
 
     }
 
-    func sceneWillEnterForeground(_ scene: UIScene) {
+    public func sceneWillEnterForeground(_ scene: UIScene) {
 
     }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
+    public func sceneDidEnterBackground(_ scene: UIScene) {
 
     }
 
