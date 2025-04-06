@@ -8,14 +8,13 @@
 import Foundation
 import Combine
 import Moya
-import Domain
 
 public protocol CouponServiceProtocol {
-    func fetchCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error>
+    func fetchCouponList(couponRequest: CouponRequest) -> AnyPublisher<CouponListResponse, Error>
 }
 
 public final class CouponService: BaseService<HpointAPI>, CouponServiceProtocol {
-    public func fetchCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
-        requestObjectInCombine(.fetchCouponList(request: request))
+    public func fetchCouponList(couponRequest: CouponRequest) -> AnyPublisher<CouponListResponse, Error> {
+        requestObjectInCombine(.fetchCouponList(request: couponRequest))
     }
 }

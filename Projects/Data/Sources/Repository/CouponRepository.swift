@@ -28,8 +28,14 @@ public final class CouponRepository: CouponRepositoryInterface {
         self.couponService = couponService
     }
     
-    public func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
-        return couponService.fetchCouponList(request: request)
+    public func fetchCoupons(couponRequestDTO: CouponRequestDTO) -> AnyPublisher<[CouponEntity], Error> {
+        let couponRequest = couponRequestDTO.toData()
+        
+        return couponService.fetchCouponList(couponRequest: couponRequest)
+            .map { couponListResponse in
+                couponListResponse.coupons.map { $0.toDomain() }
+            }
+            .eraseToAnyPublisher()
     }
 }
 

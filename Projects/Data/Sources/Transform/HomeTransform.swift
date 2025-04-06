@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import NetworkModule
 import Domain
+import NetworkModule
 
 
 extension HomeInfo {

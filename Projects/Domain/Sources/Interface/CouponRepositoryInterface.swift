@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 public protocol CouponRepositoryInterface {
-    func fetchCoupons(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error>
+    func fetchCoupons(couponRequestDTO: CouponRequestDTO) -> AnyPublisher<[CouponEntity], Error>
 }

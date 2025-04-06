@@ -7,10 +7,9 @@
 
 import Foundation
 import Moya
-import Domain
 
 public enum HpointAPI {
-    case fetchCouponList(request: CouponRequestDTO)
+    case fetchCouponList(request: CouponRequest)
 }
 
 extension HpointAPI: TargetType {

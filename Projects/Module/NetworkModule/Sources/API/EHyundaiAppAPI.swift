@@ -7,7 +7,6 @@
 
 import Foundation
 import Moya
-import Domain
 
 public enum EHyundaiAppAPI {
     case getHomeInfoList(request: HomeBannerRequest)

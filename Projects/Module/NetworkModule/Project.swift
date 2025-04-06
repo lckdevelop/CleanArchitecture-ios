@@ -12,6 +12,6 @@ let project = Project.configure(
     moduleType: .module(name: "NetworkModule"),
     product: .framework,
     interfaceDependencies: [
-        .domain
+        .Modules.thirdPartyLibrary
     ]
 )

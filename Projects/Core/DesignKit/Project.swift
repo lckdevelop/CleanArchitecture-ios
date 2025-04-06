@@ -12,7 +12,6 @@ let project = Project.configure(
     moduleType: .module(name: "DesignKit"),
     product: .framework,
     interfaceDependencies: [
-        .domain,
         .Modules.thirdPartyLibrary
     ]
 )

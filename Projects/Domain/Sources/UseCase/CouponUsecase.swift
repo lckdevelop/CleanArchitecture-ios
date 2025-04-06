@@ -18,7 +18,7 @@ import Combine
  
  */
 public protocol CouponUsecaseProtocol {
-    func getCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error>
+    func getCouponList(couponRequestDTO: CouponRequestDTO) -> AnyPublisher<[CouponEntity], Error>
 }
 
 public final class CouponUsecase: CouponUsecaseProtocol {
@@ -29,8 +29,8 @@ public final class CouponUsecase: CouponUsecaseProtocol {
         self.couponRepository = couponRepository
     }
     
-    public func getCouponList(request: CouponRequestDTO) -> AnyPublisher<CouponEntityList, Error> {
-        return couponRepository.fetchCoupons(request: request)
+    public func getCouponList(couponRequestDTO: CouponRequestDTO) -> AnyPublisher<[CouponEntity], Error> {
+        return couponRepository.fetchCoupons(couponRequestDTO: couponRequestDTO)
     }
 }
 

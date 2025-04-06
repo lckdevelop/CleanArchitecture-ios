@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import NetworkModule
 import Domain
+import NetworkModule
 
 extension CultureSearch {
     public func toData() -> CultureSearchRequest {

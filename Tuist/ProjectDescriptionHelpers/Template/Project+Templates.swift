@@ -59,57 +59,57 @@ extension Project {
             let featureTargetName = "\(name)Feature"
             
             switch type {
-            case .standard:
-                let featureTarget = Target.target(
-                    name: featureTargetName,
-                    destinations: configuration.destination,
-                    product: product,
-                    bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased())",
-                    deploymentTargets: configuration.deploymentTarget,
-                    sources: ["Sources/**"],
-                    resources: ["Resources/**"],
-                    dependencies: interfaceDependencies
-                )
-                targets.append(featureTarget)
+                case .standard:
+                    let featureTarget = Target.target(
+                        name: featureTargetName,
+                        destinations: configuration.destination,
+                        product: product,
+                        bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased())",
+                        deploymentTargets: configuration.deploymentTarget,
+                        sources: ["Sources/**"],
+                        resources: ["Resources/**"],
+                        dependencies: interfaceDependencies
+                    )
+                    targets.append(featureTarget)
+                    
+    //                let testTargetName = "\(featureTargetName)Tests"
+    //                let testTarget = Target.target(
+    //                    name: testTargetName,
+    //                    destinations: configuration.destination,
+    //                    product: .unitTests,
+    //                    bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased()).test",
+    //                    deploymentTargets: configuration.deploymentTarget,
+    //                    sources: ["Tests/Sources/**"],
+    //                    dependencies: [.target(name: featureTargetName)]
+    //                )
+    //                targets.append(testTarget)
+                    
+                    let featureScheme = Scheme.configureScheme(
+                        schemeName: featureTargetName
+                    )
+                    schemes.append(featureScheme)
+                    
+                    return Project(
+                        name: featureTargetName,
+                        //organizationName: configuration.organizationName,
+                        settings: configuration.setting,
+                        targets: targets,
+                        schemes: schemes
+                    )
+                case .micro:
+                    return configureMicroFeatureProject(
+                        configuration: configuration,
+                        product: product,
+                        name: featureTargetName,
+                        organizationName: "",
+                        //organizationName: configuration.organizationName,
+                        targets: targets,
+                        dependencies: interfaceDependencies,
+                        schemes: schemes,
+                        settings: configuration.setting
+                    )
+                }
                 
-//                let testTargetName = "\(featureTargetName)Tests"
-//                let testTarget = Target.target(
-//                    name: testTargetName,
-//                    destinations: configuration.destination,
-//                    product: .unitTests,
-//                    bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased()).test",
-//                    deploymentTargets: configuration.deploymentTarget,
-//                    sources: ["Tests/Sources/**"],
-//                    dependencies: [.target(name: featureTargetName)]
-//                )
-//                targets.append(testTarget)
-                
-                let featureScheme = Scheme.configureScheme(
-                    schemeName: featureTargetName
-                )
-                schemes.append(featureScheme)
-                
-                return Project(
-                    name: featureTargetName,
-                    //organizationName: configuration.organizationName,
-                    settings: configuration.commonSettings,
-                    targets: targets,
-                    schemes: schemes
-                )
-            case .micro:
-                return configureMicroFeatureProject(
-                    configuration: configuration,
-                    product: product,
-                    name: featureTargetName,
-                    organizationName: "",
-                    //organizationName: configuration.organizationName,
-                    targets: targets,
-                    dependencies: interfaceDependencies,
-                    schemes: schemes,
-                    settings: configuration.setting
-                )
-            }
-            
         case let .module(name):
             let moduleTarget = Target.target(
                 name: name,
@@ -143,7 +143,7 @@ extension Project {
             return Project(
                 name: name,
                 //organizationName: configuration.organizationName,
-                settings: configuration.commonSettings,
+                settings: configuration.setting,
                 targets: targets,
                 schemes: schemes
             )
@@ -182,7 +182,7 @@ extension Project {
             return Project(
                 name: domainName,
                 //organizationName: configuration.organizationName,
-                settings: configuration.commonSettings,
+                settings: configuration.setting,
                 targets: targets,
                 schemes: schemes
             )
@@ -255,7 +255,7 @@ extension Project {
             deploymentTargets: configuration.deploymentTarget,
             infoPlist: .default,
             sources: ["Demo/Sources/**"],
-            resources: [.glob(pattern: "Demo/Resources/**", excluding: [])],
+            //resources: [.glob(pattern: "Demo/Resources/**", excluding: [])],
             dependencies: [
                 .target(name: frameworkTargetName)
             ]
