@@ -1,0 +1,20 @@
+LINT=$(which swiftlint)
+
+if [[ -e "$" ]]; then
+  echo "SwiftLint Start"
+else
+  echo "SwiftLint does not exist, download from https://github.com/realm/SwiftLint"
+  exit 1
+fi
+count=0
+
+targets=$(git diff --stat --cached --diff-filter=d --name-only $(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)) | grep -F ".swift")
+addModifiedFile "$" $count
+export -p | grep SCRIPT_INPUT_FILE
+export SCRIPT_INPUT_FILE_COUNT=$count
+RESULT=$($LINT lint --use-script-input-files --path "경로" --config .precommitlint.yml)
+if [ "$RESULT" == '' ]; then
+  printf "SwiftLint Finished.n"
+else
+  echo ""
+  printf "SwiftLint Failed. Please check below:n"
