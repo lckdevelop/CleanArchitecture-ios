@@ -38,6 +38,7 @@ extension Project {
                 resources: ["Resources/**"],
                 entitlements: configuration.entitlements,
                 //dependencies: [interfaceDependencies, dependencies].flatMap({$0}),
+                scripts: [.SwiftLintHook],
                 dependencies: interfaceDependencies,
                 settings: configuration.setting
             )
