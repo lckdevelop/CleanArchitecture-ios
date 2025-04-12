@@ -36,6 +36,6 @@ public extension TargetScript {
     // 3. githook pre-commit시 코드컨벤션 실행
     static let SwiftLintHook = TargetScript.pre(
         path: .relativeToRoot("scripts/SwiftLintGithook.sh"),
-        name: "SwiftLintShell"
+        name: "SwiftLintHook"
     )
 }
