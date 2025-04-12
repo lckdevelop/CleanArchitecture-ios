@@ -11,7 +11,7 @@ import ProjectDescription
 public extension TargetDependency {
     struct Features {
         //public struct Root {}
-        //public struct Base {}
+        public struct Base {}
         public struct Home {}
         public struct CultureCenter {}
         public struct Coupon {}
