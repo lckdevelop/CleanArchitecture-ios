@@ -18,7 +18,8 @@ public class LectureResultViewController: UIViewController {
     
     public init(cultureCenterViewModel: CultureCenterViewModel) {
         self.cultureCenterViewModel = cultureCenterViewModel
-        super.init(nibName: "LectureResultViewController", bundle: .module)
+        let bundle = Bundle(for: LectureResultViewController.self)
+        super.init(nibName: "LectureResultViewController", bundle: bundle)
     }
 
     required init?(coder: NSCoder) {
@@ -41,7 +42,8 @@ private extension LectureResultViewController {
         lectureListTableView.delegate = self
         lectureListTableView.dataSource = self
         
-        let nib = UINib(nibName: "LectureSearchCell", bundle: .module)
+        let bundle = Bundle(for: LectureResultViewController.self)
+        let nib = UINib(nibName: "LectureSearchCell", bundle: bundle)
         lectureListTableView.register(nib, forCellReuseIdentifier: "LectureSearchCell")
         
     }
