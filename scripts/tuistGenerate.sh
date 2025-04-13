@@ -42,13 +42,8 @@ mise use tuist@4.45.0
 echo "\n[2] > Installing Tuist ...\n"
 tuist install --path "${PROJECT_DIR}"
 
-# Tuist 빌드
-# 전체 환경 빌드 필요할때 주석 푸시오.
-#echo "\n[3] > Building project with Tuist ...\n"
-#TUIST_ROOT_DIR=$PWD tuist build
-
 # Tuist generate 실행 및 프로젝트 open
-echo "\n[4] > Tuist build completed. Now generating project ...\n"
+echo "\n[3] > Tuist build completed. Now generating project ...\n"
 if [ "$1" = "--no-open" ]; then
     echo "Generating Tuist without opening the project..."
     TUIST_ROOT_DIR=$PWD tuist generate --no-open
@@ -56,6 +51,11 @@ else
     echo "Generating Tuist and opening the project..."
     TUIST_ROOT_DIR=$PWD tuist generate
 fi
+
+# Tuist 빌드
+# 전체 환경 빌드 필요할때 주석 푸시오.
+#echo "\n[4] > Building project with Tuist ...\n"
+#TUIST_ROOT_DIR=$PWD tuist build
 
 echo "----------------------------------"
 echo "::: tuistGenerate Script Finished :::"

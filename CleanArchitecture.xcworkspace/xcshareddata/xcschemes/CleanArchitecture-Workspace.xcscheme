@@ -11,7 +11,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Push build insights"
-               scriptText = "/Users/chaekyeong/.local/share/mise/installs/tuist/4.45.0/bin/tuist inspect build">
+               scriptText = "/Users/gimhyeonseo/.local/share/mise/installs/tuist/4.45.0/bin/tuist inspect build">
             </ActionContent>
          </ExecutionAction>
       </PostActions>
