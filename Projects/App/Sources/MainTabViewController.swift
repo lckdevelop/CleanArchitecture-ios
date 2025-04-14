@@ -41,6 +41,8 @@ public struct MainTabViewController: View {
                     case .coupon:
                         CouponNavigationStack()
                             .environmentObject(couponViewModel)
+                    case .permission:
+                        PermissionScreen()
                     }
                 }
                 .tabItem {

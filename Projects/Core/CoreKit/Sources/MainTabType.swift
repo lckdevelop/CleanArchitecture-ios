@@ -12,6 +12,7 @@ public enum MainTabType: String, CaseIterable {
     case home
     case cultureCenter
     case coupon
+    case permission
     
     public var title: String {
         switch self {
@@ -21,6 +22,8 @@ public enum MainTabType: String, CaseIterable {
             return "문화센터"
         case .coupon:
             return "쿠폰"
+        case .permission:
+            return "OS권한"
         }
     }
     
@@ -32,7 +35,8 @@ public enum MainTabType: String, CaseIterable {
             "bag.fill"
         case .coupon:
             "ticket.fill"
+        case .permission:
+            "lock.shield.fill"
         }
-        
     }
 }
