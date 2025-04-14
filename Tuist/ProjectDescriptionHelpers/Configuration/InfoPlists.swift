@@ -10,10 +10,13 @@ public struct InfoPlist {
     private static let commonInfoPlist: [String: Plist.Value] = [
         "CFBundleDevelopmentRegion": "ko",
         "CFBundleVersion": "1",
-        //"UILaunchStoryboardName": "Launch Screen",
+        "UILaunchStoryboardName": "LaunchScreen",
         "UIUserInterfaceStyle": "Light",
         "LSSupportsOpeningDocumentsInPlace": true,
         "ITSAppUsesNonExemptEncryption": false,
+        "UIViewControllerBasedStatusBarAppearance": true,
+        "UIStatusBarStyle": "UIStatusBarStyleDefault",
+        "UIApplicationSupportsIndirectInputEvents": true,
         "UIApplicationSceneManifest": [
             "UIApplicationSupportsMultipleScenes": false,
             "UISceneConfigurations": [
