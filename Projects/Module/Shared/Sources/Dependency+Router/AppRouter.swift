@@ -61,6 +61,8 @@ public class AppRouter: ObservableObject, RoutingProtocol {
             performNavigation(action, route: route as? CouponRoute, navigator: couponNavigator)
         case .home:
             performNavigation(action, route: route as? HomeRoute, navigator: homeNavigator)
+        case .permission:
+            break // 단일 화면으로 내비게이션이 필요 없음.
         }
     }
     

@@ -2,6 +2,39 @@
 UIKit + SwiftUI 호환 가능한 프로젝트입니다. 
 클린 아키텍처 원칙을 준수하였으며 소프트웨어의 유지보수성, 테스트 용이성 및 모듈 간의 분리를 강조하여 구조화된 방식으로 개발하였습니다.
 
+## 개발 환경 설정
+```bash
+# mise를 통한 개발 환경 설정
+make miseBootstrap
+```
+
+### 2. 프로젝트 생성
+```bash
+# Tuist 기반 프로젝트 생성 (Xcode 자동 실행)
+make tuistGenerate
+
+# 또는 Xcode를 자동으로 실행하지 않고 프로젝트만 생성
+make tuistGenerate-no-open
+```
+
+### 3. Git Hook 설정 (선택사항)
+```bash
+# Git Hook 설정
+make setupGithook
+```
+
+## 프로젝트 실행 방법
+1. Tuist로 생성된 프로젝트를 `CleanArchitecture.xcworkspace` 엽니다.
+2. 프로젝트를 빌드하기 전에 적절한 Team을 선택해야 합니다.
+
+   > **참고**: 처음 빌드 시 다음과 같은 오류가 발생할 수 있습니다:
+   > ```
+   > Signing for "CleanArchitecture" requires a development team. Select a development team in the Signing & Capabilities editor.
+   > ```
+   > 이 오류를 해결하려면 Xcode에서 프로젝트 설정의 'Signing & Capabilities' 탭으로 이동하여 적절한 프로비저닝 프로파일을 선택하세요.
+
+3. 빌드 및 실행합니다.
+
 ## Clean Architecture 주요 원칙
 ### 1. 의존성 역전 원칙 (Dependency Inversion Principle, DIP)
 > 고수준 모듈은 저수준 모듈에 의존해서는 안되며, 양쪽 모듈 모두 추상화에 의존해야 합니다. 또한 추상화는 세부 사항에 의존하지 않아야합니다. 세부 사항이 추상화에 의존해야 한다.이를 통해 느슨한 결합을 유지할 수 있습니다. Ex) Domain Layer의 구현체는 외부 계층에 의존하지 않고, 대신 인터페이스(Repository Interface)를 통해 의존성을 역전시킵니다. 이를 통해 도메인 로직이 외부 구현 세부사항으로부터 독립적으로 유지됩니다. 
