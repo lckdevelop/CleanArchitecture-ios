@@ -35,7 +35,7 @@ extension Project {
                 deploymentTargets: configuration.deploymentTarget,
                 infoPlist: .extendingDefault(with: configuration.infoPlist),
                 sources: ["Sources/**"],
-                resources: ["Resources/**"],
+                //resources: ["Resources/**"],
                 entitlements: configuration.entitlements,
                 //dependencies: [interfaceDependencies, dependencies].flatMap({$0}),
                 scripts: [.SwiftLintHook],
@@ -68,7 +68,7 @@ extension Project {
                         bundleId: "\(configuration.bundleIdentifier).feature.\(name.lowercased())",
                         deploymentTargets: configuration.deploymentTarget,
                         sources: ["Sources/**"],
-                        resources: ["Resources/**"],
+                        //resources: ["Resources/**"],
                         dependencies: interfaceDependencies
                     )
                     targets.append(featureTarget)
