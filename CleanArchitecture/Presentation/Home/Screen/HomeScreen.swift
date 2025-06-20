@@ -25,7 +25,7 @@ struct HomeScreen: View {
                 }
                 .padding()
                 .onAppear {
-                    self.homeViewModel.fetchHomeBanner()
+                    homeViewModel.fetchHomeBanner()
                 }
                 .onDisappear {
                     homeViewModel.cancelSubscriptions()
