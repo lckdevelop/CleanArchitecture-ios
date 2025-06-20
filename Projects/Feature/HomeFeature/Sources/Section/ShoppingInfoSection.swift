@@ -28,7 +28,7 @@ public struct ShoppingInfoSection: View {
                     .bold()
                 Spacer()
                 Button(action: {
-                    router.navigate(.push, route: HomeRoute.webViewExam(WebViewModel(url: "http://127.0.0.1:5501/index.html", method: "S")))
+                    router.navigate(.push, route: HomeRoute.webViewExam(WebViewModel(url: "http://127.0.0.1:5500/index.html", method: "S")))
                 }) {
                     Text("더보기 >")
                         .font(.caption)

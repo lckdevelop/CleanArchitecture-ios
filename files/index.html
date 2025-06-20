@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
+    <script type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        function NativePushScreen() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"screenName": "NativePushScreen", "method": "S"}}, {CMD: "MOVE_NATIVE"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+
+        function NativePresentScreen() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"screenName": "NativePresentScreen", "method": "P"}}, {CMD: "MOVE_NATIVE"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+
+        function goToIndex2() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"url": "http://127.0.0.1:5500/index2.html", "method": "S"}}, {CMD: "OPEN_WEBVIEW"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+
+        function javaScriptToIOSBack() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"test": "test"}}, {CMD: "BACK"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+        
+        function javaScriptToIOSClose() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"test": "test"}}, {CMD: "CLOSE"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+
+        function iOSToJavaScript() {
+            console.log('Event Occurred')
+        }
+        
+    </script>
+    <style>
+        .button {
+          width: 500px;
+          height: 300px;
+          background-color: #4c5baf;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 50px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>
+    <title>iOS <-> JavaScript</title>
+</head>
+<body>
+    <button class="button" type="button" onclick="NativePushScreen()">CMD: NativePushScreen</button>
+    <button class="button" type="button" onclick="NativePresentScreen()">CMD: NativePresentScreen</button>
+    <button class="button" type="button" onclick="goToIndex2()">CMD: index2.html</button>
+    <button class="button" type="button" onclick="javaScriptToIOSBack()">CMD: BACK</button>
+    <button class="button" type="button" onclick="javaScriptToIOSClose()">CMD: CLOSE</button>
+</body>
+</html>

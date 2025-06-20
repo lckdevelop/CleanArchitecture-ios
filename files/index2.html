@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
+    <script type="text/javascript" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        function javaScriptToIOSBack() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"test": "test"}}, {CMD: "BACK"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+        function javaScriptToIOSClose() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"test": "test"}}, {CMD: "CLOSE"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+        function javaScriptToIOSCloseAll() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"test": "test"}}, {CMD: "CLOSE_ALL"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+        function javaScriptToIOSWindow() {
+            if (window.webkit?.messageHandlers?.callAppNative) {
+                console.log('Send Event')
+                window.webkit.messageHandlers.callAppNative.postMessage($.extend({PARAMS: {"screenName": "NativePushScreen", "method": "S"}}, {CMD: "MOVE_NATIVE"}))
+            } else {
+                console.log('Cannot send event')
+            }
+        }
+    </script>
+    <style>
+        .button {
+          width: 500px;
+          height: 300px;
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 50px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+        </style>
+    <title>iOS <-> JavaScript</title>
+</head>
+<body>
+    <button class="button" type="button" onclick="javaScriptToIOSBack()">CMD: BACK</button>
+    <button class="button" type="button" onclick="javaScriptToIOSClose()">CMD: CLOSE</button>
+    <button class="button" type="button" onclick="javaScriptToIOSCloseAll()">CMD: CLOSE_ALL</button>
+    <button class="button" type="button" onclick="javaScriptToIOSWindow()">CMD: SHOPPING</button>
+</body>
+</html>
