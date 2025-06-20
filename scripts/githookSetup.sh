@@ -17,6 +17,9 @@ echo "SwiftLint pre-commit hook 설정 중..."
 # .githooks 디렉토리를 Git hook 디렉토리로 설정
 git config core.hooksPath .githooks
 
+# 실행 권한 추가
+chmod +x scripts/SwiftLintGithook.sh
+
 # 실행 권한 부여
 chmod +x .githooks/pre-commit
 
