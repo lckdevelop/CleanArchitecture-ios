@@ -38,13 +38,13 @@ extension HpointAPI: TargetType {
         }
     }
     
-    public var headers: [String : String]? {
+    public var headers: [String: String]? {
         return [
             "Content-Type": "application/json",
             "connId": "",
             "authKey": "",
             "teOpsyGbcd": "02",
-            "appVer": "3.1.25",
+            "appVer": "3.1.50", // H.Point APP 필수 버전 3.1.35 이상
             "awakenYn": "",
             "strAutoLogin": "",
             "mblCrdNo": "",
