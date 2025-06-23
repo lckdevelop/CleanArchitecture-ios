@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 import BaseFeature
 import CoreKit
+import DesignKit
 
 public struct CouponScreen: View {
     private var router: RoutingProtocol
@@ -35,7 +36,7 @@ public struct CouponScreen: View {
             .onAppear {
                 couponViewModel.loadCouponList()
             }
-            //.toast(message: couponViewModel.toastMessage ?? "", isPresented: $couponViewModel.showToast) -- 이거 왜오류나냐
+            .toast(message: couponViewModel.toastMessage ?? "", isPresented: $couponViewModel.showToast)
         }
         .navigationTitle("쿠폰")
     }
